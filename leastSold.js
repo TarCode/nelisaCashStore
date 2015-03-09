@@ -1,5 +1,5 @@
 exports.leastSold = function(map){
-        var min = 172;
+        var min = Number.MAX_VALUE;
         var key = "";
         for(var m in map){
                 var val = map[m];
@@ -8,6 +8,11 @@ exports.leastSold = function(map){
                         key = m;
                 }
         }
-        return ("Least sold product: " + key + "\nAmount Sold: " + min);
+        var least = {
+            stockItem: key,
+            noSold: min
+        }
+
+        return (least);
 }
 

@@ -31,9 +31,12 @@ csv
 	console.log(map);
 
 	var most = mSold.mostSold(map);
-	console.log(most);
+	console.log("\nMost Sold Product: " );
+    console.log(most);
+
 
 	var least = lSold.leastSold(map);
-	console.log(least);
- });
+	console.log("\nLeast Sold Product: ");
+        console.log(least);
+    });
  

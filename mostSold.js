@@ -8,7 +8,13 @@ exports.mostSold = function(map){
 			key = m;
 		}
 	}
-	return ("Most sold product: " + key + "\nAmount Sold: " + max);
+
+    var most = {
+        stockItem: key,
+        noSold: max
+    }
+
+    return (most);
 }
 
 
