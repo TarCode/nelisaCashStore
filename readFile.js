@@ -1,8 +1,10 @@
-//Author: Taariq Isacs
-//date: 5 march 2015
-// This code reads the csv and extracts the stock item and quantity of that item that was sold.
-// It displays the total item that were sold for a specific item 
-var stats = require('./stats');
+//Author:	 Taariq Isacs
+//Date:		 5/03/2015
+//File:		 readFile.js
+//Description:	 Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+
+var mSold = require('./mostSold');
+var lSold = require('./leastSold');
 var filter = require('./filter');
 var csv = require('fast-csv');
 var fs = require('fs');
@@ -27,9 +29,11 @@ csv
 
 	var map = filter.sortData(itemArr);
 	console.log(map);
-	var most = stats.mostSold(map);
+
+	var most = mSold.mostSold(map);
 	console.log(most);
-	var least = stats.leastSold(map);
+
+	var least = lSold.leastSold(map);
 	console.log(least);
  });
  
