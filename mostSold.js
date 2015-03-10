@@ -1,3 +1,7 @@
+//Author:	        Taariq Isaacs
+//Date: 	        09/03/2015
+//File:		        mostSold.js
+
 exports.mostSold = function(map){
 	var max = 0;
 	var key = "";

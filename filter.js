@@ -1,6 +1,6 @@
-//Author:	Taariq Isaacs
-//Date: 	09/03/2015
-//File:		filter.js
+//Author:	        Taariq Isaacs
+//Date: 	        09/03/2015
+//File:		        filter.js
 
 var itemMap = {};
 exports.sortData = function(itemArr){ 

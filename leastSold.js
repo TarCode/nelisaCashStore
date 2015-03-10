@@ -1,3 +1,7 @@
+//Author:	        Taariq Isaacs
+//Date: 	        09/03/2015
+//File:		        leastSold.js
+
 exports.leastSold = function(map){
         var min = Number.MAX_VALUE;
         var key = "";
