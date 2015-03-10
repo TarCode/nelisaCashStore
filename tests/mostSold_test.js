@@ -11,7 +11,7 @@ var list = {
 }
 
 var most = {
-    stockItem: 'Bread',
+    name: 'Bread',
     noSold: 50
 }
 

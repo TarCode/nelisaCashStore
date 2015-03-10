@@ -10,11 +10,8 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/readSalesFile.js.save.3" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/readSalesFile.jsnano.save" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/stats.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catTotal.js" afterPath="$PROJECT_DIR$/catTotal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leastSold.js" afterPath="$PROJECT_DIR$/leastSold.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/makeCat.js" afterPath="$PROJECT_DIR$/makeCat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mostSold.js" afterPath="$PROJECT_DIR$/mostSold.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readFile.js" afterPath="$PROJECT_DIR$/readFile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/leastSold_test.js" afterPath="$PROJECT_DIR$/tests/leastSold_test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/mostSold_test.js" afterPath="$PROJECT_DIR$/tests/mostSold_test.js" />
     </list>
     <ignored path="nelisaCashStore.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,35 +59,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makeCat_test.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/makeCat_test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-              <folding>
-                <element signature="e#140#1169#0" expanded="false" />
-                <element signature="e#1180#1662#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="catTotal_test.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/catTotal_test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7820823" vertical-offset="337" max-vertical-offset="750">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="catTotal.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/catTotal.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
               <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="leastSold_test.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/leastSold_test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mostSold_test.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/mostSold_test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.47215497" vertical-offset="0" max-vertical-offset="413">
+              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,8 +151,6 @@
       <list>
         <option value="$PROJECT_DIR$/filter.js" />
         <option value="$PROJECT_DIR$/tests/filter_test.js" />
-        <option value="$PROJECT_DIR$/tests/leastSold_test.js" />
-        <option value="$PROJECT_DIR$/tests/mostSold_test.js" />
         <option value="$PROJECT_DIR$/makeCat.js" />
         <option value="$PROJECT_DIR$/catTotal.js" />
         <option value="$PROJECT_DIR$/mostSold.js" />
@@ -162,6 +158,8 @@
         <option value="$PROJECT_DIR$/readFile.js" />
         <option value="$PROJECT_DIR$/tests/makeCat_test.js" />
         <option value="$PROJECT_DIR$/tests/catTotal_test.js" />
+        <option value="$PROJECT_DIR$/tests/leastSold_test.js" />
+        <option value="$PROJECT_DIR$/tests/mostSold_test.js" />
       </list>
     </option>
   </component>
@@ -329,7 +327,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="7" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974634" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -422,22 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/leastSold_test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mostSold_test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/fast-csv/lib/parser/parser_stream.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3325062" vertical-offset="4006" max-vertical-offset="5130">
@@ -494,33 +476,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/filter_test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/makeCat.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="675">
           <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
           <folding>
             <element signature="e#196#801#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/makeCat_test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-          <folding>
-            <element signature="e#140#1169#0" expanded="false" />
-            <element signature="e#1180#1662#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -538,6 +499,47 @@
         <state vertical-scroll-proportion="0.7820823" vertical-offset="337" max-vertical-offset="750">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/makeCat_test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14527845" vertical-offset="0" max-vertical-offset="413">
+          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+          <folding>
+            <element signature="e#140#1169#0" expanded="false" />
+            <element signature="e#1180#1662#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/filter_test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/leastSold_test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/mostSold_test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47215497" vertical-offset="0" max-vertical-offset="413">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

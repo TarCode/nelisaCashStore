@@ -11,7 +11,7 @@ var list = {
 }
 
 var least = {
-    stockItem: 'Rose (plastic)',
+    name: 'Rose (plastic)',
     noSold: 14
 }
 
