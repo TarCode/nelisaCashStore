@@ -29,30 +29,41 @@ csv
 	    //console.log(itemArr);
 
 	    var itemMap = filter.sortData(itemArr);
+
+        console.log("\nPRODUCTS AND QUANTITY SOLD:")
 	    console.log(itemMap);
 
 	    var most = mSold.mostSold(itemMap);
-	    console.log("\nMost Sold Product: " );
+	    console.log("\nMOST SOLD PRODUCT: " );
         console.log(most);
 
 
 	    var least = lSold.leastSold(itemMap);
-	    console.log("\nLeast Sold Product: ");
+	    console.log("\nLEAST SOLD PRODUCT: ");
         console.log(least);
 
         var cat = mCat.makeCat(itemMap);
 
 
 
-        console.log("\nCategories: ");
+        console.log("\nCATEGORIES: ");
         console.log(cat);
 
 
 
-       var newCats = catTotal.catTotal(cat);
+        var totalPerCat = catTotal.catTotal(cat);
+        console.log("\nTOTAL QUANTITY SOLD PER CATEGORY: ")
+        console.log(totalPerCat);
 
-       console.log(newCats);
+        var mostPopularCat =  mSold.mostSold(totalPerCat);
 
+        console.log("\nMOST POPULAR CATEGORY: ")
+        console.log(mostPopularCat);
+
+        var leastPopularCat =  lSold.leastSold(totalPerCat);
+
+        console.log("\nLEAST POPULAR CATEGORY: ")
+        console.log(leastPopularCat);
 
 
 

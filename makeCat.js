@@ -1,3 +1,8 @@
+//Author:	        Taariq Isacs
+//Date:		        09/03/2015
+//File:		        makeCat.js
+//Description:	    Method - Takes the itemMap and returns a map with the categorized products
+
 var catList = {
     'Milk 1l': 'shortLife',
     'Imasi': 'shortLife',

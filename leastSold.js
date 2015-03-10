@@ -13,7 +13,7 @@ exports.leastSold = function(map){
                 }
         }
         var least = {
-            stockItem: key,
+            name: key,
             noSold: min
         }
 

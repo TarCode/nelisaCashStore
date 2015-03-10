@@ -14,7 +14,7 @@ exports.mostSold = function(map){
 	}
 
     var most = {
-        stockItem: key,
+        name: key,
         noSold: max
     }
 
