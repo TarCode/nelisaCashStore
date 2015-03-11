@@ -1,4 +1,4 @@
-//Author:	Taariq Isaacs
+//Author:	Taariq Isaacs and Pholisa Fatyela
 //Date: 	09/03/2015
 //File:		filter.js
 
