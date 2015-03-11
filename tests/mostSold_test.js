@@ -1,3 +1,7 @@
+//Author:	        Taariq Isaacs
+//Date: 	        09/03/2015
+//File:		        mostSold_test.js
+
 var mSold = require('../mostSold.js');
 
 var list = {
@@ -7,7 +11,7 @@ var list = {
 }
 
 var most = {
-    stockItem: 'Bread',
+    name: 'Bread',
     noSold: 50
 }
 
