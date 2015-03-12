@@ -1,8 +1,7 @@
 //Author:	        Taariq Isaacs/Pholisa Fatyela
-//Date:		        12/03/2015
-//File:		        totalEarningsPerProduct.js
-//Description:	    Method - Takes the itemMap and salesPriceArray and returns a map with the total earnings per product
-
+//Date: 	        12/03/2015
+//File:		        EarningsPerCat.js
+//Description:		Method - Takes the itemMap and salesPriceArray and returns a map with the total earnings per category
 
 
 exports.totalEarningsPerProduct = function(quantityList, salePriceList){
@@ -11,10 +10,12 @@ exports.totalEarningsPerProduct = function(quantityList, salePriceList){
     for(var prodName in quantityList) {
         for(var name in salePriceList) {
             if(prodName === name) {
-                totalPricePerProd[prodName] ="R" +parseFloat(quantityList[prodName] * salePriceList[name]).toFixed(2);
+                totalPricePerProd[prodName] = parseFloat(quantityList[prodName] * salePriceList[name]).toFixed(2);
             }
         }
 
     }
     return totalPricePerProd;
 }
+
+

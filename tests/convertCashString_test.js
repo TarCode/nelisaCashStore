@@ -1,5 +1,5 @@
 //Author:	        Taariq Isaacs/Pholisa Fatyela
-//Date: 	        11/03/2015
+//Date: 	        12/03/2015
 //File:		        convertCashString_test.js
 
 var convertCash = require('../convertCashString');
