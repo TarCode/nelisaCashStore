@@ -11,7 +11,7 @@ exports.totalEarningsPerProduct = function(quantityList, salePriceList){
     for(var prodName in quantityList) {
         for(var name in salePriceList) {
             if(prodName === name) {
-                totalPricePerProd[prodName] ="R" +parseFloat(quantityList[prodName] * salePriceList[name]).toFixed(2);
+                totalPricePerProd[prodName] = parseFloat(quantityList[prodName] * salePriceList[name]).toFixed(2);
             }
         }
 

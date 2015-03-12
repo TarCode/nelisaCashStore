@@ -10,9 +10,10 @@ var CatList = { shortLife:
      			      { product: 'Bread', qty: 130 } ]
 }
 
-var salePriceList = {  'Milk 1l': 10,
-    Imasi: 25,
-    Bread: 12 };
+var salePriceList = {
+    'Milk 1l': 1420.00,
+    Imasi: 3125.00,
+    Bread: 1560.00 };
 
 var sPriceTot = {shortLife: 6105};
 

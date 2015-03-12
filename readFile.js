@@ -3,7 +3,8 @@
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
 
-var totEarn = require('./totalEarningsPerProduct')
+var totEarnCat = require('./totalEarningsPerCat');
+var totEarn = require('./totalEarningsPerProduct');
 var convertCash = require('./convertCashString');
 var salePriceList = require('./getSalePrice');
 var catTotal = require('./catTotal');
@@ -80,6 +81,8 @@ csv
         var totEarnings = totEarn.totalEarningsPerProduct(itemMap, convertedCash);
         console.log(totEarnings);
 
-
+        var totCatCash = totEarnCat.totalEarningsPerCat(cat, totEarnings);
+        console.log("\nTOTAL EARNINGS PER CATEGORY: ");
+        console.log(totCatCash);
 
     });
