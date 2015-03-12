@@ -10,15 +10,11 @@ var quantityList = {
     'Bread': 130
 }
 
-var salePriceList = {
-    'Milk 1l': 10.00,
-    'Imasi': 25.00,
-    'Bread': 11.50
-}
+var salePriceList = {  'Milk 1l': 10,
+    Imasi: 25,
+    Bread: 12 };
 
-var sPriceTot = [ { prodName: 'Milk 1l', totalEarnings: 1420 },
-        { prodName: 'Imasi', totalEarnings: 3125 },
-        { prodName: 'Bread', totalEarnings: 1495 }];
+var sPriceTot = {'Milk 1l': 1420, Imasi: 3125, Bread: 1560};
 
 test('totEarn.totalEarningsPerProduct()', function() {
     deepEqual(totEarn.totalEarningsPerProduct(quantityList,salePriceList), sPriceTot);

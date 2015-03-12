@@ -1,4 +1,4 @@
-//Author:	        Taariq Isaacs
+//Author:	        Taariq Isaacs/Pholisa Fatyela
 //Date: 	        09/03/2015
 //File:		        leastSold.js
 

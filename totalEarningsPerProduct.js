@@ -6,15 +6,12 @@
 
 
 exports.totalEarningsPerProduct = function(quantityList, salePriceList){
-    var totalPricePerProd = [];
+    var totalPricePerProd = {};
 
     for(var prodName in quantityList) {
         for(var name in salePriceList) {
             if(prodName === name) {
-                totalPricePerProd.push({
-                    prodName: prodName,
-                    totalEarnings: parseFloat(quantityList[prodName]* salePriceList[name])
-                })
+                totalPricePerProd[prodName] = parseFloat(quantityList[prodName] * salePriceList[name]).toFixed(2);
             }
         }
 

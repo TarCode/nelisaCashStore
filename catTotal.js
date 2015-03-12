@@ -1,4 +1,4 @@
-//Author:	        Taariq Isacs
+//Author:	        Taariq Isaacs/Pholisa Fatyela
 //Date:		        10/03/2015
 //File:		        catTotal.js
 //Description:	    Method - Takes the Category Map created in makeCat.js and returns a map with the total quantity

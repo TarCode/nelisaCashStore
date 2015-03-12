@@ -1,6 +1,6 @@
-//Author:	        Taariq Isaacs
+//Author:	        Taariq Isaacs/Pholisa Fatyela
 //Date: 	        09/03/2015
-//File:		        filter_test.js
+//File:		        makeCat_test.js
 
 var mkCat = require('../makeCat');
 

@@ -1,6 +1,6 @@
 //Author:	        Taariq Isaacs/Pholisa Fatyela
-//Date: 	        09/03/2015
-//File:		        filter_test.js
+//Date: 	        11/03/2015
+//File:		        getSalePrice_test.js
 
 var gtSalePrice = require('../getSalePrice.js');
 

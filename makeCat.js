@@ -1,4 +1,4 @@
-//Author:	        Taariq Isacs
+//Author:	        Taariq Isaacs/Pholisa Fatyela
 //Date:		        09/03/2015
 //File:		        makeCat.js
 //Description:	    Method - Takes the itemMap and returns a map with the categorized products

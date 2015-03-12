@@ -1,9 +1,13 @@
-//Author:	        Taariq Isacs
+//Author:	        Taariq Isaacs/Pholisa Fatyela
 //Date:		        5/03/2015
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
-var catTotal = require('./catTotal')
-var mCat = require('./makeCat')
+
+var totEarn = require('./totalEarningsPerProduct')
+var convertCash = require('./convertCashString');
+var salePriceList = require('./getSalePrice');
+var catTotal = require('./catTotal');
+var mCat = require('./makeCat');
 var mSold = require('./mostSold');
 var lSold = require('./leastSold');
 var filter = require('./filter');
@@ -19,14 +23,14 @@ csv
 	
 	itemArr.push({
 		itemName : data[2],
-		qty : data[3]
+		qty : data[3],
+        salesPrice: data[4]
 	});
-	//console.log();
 
  })
  .on("end", function(){
         console.log("done");
-	    //console.log(itemArr);
+	   //console.log(itemArr);
 
 	    var itemMap = filter.sortData(itemArr);
 
@@ -64,6 +68,17 @@ csv
 
         console.log("\nLEAST POPULAR CATEGORY: ")
         console.log(leastPopularCat);
+
+        var salePriceArr = salePriceList.getSalePrice(itemArr);
+
+        console.log("\nPRODUCT SELLING PRICE: ");
+        console.log(salePriceArr);
+
+        var convertedCash = convertCash.convertCashString(salePriceArr);
+
+        console.log("\nTOTAL EARNINGS PER PRODUCT: ");
+        var totEarnings = totEarn.totalEarningsPerProduct(itemMap, convertedCash);
+        console.log(totEarnings);
 
 
 
