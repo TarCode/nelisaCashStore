@@ -14,7 +14,7 @@ exports.totalEarningsPerCat = function(categ, totEarnings){
 
                     if (categ[items][x].product === product) {
                         moola += parseFloat(totEarnings[product]);
-                        totalPricePerCat[items] = moola;
+                        totalPricePerCat[items] = moola.toFixed(2);;
 
                     }
 

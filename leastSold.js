@@ -7,7 +7,7 @@ exports.leastSold = function(map){
         var key = "";
         for(var m in map){
                 var val = map[m];
-                if(map[m] < min){
+                if(parseFloat(map[m]) < min){
                         min = map[m];
                         key = m;
                 }
