@@ -11,13 +11,13 @@ exports.getSalePrice = function(itemArr){
 
                 if(!salePriceMap[item.itemName]) {
 
-                    salePriceMap[item.itemName] = item.salesPrice;
+                    salePriceMap[item.itemName] = item.salePrice;
 
 
                 }
                 else {
                         var q = salePriceMap[item.itemName];
-                        salePriceMap[item.itemName] = parseInt(q) + parseInt(item.salesPrice);
+                        salePriceMap[item.itemName] = parseInt(q) + parseInt(item.salePrice);
                 }
          });
         return salePriceMap;

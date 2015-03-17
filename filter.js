@@ -12,11 +12,11 @@ exports.sortData = function(itemArr){
          itemArr.forEach(function(item) {
 
                 if(!itemMap[item.itemName]) {
-                        itemMap[item.itemName] = item.qty;
+                        itemMap[item.itemName] = item.noSold;
                 }
                 else {
                         var q = itemMap[item.itemName];
-                        itemMap[item.itemName] = parseInt(q) + parseInt(item.qty);
+                        itemMap[item.itemName] = parseInt(q) + parseInt(item.noSold);
                 }
          });
         return itemMap;
