@@ -2,7 +2,8 @@
 //Date:		        5/03/2015
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
-var getFreq = require('./getFrequency')
+var getProf = require('./getProfit');
+var getFreq = require('./getFrequency');
 var gtDate = require('./getDate');
 var totEarnCat = require('./totalEarningsPerCat');
 var totEarn = require('./totalEarningsPerProduct');
@@ -61,7 +62,7 @@ var stockArr = rdCSV.readCSV(fileName2);
     var salePriceArr = salePriceList.getSalePrice(itemArr);
 
     //console.log("\nPRODUCT SELLING PRICE: ");
-   //console.log(salePriceArr);
+    //console.log(salePriceArr);
 
     var convertedCash = convertCash.convertCashString(salePriceArr);
 
@@ -87,7 +88,7 @@ var stockArr = rdCSV.readCSV(fileName2);
     var dateArr = gtDate.getDate(itemArr);
 
     //console.log("\nPRODUCT DATES: ");
-    console.log(dateArr);
+    //console.log(dateArr);
 
     var frequency = getFreq.getFrequency(dateArr);
 
@@ -96,7 +97,10 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var costPriceArr = costPriceList.getCostPrice(stockArr);
 
-    console.log("\nPRODUCT COST PRICE: ");
-    console.log(costPriceArr);
+    //console.log("\nPRODUCT COST PRICE: ");
+    //console.log(costPriceArr);
 
 
+    var profit = getProf.getProfit(salePriceArr, costPriceArr);
+    console.log("\nPROFIT: ");
+    console.log(profit);
