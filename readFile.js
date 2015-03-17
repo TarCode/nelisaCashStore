@@ -92,7 +92,7 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var frequency = getFreq.getFrequency(dateArr);
 
-    console.log("\nFREQUENCY: ");
+    console.log("\nMOST REGULAR SALES: ");
     console.log(frequency);
 
     var costPriceArr = costPriceList.getCostPrice(stockArr);
