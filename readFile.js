@@ -87,11 +87,11 @@ var stockArr = rdCSV.readCSV(fileName2);
     var dateArr = gtDate.getDate(itemArr);
 
     //console.log("\nPRODUCT DATES: ");
-    console.log(dateArr);
+    //console.log(dateArr);
 
     var frequency = getFreq.getFrequency(dateArr);
 
-    console.log("\nFREQUENCY: ");
+    console.log("\nMOST REGULAR SALES: ");
     console.log(frequency);
 
     var costPriceArr = costPriceList.getCostPrice(stockArr);
