@@ -4,21 +4,21 @@
 
 var gtFreq = require('../getFrequency');
 
-var list ={ 'Milk 1l': 2,
-        Imasi: 2,
-        Bread: 2,
-        'Chakalaka Can': 2,
-        'Gold Dish Vegetable Curry Can': 2,
-        'Fanta 500ml': 2,
-        'Coke 500ml': 2,
-        'Cream Soda 500ml': 2,
-        'Iwisa Pap 5kg': 2,
-        'Top Class Soy Mince': 2,
-        'Shampoo 1 litre': 2,
-        'Soap Bar': 2,
-        'Bananas - loose': 2,
-        'Apples - loose': 2,
-        'Mixed Sweets 5s': 2 };
+var list ={ Imasi: 2,
+    Bread: 2,
+    'Chakalaka Can': 2,
+    'Gold Dish Vegetable Curry Can': 2,
+    'Fanta 500ml': 2,
+    'Coke 500ml': 2,
+    'Cream Soda 500ml': 2,
+    'Iwisa Pap 5kg': 2,
+    'Top Class Soy Mince': 2,
+    'Shampoo 1 litre': 2,
+    'Soap Bar': 2,
+    'Bananas - loose': 2,
+    'Apples - loose': 2,
+    'Mixed Sweets 5s': 2 };
+
 
 var arr = {'17-Feb':
         [ { product: 'Milk 1l' },

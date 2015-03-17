@@ -8,6 +8,7 @@ var totEarnCat = require('./totalEarningsPerCat');
 var totEarn = require('./totalEarningsPerProduct');
 var convertCash = require('./convertCashString');
 var salePriceList = require('./getSalePrice');
+var costPriceList = require('./getCostPrice');
 var catTotal = require('./catTotal');
 var mCat = require('./makeCat');
 var mSold = require('./mostSold');
@@ -20,12 +21,12 @@ var fileName2 = "NelisaPurchases.csv";
 var itemArr = rdCSV.readCSV(fileName);
 var stockArr = rdCSV.readCSV(fileName2);
 
-    console.log(stockArr);
+    //console.log(stockArr);
 
     var itemMap = filter.sortData(itemArr);
 
-    console.log("\nPRODUCTS AND QUANTITY SOLD:")
-    console.log(itemMap);
+    //console.log("\nPRODUCTS AND QUANTITY SOLD:")
+    //console.log(itemMap);
 
     var most = mSold.mostSold(itemMap);
     console.log("\nMOST SOLD PRODUCT: ");
@@ -44,8 +45,8 @@ var stockArr = rdCSV.readCSV(fileName2);
 
 
     var totalPerCat = catTotal.catTotal(cat);
-    console.log("\nTOTAL QUANTITY SOLD PER CATEGORY: ")
-    console.log(totalPerCat);
+   // console.log("\nTOTAL QUANTITY SOLD PER CATEGORY: ")
+   // console.log(totalPerCat);
 
     var mostPopularCat = mSold.mostSold(totalPerCat);
 
@@ -59,8 +60,8 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var salePriceArr = salePriceList.getSalePrice(itemArr);
 
-    console.log("\nPRODUCT SELLING PRICE: ");
-    console.log(salePriceArr);
+    //console.log("\nPRODUCT SELLING PRICE: ");
+   //console.log(salePriceArr);
 
     var convertedCash = convertCash.convertCashString(salePriceArr);
 
@@ -85,13 +86,17 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var dateArr = gtDate.getDate(itemArr);
 
-    console.log("\nPRODUCT DATES: ");
-    console.log(dateArr);
+    //console.log("\nPRODUCT DATES: ");
+    //console.log(dateArr);
 
     var frequency = getFreq.getFrequency(dateArr);
 
     console.log("\nFREQUENCY: ");
     console.log(frequency);
 
+    var costPriceArr = costPriceList.getCostPrice(stockArr);
+
+    console.log("\nPRODUCT COST PRICE: ");
+    console.log(costPriceArr);
 
 

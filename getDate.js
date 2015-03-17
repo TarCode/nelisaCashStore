@@ -14,7 +14,7 @@ exports.getDate = function(itemArr){
                 dateMap[itemArr[x].date] = [];
             }
 
-            if( itemArr[x].qty !== '0'){
+            if( itemArr[x].noSold !== "0"){
                 dateMap[itemArr[x].date].push({
                     product: itemArr[x].itemName
 

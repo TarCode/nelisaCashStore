@@ -15,7 +15,8 @@ var salePriceList = {
     Imasi: 3125.00,
     Bread: 1560.00 };
 
-var sPriceTot = {shortLife: 6105};
+var sPriceTot = { shortLife: '6105.00' }
+
 
 test('totEarn.totalEarningsPerCat()', function() {
     deepEqual(totEarn.totalEarningsPerCat(CatList,salePriceList), sPriceTot);
