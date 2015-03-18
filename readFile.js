@@ -2,6 +2,7 @@
 //Date:		        5/03/2015
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+var getStockList = require('./getStockList');
 var getProfitPerCat = require('./getProfitPerCat');
 var getProf = require('./getProfit');
 var getFreq = require('./getFrequency');
@@ -24,6 +25,7 @@ var itemArr = rdCSV.readCSV(fileName);
 var stockArr = rdCSV.readCSV(fileName2);
 
     //console.log(stockArr);
+    //console.log(itemArr);
 
     var itemMap = filter.sortData(itemArr);
 
@@ -103,8 +105,8 @@ var stockArr = rdCSV.readCSV(fileName2);
 
 
     var profit = getProf.getProfit(salePriceArr, costPriceArr);
-    console.log("\nPROFIT: ");
-    console.log(profit);
+    //console.log("\nPROFIT: ");
+    //console.log(profit);
 
     var mostProfitIem = mSold.mostSold(profit);
     console.log('\nMOST PROFITABLE ITEM: ');
@@ -115,8 +117,8 @@ var stockArr = rdCSV.readCSV(fileName2);
     console.log(leastProfitItem);
 
     var totProfPerCat = getProfitPerCat.getProfitPerCat(cat,profit);
-    console.log("\nTOTAL PROFIT PER CATEGORY: ");
-    console.log(totProfPerCat);
+    //console.log("\nTOTAL PROFIT PER CATEGORY: ");
+    //console.log(totProfPerCat);
 
     var mostProfCat = mSold.mostSold(totProfPerCat);
     console.log("\nMOST PROFITABLE CATEGORY: ");
@@ -124,4 +126,8 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var leastProfCat = lSold.leastSold(totProfPerCat);
     console.log("\nLEAST PROFITABLE CATEGORY: ");
-    console.log(leastProfCat);s
+    console.log(leastProfCat);
+
+    var stockList = getStockList.getStockList(stockArr);
+    console.log("\nSTOCK LIST: ");
+    console.log(stockList);
