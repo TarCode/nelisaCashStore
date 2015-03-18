@@ -2,6 +2,7 @@
 //Date:		        5/03/2015
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+var getSaleList = require('./getSaleList');
 var getStockList = require('./getStockList');
 var getProfitPerCat = require('./getProfitPerCat');
 var getProf = require('./getProfit');
@@ -131,3 +132,7 @@ var stockArr = rdCSV.readCSV(fileName2);
     var stockList = getStockList.getStockList(stockArr);
     console.log("\nSTOCK LIST: ");
     console.log(stockList);
+
+    var saleList = getSaleList.getSaleList(itemArr);
+    console.log("\nSALE LIST: ");
+    console.log(saleList);
