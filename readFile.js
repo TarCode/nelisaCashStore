@@ -104,3 +104,11 @@ var stockArr = rdCSV.readCSV(fileName2);
     var profit = getProf.getProfit(salePriceArr, costPriceArr);
     console.log("\nPROFIT: ");
     console.log(profit);
+
+    var mostProfitIem = mSold.mostSold(profit);
+    console.log('\nMOST PROFITABLE ITEM: ');
+    console.log(mostProfitIem);
+
+    var leastProfitItem = lSold.leastSold(profit);
+    console.log('\nLEAST PROFITABLE ITEM: ');
+    console.log(leastProfitItem);

@@ -6,8 +6,8 @@ exports.mostSold = function(map){
 	var max = 0;
 	var key = "";
 	for(var m in map){
-		var val = map[m];
-		if(map[m] > max){
+		var val = parseFloat(map[m]);
+		if(parseFloat(map[m]) > max){
 			max = map[m];
 			key = m;
 		}
@@ -15,7 +15,7 @@ exports.mostSold = function(map){
 
     var most = {
         name: key,
-        noSold: max
+        amt: max
     }
 
     return (most);
