@@ -10,10 +10,7 @@ var list = {
     'Milk': 20
 }
 
-var most = {
-    name: 'Bread',
-    noSold: 50
-}
+var most = { name: 'Bread', amt: 50 }
 
 test('mostSold()', function() {
     deepEqual(mSold.mostSold(list), most);

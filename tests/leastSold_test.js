@@ -12,7 +12,7 @@ var list = {
 
 var least = {
     name: 'Rose (plastic)',
-    noSold: 14
+    amt: 14
 }
 
 test('leastSold()', function() {

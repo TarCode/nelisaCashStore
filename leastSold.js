@@ -14,7 +14,7 @@ exports.leastSold = function(map){
         }
         var least = {
             name: key,
-            noSold: min
+            amt: min
         }
 
         return (least);
