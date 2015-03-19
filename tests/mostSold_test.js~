@@ -1,4 +1,8 @@
-var lSold = require('../leastSold.js');
+//Author:	        Taariq Isaacs/Pholisa Fatyela
+//Date: 	        09/03/2015
+//File:		        mostSold_test.js
+
+var mSold = require('../mostSold.js');
 
 var list = {
     'Rose (plastic)': 14,
@@ -6,12 +10,9 @@ var list = {
     'Milk': 20
 }
 
-var least = {
-    stockItem: 'Rose (plastic)',
-    noSold: 14
-}
+var most = { name: 'Bread', amt: 50 }
 
-test('leastSold()', function() {
-    deepEqual(lSold.leastSold(list), least);
+test('mostSold()', function() {
+    deepEqual(mSold.mostSold(list), most);
     
 })

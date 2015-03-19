@@ -2,7 +2,7 @@
 //Date: 	        18/03/2015
 //File:		        getSaleList_test.js
 
-var saleList = require('../functions/getSaleList.js');
+var saleList = require('../getSaleList.js');
 
 var list = {
     'Milk': 3,

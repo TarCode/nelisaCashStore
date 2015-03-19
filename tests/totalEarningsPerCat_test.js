@@ -2,7 +2,7 @@
 //Date: 	        12/03/2015
 //File:		        totalEarningsPerCat_test.js
 
-var totEarn = require('../totalEarningsPerCat');
+var totEarn = require('../functions/totalEarningsPerCat');
 
 var CatList = { shortLife: 
    			        [ { product: 'Milk 1l', qty: 142 },

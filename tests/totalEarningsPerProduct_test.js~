@@ -2,7 +2,7 @@
 //Date: 	        12/03/2015
 //File:		        totalEarningsPerProduct_test.js
 
-var totEarn = require('../functions/totalEarningsPerProduct');
+var totEarn = require('../totalEarningsPerProduct');
 
 var quantityList = {
     'Milk 1l': 142,

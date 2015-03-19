@@ -2,7 +2,7 @@
 //Date: 	        19/03/2015
 //File:		        getDailySales_test.js
 
-var gtDailySale = require('../functions/getDailySales.js');
+var gtDailySale = require('../getDailySales.js');
 
 var list = { '1-Feb':
         [ { product: 'Milk 1l', sale: '3' },

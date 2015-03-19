@@ -2,7 +2,7 @@
 //Date: 	        09/03/2015
 //File:		        makeCat_test.js
 
-var mkCat = require('../makeCat');
+var mkCat = require('../functions/makeCat');
 
 var list = { shortLife:
     [ { product: 'Milk 1l', qty: 142 },

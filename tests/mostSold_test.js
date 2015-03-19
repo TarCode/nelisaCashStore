@@ -2,7 +2,7 @@
 //Date: 	        09/03/2015
 //File:		        mostSold_test.js
 
-var mSold = require('../mostSold.js');
+var mSold = require('../functions/mostSold.js');
 
 var list = {
     'Rose (plastic)': 14,

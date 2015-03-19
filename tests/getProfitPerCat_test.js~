@@ -2,7 +2,7 @@
 //Date: 	        18/03/2015
 //File:		        getProfitPerCat_test.js
 
-var totProfit = require('../functions/getProfitPerCat');
+var totProfit = require('../getProfitPerCat');
 
 var CatList = { shortLife:
     [ { product: 'Milk 1l', qty: 142 },

@@ -2,7 +2,7 @@
 //Date: 	        09/03/2015
 //File:		        leastSold_test.js
 
-var lSold = require('../functions/leastSold.js');
+var lSold = require('../leastSold.js');
 
 var list = {
     'Rose (plastic)': 14,

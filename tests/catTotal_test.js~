@@ -2,7 +2,7 @@
 //Date: 	        09/03/2015
 //File:		        catTotal_test.js
 
-var totCat = require('../functions/catTotal');
+var totCat = require('./functions/catTotal');
 
 var arr = { shortLife:
     [ { product: 'Milk 1l', qty: 142 },

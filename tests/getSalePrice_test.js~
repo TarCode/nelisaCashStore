@@ -2,7 +2,7 @@
 //Date: 	        11/03/2015
 //File:		        getSalePrice_test.js
 
-var gtSalePrice = require('../functions/getSalePrice.js');
+var gtSalePrice = require('../getSalePrice.js');
 
 var list = {
     'Milk 1l': 'R10,00',

@@ -2,7 +2,7 @@
 //Date: 	        11/03/2015
 //File:		        getSalePrice_test.js
 
-var gtDate = require('../functions/getDate.js');
+var gtDate = require('../getDate.js');
 
 var list ={ '1-Feb':
     [ { product: 'Milk 1l' },

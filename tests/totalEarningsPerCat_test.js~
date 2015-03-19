@@ -4,19 +4,21 @@
 
 var totEarn = require('../totalEarningsPerCat');
 
-var quantityList = { shortLife: 
-   			[ { product: 'Milk 1l', qty: 142 },
-     			  { product: 'Imasi', qty: 125 },
-     			  { product: 'Bread', qty: 130 } ],
+var CatList = { shortLife: 
+   			        [ { product: 'Milk 1l', qty: 142 },
+     			      { product: 'Imasi', qty: 125 },
+     			      { product: 'Bread', qty: 130 } ]
 }
 
-var salePriceList = {  'Milk 1l': 10,
-    Imasi: 25,
-    Bread: 12 };
+var salePriceList = {
+    'Milk 1l': 1420.00,
+    Imasi: 3125.00,
+    Bread: 1560.00 };
 
-var sPriceTot = {'Milk 1l': 1420, Imasi: 3125, Bread: 1560};
+var sPriceTot = { shortLife: '6105.00' }
 
-test('totEarn.totalEarningsPerProduct()', function() {
-    deepEqual(totEarn.totalEarningsPerProduct(quantityList,salePriceList), sPriceTot);
+
+test('totEarn.totalEarningsPerCat()', function() {
+    deepEqual(totEarn.totalEarningsPerCat(CatList,salePriceList), sPriceTot);
 
 })

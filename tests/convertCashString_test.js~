@@ -2,7 +2,7 @@
 //Date: 	        12/03/2015
 //File:		        convertCashString_test.js
 
-var convertCash = require('../functions/convertCashString');
+var convertCash = require('../convertCashString');
 
 var list = { 'Milk 1l': 10.00,
     Imasi: 25.00,

@@ -2,7 +2,7 @@
 //Date: 	        11/03/2015
 //File:		        getSalePrice_test.js
 
-var gtFreq = require('../functions/getFrequency');
+var gtFreq = require('../getFrequency');
 
 var list ={ Imasi: 2,
     Bread: 2,

@@ -1,10 +1,10 @@
 //Author:	        Taariq Isaacs/Pholisa Fatyela
 //Date: 	        09/03/2015
-//File:		        catTotal_test.js
+//File:		        makeCat_test.js
 
-var totCat = require('../functions/catTotal');
+var mkCat = require('../makeCat');
 
-var arr = { shortLife:
+var list = { shortLife:
     [ { product: 'Milk 1l', qty: 142 },
         { product: 'Imasi', qty: 125 },
         { product: 'Bread', qty: 130 } ],
@@ -31,16 +31,27 @@ var arr = { shortLife:
         [ { product: 'Rose (plastic)', qty: 14 },
             { product: 'Valentine Cards', qty: 14 } ] }
 
-var list ={ shortLife: 397,
-    cannedGoods: 180,
-    cooldrinks: 328,
-    longLife: 145,
-    toiletries: 76,
-    fruit: 228,
-    sweets: 192,
-    gifts: 28 };
+var arr ={ stockItem: 'NoSold',
+    'Milk 1l': 142,
+    Imasi: 125,
+    Bread: 130,
+    'Chakalaka Can': 94,
+    'Gold Dish Vegetable Curry Can': 86,
+    'Fanta 500ml': 94,
+    'Coke 500ml': 159,
+    'Cream Soda 500ml': 75,
+    'Iwisa Pap 5kg': 47,
+    'Top Class Soy Mince': 98,
+    'Shampoo 1 litre': 26,
+    'Soap Bar': 50,
+    'Bananas - loose': 114,
+    'Apples - loose': 114,
+    'Mixed Sweets 5s': 172,
+    'Heart Chocolates': 20,
+    'Rose (plastic)': 14,
+    'Valentine Cards': 14 };
 
 test('makeCat.makeCat()', function() {
-    deepEqual(totCat.catTotal(arr), list);
+    deepEqual(mkCat.makeCat(arr), list);
     
 })

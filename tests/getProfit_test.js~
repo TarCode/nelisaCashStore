@@ -2,7 +2,7 @@
 //Date: 	        17/03/2015
 //File:		        getProfit_test.js
 
-var gtProf = require('../functions/getProfit');
+var gtProf = require('../getProfit');
 
 var list ={ 'Milk 1l': '3.00',
     Imasi: '8.00',

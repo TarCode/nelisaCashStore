@@ -2,7 +2,7 @@
 //Date: 	        17/03/2015
 //File:		        getCostPrice_test.js
 
-var gtCostPrice = require('../functions/getCostPrice.js');
+var gtCostPrice = require('../getCostPrice.js');
 
 var list = {
     'Chakalaka Can': 'R7.00',

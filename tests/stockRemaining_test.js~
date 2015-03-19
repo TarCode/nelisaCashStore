@@ -2,7 +2,7 @@
 //Date: 	        12/03/2015
 //File:		        stockRemaining_test.js
 
-var stockRem = require('../functions/stockRemaining');
+var stockRem = require('../stockRemaining');
 
 var stockList = {
     'Milk 1l': 142,

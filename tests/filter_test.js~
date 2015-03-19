@@ -1,8 +1,8 @@
 //Author:	        Taariq Isaacs/Pholisa Fatyela
-//Date: 	        18/03/2015
-//File:		        getStockList_test.js
+//Date: 	        09/03/2015
+//File:		        filter_test.js
 
-var stockList = require('../functions/getStockList.js');
+var fil = require('../filter.js');
 
 var list = {
     'Milk': 3,
@@ -14,7 +14,7 @@ var arr = [ { itemName: 'Milk', qty: 3 },
     { itemName: 'Imasi', qty: 1 },
     { itemName: 'Bread', qty: 2 },];
 
-test('getStockList.getStockList()', function() {
-    deepEqual(stockList.getStockList(arr), list);
+test('filter.sortData()', function() {
+    deepEqual(fil.sortData(arr), list);
     
 })

@@ -2,7 +2,7 @@
 //Date: 	        09/03/2015
 //File:		        filter_test.js
 
-var fil = require('../filter.js');
+var fil = require('../functions/filter.js');
 
 var list = {
     'Milk': 3,
