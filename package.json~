@@ -4,7 +4,7 @@
   "description": "Narrative: Nelisa's Cash Store",
   "main": "index.js",
   "scripts": {
-    "test": "qunit -c ./catTotal.js -t ./tests/catTotal_test.js"
+    "test": "qunit -c ./catTotal.js -t ./test/catTotal_test.js"
   },
   "author": "Taariq Isaacs",
   "license": "BSD-2-Clause",
