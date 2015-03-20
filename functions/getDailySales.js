@@ -16,6 +16,7 @@ exports.getDailySales= function(itemArr){
 
             if( itemArr[x].noSold !== "0"){
                 dateMap[itemArr[x].date].push({
+                    day: itemArr[x].day,
                     product: itemArr[x].itemName,
                     sale: itemArr[x].noSold
 

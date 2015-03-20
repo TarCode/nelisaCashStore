@@ -2,6 +2,7 @@
 //Date:		        5/03/2015
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+var DailyTot = require('../functions/DailySalesTotal');
 var dailySales = require('../functions/getDailySales');
 var stockRem = require('../functions/stockRemaining');
 var getSaleList = require('../functions/getSaleList');
@@ -146,3 +147,7 @@ var stockArr = rdCSV.readCSV(fileName2);
     var sales = dailySales.getDailySales(itemArr);
     console.log("\nDAILY SALES: ");
     console.log(sales);
+
+    var DayTot = DailyTot.DailySalesTotal(sales);
+    console.log('TOTAL SALES PER DAY: ');
+    console.log(DayTot);
