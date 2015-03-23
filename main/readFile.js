@@ -2,6 +2,7 @@
 //Date:		        5/03/2015
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+var avPerCat = require('../functions/avgDailySalesPerCat');
 var aWeekSaleProd = require('../functions/avgWeeklySalesPerProduct');
 var dSales = require('../functions/avgDailySalesPerProduct');
 var avgWeeklyTot = require('../functions/avgWeeklySalesTotal');
@@ -34,7 +35,7 @@ var itemArr = rdCSV.readCSV(fileName);
 var stockArr = rdCSV.readCSV(fileName2);
 
     //console.log(stockArr);
-    console.log(itemArr);
+    //console.log(itemArr);
 
     var itemMap = filter.sortData(itemArr);
 
@@ -58,8 +59,8 @@ var stockArr = rdCSV.readCSV(fileName2);
 
 
     var totalPerCat = catTotal.catTotal(cat);
-   // console.log("\nTOTAL QUANTITY SOLD PER CATEGORY: ")
-   // console.log(totalPerCat);
+   console.log("\nTOTAL QUANTITY SOLD PER CATEGORY: ")
+   console.log(totalPerCat);
 
     var mostPopularCat = mSold.mostSold(totalPerCat);
 
@@ -176,3 +177,7 @@ var stockArr = rdCSV.readCSV(fileName2);
     var weeklySalesPerProd = aWeekSaleProd.avgWeeklySalesPerProduct(sales);
     console.log('\nAVERAGE TOTAL WEEKLY SALES PER PRODUCT: ');
     console.log(weeklySalesPerProd);
+
+    var avDayCat = avPerCat.avgDailySalesPerCat(totalPerCat,DayTot);
+    console.log('\nAVERAGE TOTAL DAILY SALES PER CATEGORY: ');
+    console.log(avDayCat);

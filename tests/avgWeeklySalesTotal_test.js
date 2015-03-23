@@ -8,7 +8,7 @@ var avgWeeklyTotals = 434.5;
 
 var arr = { week1: 449, week2: 420 };
 
-test('weeklyTot.weeklySalesTotal()', function() {
+test('avPerCat.weeklySalesTotal()', function() {
     deepEqual(avgWeeklyTot.avgWeeklySalesTotal(arr), avgWeeklyTotals);
     
 })

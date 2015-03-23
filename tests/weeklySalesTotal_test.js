@@ -21,7 +21,7 @@ var arr = { '1-Feb': 38,
     '13-Feb': 104,
     '14-Feb': 100};
 
-test('weeklyTot.weeklySalesTotal()', function() {
+test('avPerCat.weeklySalesTotal()', function() {
     deepEqual(weeklyTot.weeklySalesTotal(arr), weeklyTotals);
     
 })
