@@ -19,7 +19,7 @@ var arr = { '1-Feb':
         ]
 };
 
-test('DailyProduct.avgDailySalesPerProduct()', function() {
+test('weeklyProduct.avgDailySalesPerProduct()', function() {
     deepEqual(DailyProduct.avgDailySalesPerProduct(arr), list);
     
 })
