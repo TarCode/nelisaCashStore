@@ -157,17 +157,17 @@ var stockArr = rdCSV.readCSV(fileName2);
     console.log(DayTot);
 
     var avgDayTot = avgDailyTot.avgDailySalesTotal(DayTot);
-    console.log('AVERAGE TOTAL SALES PER DAY: ');
+    console.log('\nAVERAGE TOTAL SALES PER DAY: ');
     console.log(avgDayTot.toFixed(2));
 
     var weekTot = weeklyTot.weeklySalesTotal(DayTot);
-    console.log('TOTAL SALES PER WEEK: ');
+    console.log('\nTOTAL SALES PER WEEK: ');
     console.log(weekTot);
 
     var avgWeekTot = avgWeeklyTot.avgWeeklySalesTotal(weekTot);
-    console.log('AVERAGE TOTAL SALES PER WEEK: ');
+    console.log('\nAVERAGE TOTAL SALES PER WEEK: ');
     console.log(avgWeekTot);
 
     var dailySalesPerProd = dSales.avgDailySalesPerProduct(sales);
-    console.log('AVERAGE TOTAL DAILY SALES PER PRODUCT: ');
+    console.log('\nAVERAGE TOTAL DAILY SALES PER PRODUCT: ');
     console.log(dailySalesPerProd);
