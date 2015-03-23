@@ -11,7 +11,7 @@ var arr = {'23-Feb':[ { day: 'Monday', product: 'Milk 1l', sale: '8' },
     { day: 'Monday', product: 'Bread', sale: '2' },
     { day: 'Monday', product: 'Chakalaka Can', sale: '2' }]};
 
-test('DailyTot.DailySalesTotal()', function() {
-    deepEqual(DailyTot.DailySalesTotal(arr), list);
+test('DailyTot.DailySalesPerProduct()', function() {
+    deepEqual(DailyTot.DailySalesPerProduct(arr), list);
     
 })
