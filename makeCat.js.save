@@ -1,2 +1,0 @@
-var csv = require('fast-csv');
-var fs = require('fs');
