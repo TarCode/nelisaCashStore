@@ -1,11 +1,11 @@
 //Author:	        Taariq Isaacs/Pholisa Fatyela
 //Date:		        10/03/2015
-//File:		        DailySalesTotal.js
+//File:		        avgDailySalesPerProduct.js
 //Description:	    Method - Takes the Category Map created in makeCat.js and returns a map with the total quantity
 //                  for each category.
 var SaleTot = {};
 var moola = 0;
-exports.DailySalesTotal = function(saleArr) {
+exports.DailySalesPerProduct = function(saleArr) {
 
 
    for (var date in saleArr){
