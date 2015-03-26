@@ -9,9 +9,10 @@
   "author": "Taariq Isaacs",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "sqlite3": "~3.0.5"
+    "sqlite3": "~3.0.5",
+    "express": "~4.12.3"
   },
   "devDependencies": {
-     "qunit": "~0.7.5"
+    "qunit": "~0.7.5"
   }
 }
