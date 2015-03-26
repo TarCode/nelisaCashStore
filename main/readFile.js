@@ -2,7 +2,6 @@
 //Date:		        5/03/2015 - 24/03/15
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
-var apnd = require('../functions/appendFile');
 var write = require('../functions/writeFile');
 var avPerCatWeek =require('../functions/avgWeeklySalesPerCat');
 var avPerCat = require('../functions/avgDailySalesPerCat');

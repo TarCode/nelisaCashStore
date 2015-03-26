@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 
 app.get('/', function (req, res) {
-    res.render('home',{stuff:most});
+    res.render('home', most);
 
 });
 
