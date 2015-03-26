@@ -43,16 +43,6 @@ exports.makeCat = function(itemMap){
                 qty: itemMap[itemName]
             });
         }
-
-
-        /*
-        for (var itemNameInMapping in catList){
-
-            if(itemName === itemNameInMapping) {
-                catMap[catList[itemName]] += itemNameInMapping+", ";
-            }
-
-        }*/
     }
     return catMap;
 
