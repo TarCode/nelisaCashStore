@@ -2,6 +2,7 @@
 //Date:		        5/03/2015 - 24/03/15
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+var apnd = require('../functions/appendFile');
 var write = require('../functions/writeFile');
 var avPerCatWeek =require('../functions/avgWeeklySalesPerCat');
 var avPerCat = require('../functions/avgDailySalesPerCat');
@@ -43,32 +44,38 @@ var stockArr = rdCSV.readCSV(fileName2);
     //console.log("\nPRODUCTS AND QUANTITY SOLD:")
     //console.log(itemMap);
 
+
     var most = mSold.mostSold(itemMap);
     console.log("\nMOST SOLD PRODUCT: ");
     console.log(most);
-    var writeMost = write.writeToFile(most,"most.json");
+    var writ = write.writeToFile(most,"../data/most.json");
 
 
     var least = lSold.leastSold(itemMap);
     console.log("\nLEAST SOLD PRODUCT: ");
     console.log(least);
+    //var writ = write.writeToFile(least,"../data/least.json");
 
     var cat = mCat.makeCat(itemMap);
-    console.log("\nCATEGORIES: ");
-    console.log(cat);
+    //console.log("\nCATEGORIES: ");
+    //console.log(cat);
+
 
 
     var totalPerCat = catTotal.catTotal(cat);
     console.log("\nTOTAL QUANTITY SOLD PER CATEGORY: ")
     console.log(totalPerCat);
+    //var writ = write.writeToFile(totalPerCat,"../data/totPerCat.json");
 
     var mostPopularCat = mSold.mostSold(totalPerCat);
     console.log("\nMOST POPULAR CATEGORY: ")
     console.log(mostPopularCat);
+    //var writ= write.writeToFile(mostPopularCat,"../data/mostPopCat.json");
 
     var leastPopularCat = lSold.leastSold(totalPerCat);
     console.log("\nLEAST POPULAR CATEGORY: ")
     console.log(leastPopularCat);
+    //var writ = write.writeToFile(leastPopularCat,"../data/leastPopCat.json");
 
     var salePriceArr = salePriceList.getSalePrice(itemArr);
     //console.log("\nPRODUCT SELLING PRICE: ");
@@ -78,19 +85,23 @@ var stockArr = rdCSV.readCSV(fileName2);
     var totEarnings = totEarn.totalEarningsPerProduct(itemMap, convertedCash);
     console.log("\nTOTAL EARNINGS PER PRODUCT: ");
     console.log(totEarnings);
+    //var writ = write.writeToFile(totEarnings,"../data/totEarningsPerProd.json");
 
     var totCatCash = totEarnCat.totalEarningsPerCat(cat, totEarnings);
     console.log("\nTOTAL EARNINGS PER CATEGORY: ");
     console.log(totCatCash);
+    //var writ = write.writeToFile(totCatCash,"../data/totEarningsPerCat.json");
 
 
     var mostEarningCat = mSold.mostSold(totCatCash);
     console.log("\nHIGHEST EARNING CATEGORY: ")
     console.log(mostEarningCat);
+    //var writ = write.writeToFile(mostEarningCat,"../data/mostEarningCat.json");
 
     var leastEarningCat = lSold.leastSold(totCatCash);
     console.log("\nLOWEST EARNING CATEGORY: ")
     console.log(leastEarningCat);
+   // var writ = write.writeToFile(leastEarningCat,"../data/leastEarningCat.json");
 
     var dateArr = gtDate.getDate(itemArr);
     //console.log("\nPRODUCT DATES: ");
@@ -99,6 +110,7 @@ var stockArr = rdCSV.readCSV(fileName2);
     var frequency = getFreq.getFrequency(dateArr);
     console.log("\nMOST REGULAR SALES: ");
     console.log(frequency);
+    //var writ = write.writeToFile(frequency,"../data/mostRegSales.json");
 
     var costPriceArr = costPriceList.getCostPrice(stockArr);
     //console.log("\nPRODUCT COST PRICE: ");
@@ -112,10 +124,12 @@ var stockArr = rdCSV.readCSV(fileName2);
     var mostProfitIem = mSold.mostSold(profit);
     console.log('\nMOST PROFITABLE ITEM: ');
     console.log(mostProfitIem);
+    //var writ = write.writeToFile(mostProfitIem,"../data/mostEarningProd.json");
 
     var leastProfitItem = lSold.leastSold(profit);
     console.log('\nLEAST PROFITABLE ITEM: ');
     console.log(leastProfitItem);
+    //var writ = write.writeToFile(leastProfitItem,"../data/leastEarningProd.json");
 
     var totProfPerCat = getProfitPerCat.getProfitPerCat(cat,profit);
     //console.log("\nTOTAL PROFIT PER CATEGORY: ");
@@ -124,22 +138,26 @@ var stockArr = rdCSV.readCSV(fileName2);
     var mostProfCat = mSold.mostSold(totProfPerCat);
     console.log("\nMOST PROFITABLE CATEGORY: ");
     console.log(mostProfCat);
+    //var writ = write.writeToFile(mostProfCat,"../data/mostProfitCat.json");
 
     var leastProfCat = lSold.leastSold(totProfPerCat);
     console.log("\nLEAST PROFITABLE CATEGORY: ");
     console.log(leastProfCat);
+    //var writ = write.writeToFile(leastProfCat,"../data/leastProfitCat.json");
 
     var stockList = getStockList.getStockList(stockArr);
-    console.log("\nSTOCK LIST: ");
-    console.log(stockList);
+    //console.log("\nSTOCK LIST: ");
+    //console.log(stockList);
+
 
     var saleList = getSaleList.getSaleList(itemArr);
-    console.log("\nSALE LIST: ");
-    console.log(saleList);
+    //console.log("\nSALE LIST: ");
+    //console.log(saleList);
 
     var stockLeft = stockRem.stockRemaining(stockList,saleList);
     console.log("\nSTOCK REMAINING: ");
     console.log(stockLeft);
+    //var writ = write.writeToFile(stockLeft,"../data/stockRemaining.json");
 
     var sales = dailySales.getDailySales(itemArr);
     console.log("\nDAILY SALES: ");

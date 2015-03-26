@@ -1,9 +1,26 @@
 var express = require('express')
 var app = express()
+var exphbs  = require('express-handlebars')
+
+var most = require('./data/most');
+var least = require('./data/least');
+
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+app.use(express.static('public'));
+
 
 app.get('/', function (req, res) {
-  res.send('Hello World! What is your name?')
-})
+    res.render('home',{most:most});
+    
+});
+
+app.get('/least', function (req, res) {
+    res.render('least',{least:least});
+});
+
 
 var server = app.listen(3000, function () {
 
@@ -12,19 +29,5 @@ var server = app.listen(3000, function () {
 
   console.log('Example app listening at http://%s:%s', host, port)
 
-// accept POST request on the homepage
-app.post('/', function (req, res) {
-  res.send('Got a POST request');
 })
 
-// accept PUT request at /user
-app.put('/user', function (req, res) {
-  res.send('Got a PUT request at /user');
-})
-
-// accept DELETE request at /user
-app.delete('/user', function (req, res) {
-  res.send('Got a DELETE request at /user');
-})
-
-})
