@@ -2,6 +2,7 @@
 //Date:		        5/03/2015 - 24/03/15
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+var refactor = require('../functions/refactorOutput');
 var write = require('../functions/writeFile');
 var avPerCatWeek =require('../functions/avgWeeklySalesPerCat');
 var avPerCat = require('../functions/avgDailySalesPerCat');
@@ -62,8 +63,9 @@ var stockArr = rdCSV.readCSV(fileName2);
 
 
     var totalPerCat = catTotal.catTotal(cat);
+    var refTotalPerCat = refactor.refactorOutput(totalPerCat);
     console.log("\nTOTAL QUANTITY SOLD PER CATEGORY: ")
-    console.log(totalPerCat);
+    console.log(refTotalPerCat);
     //var writ = write.writeToFile(totalPerCat,"../data/totPerCat.json");
 
     var mostPopularCat = mSold.mostSold(totalPerCat);
@@ -82,13 +84,15 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var convertedCash = convertCash.convertCashString(salePriceArr);
     var totEarnings = totEarn.totalEarningsPerProduct(itemMap, convertedCash);
+    var refTotEarnings = refactor.refactorOutput(totEarnings);
     console.log("\nTOTAL EARNINGS PER PRODUCT: ");
-    console.log(totEarnings);
+    console.log(refTotEarnings);
     //var writ = write.writeToFile(totEarnings,"../data/totEarningsPerProd.json");
 
     var totCatCash = totEarnCat.totalEarningsPerCat(cat, totEarnings);
+    var refTotCatCash = refactor.refactorOutput(totCatCash);
     console.log("\nTOTAL EARNINGS PER CATEGORY: ");
-    console.log(totCatCash);
+    console.log(refTotCatCash);
     //var writ = write.writeToFile(totCatCash,"../data/totEarningsPerCat.json");
 
 
@@ -107,8 +111,9 @@ var stockArr = rdCSV.readCSV(fileName2);
     //console.log(dateArr);
 
     var frequency = getFreq.getFrequency(dateArr);
+    var refFrequency = refactor.refactorOutput(frequency);
     console.log("\nMOST REGULAR SALES: ");
-    console.log(frequency);
+    console.log(refFrequency);
     //var writ = write.writeToFile(frequency,"../data/mostRegSales.json");
 
     var costPriceArr = costPriceList.getCostPrice(stockArr);
@@ -154,17 +159,19 @@ var stockArr = rdCSV.readCSV(fileName2);
     //console.log(saleList);
 
     var stockLeft = stockRem.stockRemaining(stockList,saleList);
+    var refStockLeft = refactor.refactorOutput(stockLeft);
     console.log("\nSTOCK REMAINING: ");
-    console.log(stockLeft);
+    console.log(refStockLeft);
     //var writ = write.writeToFile(stockLeft,"../data/stockRemaining.json");
 
     var sales = dailySales.getDailySales(itemArr);
-    console.log("\nDAILY SALES: ");
-    console.log(sales);
+    //console.log("\nDAILY SALES: ");
+    //console.log(sales);
 
     var DayTot = DailyTot.DailySalesPerProduct(sales);
+    var refDayTot = refactor.refactorOutput(DayTot);
     console.log('\nTOTAL SALES PER DAY: ');
-    console.log(DayTot);
+    console.log(refDayTot);
 
     var avgDayTot = avgDailyTot.avgDailySalesTotal(DayTot);
     console.log('\nAVERAGE TOTAL SALES PER DAY: ');
@@ -172,7 +179,8 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var weekTot = weeklyTot.weeklySalesTotal(DayTot);
     console.log('\nTOTAL SALES PER WEEK: ');
-    console.log(weekTot);
+    var refWeeklySaleTot = refactor.refactorOutput(weekTot);
+    console.log(refWeeklySaleTot);
 
     var avgWeekTot = avgWeeklyTot.avgWeeklySalesTotal(weekTot);
     console.log('\nAVERAGE TOTAL SALES PER WEEK: ');
@@ -180,16 +188,22 @@ var stockArr = rdCSV.readCSV(fileName2);
 
     var dailySalesPerProd = dSales.avgDailySalesPerProduct(sales);
     console.log('\nAVERAGE TOTAL DAILY SALES PER PRODUCT: ');
-    console.log(dailySalesPerProd);
+    //console.log(dailySalesPerProd);
+    var refDailySalesPerProd = refactor.refactorOutput(dailySalesPerProd);
+    console.log(refDailySalesPerProd);
+    var writ = write.writeToFile(refDailySalesPerProd,"../data/avgTotDailySalesPerProd.json");
 
     var weeklySalesPerProd = aWeekSaleProd.avgWeeklySalesPerProduct(sales);
+    var refWeeklySalesPerProd = refactor.refactorOutput(weeklySalesPerProd);
     console.log('\nAVERAGE TOTAL WEEKLY SALES PER PRODUCT: ');
-    console.log(weeklySalesPerProd);
+    console.log(refWeeklySalesPerProd);
 
     var avDayCat = avPerCat.avgDailySalesPerCat(totalPerCat,DayTot);
+    var refAvDayCat = refactor.refactorOutput(avDayCat);
     console.log('\nAVERAGE TOTAL DAILY SALES PER CATEGORY: ');
-    console.log(avDayCat);
+    console.log(refAvDayCat);
 
     var avWeekCat = avPerCatWeek.avgWeeklySalesPerCat(totalPerCat,DayTot);
+    var refAvWeekCat = refactor.refactorOutput(avWeekCat);
     console.log('\nAVERAGE TOTAL WEEKLY SALES PER CATEGORY: ');
-    console.log(avWeekCat);
+    console.log(refAvWeekCat);
