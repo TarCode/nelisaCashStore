@@ -2,6 +2,8 @@ var express = require('express')
 var app = express()
 var exphbs  = require('express-handlebars')
 
+var supplyPopProd = require('./data/supplyPopProduct');
+var supplyProfProd = require('./data/supplyProfProduct');
 var avgTotDayPerProd = require('./data/avgTotDailySalesPerProd');
 var mostSoldProd = require('./data/most');
 var leastSoldProd = require('./data/least');
@@ -71,6 +73,15 @@ app.get('/leastProfProduct', function(req, res){
 app.get('/stockRem', function(req, res){
     res.render('listPage', {item:stockRemain});
 });
+
+app.get('/supplierPopularProduct', function(req, res){
+    res.render('singlePage', supplyPopProd);
+});
+
+app.get('/supplierProfitProduct', function(req, res){
+    res.render('singlePage', supplyProfProd);
+});
+
 
 app.get('/totalPerCat', function(req, res){
     res.render('listPage', {item:totPerCat});

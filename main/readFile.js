@@ -226,9 +226,9 @@ var weekTot = weeklyTot.weeklySalesTotal(DayTot);
     var supplyPopProd = supplyPopProduct.supplyPopProduct(stockArr, most);
     console.log("\nSUPPLIER SUPPLYING THE MOST POPULAR PRODUCT: ");
     console.log(supplyPopProd);
-    var writ = write.writeToFile(supplyPopProd,"../data/supplyPopProduct.json");
+    //var writ = write.writeToFile(supplyPopProd,"../data/supplyPopProduct.json");
 
     var supplyProfProd = supplyPopProduct.supplyPopProduct(stockArr, mostProfitIem);
     console.log("\nSUPPLIER SUPPLYING THE MOST PROFITABLE PRODUCT: ");
     console.log(supplyProfProd);
-    var writ = write.writeToFile(supplyProfProd,"../data/supplyProfProduct.json");
+    //var writ = write.writeToFile(supplyProfProd,"../data/supplyProfProduct.json");
