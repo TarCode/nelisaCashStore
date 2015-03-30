@@ -1,4 +1,12 @@
 /*Strip the ul of padding and list styling*/
+table{
+    width: 80%;
+    border: 1px solid black;
+}
+
+#heady{
+    text-align: left;
+}
 #welcome{
     background-image: url(./pic.jpg);
     height: 30em;

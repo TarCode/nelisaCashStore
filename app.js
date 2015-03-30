@@ -4,6 +4,13 @@ var exphbs  = require('express-handlebars')
 
 var most = require('./data/most');
 var avgTotDayPerProd = require('./data/avgTotDailySalesPerProd');
+var mostSoldProd = require('./data/most');
+var leastSoldProd = require('./data/least');
+var totEarningsPerProd = require('./data/totEarningsPerProd');
+var mostRegSales = require('./data/mostRegSales');
+var mostProfitProd = require('./data/mostEarningProd');
+var leastProfitProd = require('./data/leastEarningProd');
+var stockRemain = require('./data/stockRemaining');
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -17,10 +24,39 @@ app.get('/', function (req, res) {
 
 });
 
-app.get('/avTotSalPerDayProd', function(req, res){
-    res.render('avTotSalPerDayProd', {avTotSalPerDayProd:avgTotDayPerProd});
-})
+app.get('/mostSoldProduct', function (req, res) {
+    res.render('singlePage',mostSoldProd);
 
+});
+
+app.get('/leastSoldProduct', function (req, res) {
+    res.render('singlePage',leastSoldProd);
+
+});
+
+app.get('/avTotSalPerDayProd', function(req, res){
+    res.render('listPage', {item:avgTotDayPerProd});
+});
+
+app.get('/totalEarningsPerProduct', function(req, res){
+    res.render('listPage', {item:totEarningsPerProd});
+});
+
+app.get('/mostRegularSales', function(req, res){
+    res.render('listPage', {item:mostRegSales});
+});
+
+app.get('/mostProfProduct', function(req, res){
+    res.render('singlePage', mostProfitProd);
+});
+
+app.get('/leastProfProduct', function(req, res){
+    res.render('singlePage', leastProfitProd);
+});
+
+app.get('/stockRem', function(req, res){
+    res.render('listPage', {item:stockRemain});
+});
 
 var server = app.listen(3000, function () {
 
