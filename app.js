@@ -18,6 +18,13 @@ var mostEarningCat = require('./data/mostEarningCat');
 var leastEarningCat = require('./data/leastEarningCat');
 var mostProfitCat = require('./data/mostProfitCat');
 var leastProfitCat = require('./data/leastProfitCat');
+var totDailySales = require('./data/totalDailySales');
+var avgTotSalesPerDay = require('./data/avgTotDailySales');
+var totWeeklySales = require('./data/totalWeeklySales');
+var avgTotWeeklySales = require('./data/avgTotWeeklySales');
+var avgTotWeeklySalesPerProd = require('./data/avgTotWeeklySalesPerProd');
+var avgTotDailySalesPerCat = require('./data/avgTotDailySalesPerCat');
+var avgTotWeeklySalesPerCat = require('./data/avgTotWeeklySalesPerCat');
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -96,6 +103,35 @@ app.get('/mostProfitCategory', function(req, res){
 app.get('/leastProfitCategory', function(req, res){
     res.render('singlePage', leastProfitCat);
 });
+
+app.get('/totalSalesPerDay', function(req, res){
+    res.render('listPage', {item:totDailySales});
+});
+
+app.get('/avgTotalSalesPerDay', function(req, res){
+    res.render('singlePage', avgTotSalesPerDay);
+});
+
+app.get('/totalSalesPerWeek', function(req, res){
+    res.render('listPage', {item:totWeeklySales});
+});
+
+app.get('/avgTotalSalesPerWeek', function(req, res){
+    res.render('singlePage', avgTotWeeklySales);
+});
+
+app.get('/avgTotalSalesPerWeekPerProd', function(req, res){
+    res.render('listPage', {item:avgTotWeeklySalesPerProd});
+});
+
+app.get('/avgTotalSalesPerDayPerCat', function(req, res){
+    res.render('listPage', {item:avgTotDailySalesPerCat});
+});
+
+app.get('/avgTotalSalesPerWeekPerCat', function(req, res){
+    res.render('listPage', {item:avgTotWeeklySalesPerCat});
+});
+
 var server = app.listen(3000, function () {
 
   var host = server.address().address
