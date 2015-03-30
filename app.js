@@ -13,12 +13,12 @@ app.use(express.static('public'));
 
 
 app.get('/', function (req, res) {
-    res.render('home', most);
+    res.render('home');
 
 });
 
-app.get('/summary', function(req, res){
-    res.render('summary', {summary:avgTotDayPerProd});
+app.get('/avTotSalPerDayProd', function(req, res){
+    res.render('avTotSalPerDayProd', {avTotSalPerDayProd:avgTotDayPerProd});
 })
 
 
