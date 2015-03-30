@@ -10,6 +10,14 @@ var mostRegSales = require('./data/mostRegSales');
 var mostProfitProd = require('./data/mostEarningProd');
 var leastProfitProd = require('./data/leastEarningProd');
 var stockRemain = require('./data/stockRemaining');
+var totPerCat = require('./data/totPerCat');
+var mostPopCat = require('./data/mostPopCat');
+var leastPopCat = require('./data/leastPopCat');
+var totEarningsPerCat = require('./data/totEarningsPerCat');
+var mostEarningCat = require('./data/mostEarningCat');
+var leastEarningCat = require('./data/leastEarningCat');
+var mostProfitCat = require('./data/mostProfitCat');
+var leastProfitCat = require('./data/leastProfitCat');
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -57,6 +65,37 @@ app.get('/stockRem', function(req, res){
     res.render('listPage', {item:stockRemain});
 });
 
+app.get('/totalPerCat', function(req, res){
+    res.render('listPage', {item:totPerCat});
+});
+
+app.get('/mostPopularCat', function(req, res){
+    res.render('singlePage', mostPopCat);
+});
+
+app.get('/leastPopularCat', function(req, res){
+    res.render('singlePage', leastPopCat);
+});
+
+app.get('/totalEarningsPerCat', function(req, res){
+    res.render('listPage', {item: totEarningsPerCat});
+});
+
+app.get('/mostEarningCategory', function(req, res){
+    res.render('singlePage', mostEarningCat);
+});
+
+app.get('/leastEarningCategory', function(req, res){
+    res.render('singlePage', leastEarningCat);
+});
+
+app.get('/mostProfitCategory', function(req, res){
+    res.render('singlePage', mostProfitCat);
+});
+
+app.get('/leastProfitCategory', function(req, res){
+    res.render('singlePage', leastProfitCat);
+});
 var server = app.listen(3000, function () {
 
   var host = server.address().address
