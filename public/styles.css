@@ -1,4 +1,7 @@
 /*Strip the ul of padding and list styling*/
+#container{
+    padding-top: 2em;
+}
 table{
     width: 80%;
     border: 1px solid black;

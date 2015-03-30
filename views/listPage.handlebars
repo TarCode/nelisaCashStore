@@ -1,18 +1,15 @@
-<div>
-
-        <div>
-            <table>
-                <tr id = 'heady'>
-                    <th>Product</th>
-                    <th>Amount Sold</th>
-                </tr>
-            {{#each item}}
-                <tr>
-                    <td>{{name}}</td>
-                    <td>{{amt}}</td>
-                </tr>
-            {{/each}}
-            </table>
-        </div>
-
+<div id = 'container'>
+    <table>
+        <tr id = 'heady'>
+            <th>Product</th>
+            <th>Value</th>
+        </tr>
+    {{#each item}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{amt}}</td>
+        </tr>
+    {{/each}}
+    </table>
 </div>
+

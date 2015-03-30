@@ -2,7 +2,6 @@ var express = require('express')
 var app = express()
 var exphbs  = require('express-handlebars')
 
-var most = require('./data/most');
 var avgTotDayPerProd = require('./data/avgTotDailySalesPerProd');
 var mostSoldProd = require('./data/most');
 var leastSoldProd = require('./data/least');
