@@ -2,6 +2,7 @@
 //Date:		        5/03/2015 - 24/03/15
 //File:		        readFile.js
 //Description:	    Main file- Reads in CSV file and outputs the product names and amount sold as well as most and least sold products.
+var supplyPopProduct = require('../functions/supplyPopProduct');
 var refactor = require('../functions/refactorOutput');
 var write = require('../functions/writeFile');
 var avPerCatWeek =require('../functions/avgWeeklySalesPerCat');
@@ -37,7 +38,7 @@ var fileName2 = "NelisaPurchases.csv";
 var itemArr = rdCSV.readCSV(fileName);
 var stockArr = rdCSV.readCSV(fileName2);
 
-    //console.log(stockArr);
+    console.log(stockArr);
     //console.log(itemArr);
 
     var itemMap = filter.sortData(itemArr);
@@ -221,3 +222,13 @@ var weekTot = weeklyTot.weeklySalesTotal(DayTot);
     console.log(refAvWeekCat);
     var writ = write.writeToFile(refAvWeekCat,"../data/avgTotWeeklySalesPerCat.json");
 
+
+    var supplyPopProd = supplyPopProduct.supplyPopProduct(stockArr, most);
+    console.log("\nSUPPLIER SUPPLYING THE MOST POPULAR PRODUCT: ");
+    console.log(supplyPopProd);
+    var writ = write.writeToFile(supplyPopProd,"../data/supplyPopProduct.json");
+
+    var supplyProfProd = supplyPopProduct.supplyPopProduct(stockArr, mostProfitIem);
+    console.log("\nSUPPLIER SUPPLYING THE MOST PROFITABLE PRODUCT: ");
+    console.log(supplyProfProd);
+    var writ = write.writeToFile(supplyProfProd,"../data/supplyProfProduct.json");
