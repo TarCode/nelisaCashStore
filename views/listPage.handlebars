@@ -1,15 +1,17 @@
-<div id = 'container'>
-    <table>
-        <tr id = 'heady'>
-            <th>Name</th>
-            <th>Value</th>
-        </tr>
+<div class = 'col-md-9'>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Value</th>
+    </tr>
+    </thead>
     {{#each item}}
-        <tr>
+    <tbody>
             <td>{{name}}</td>
             <td>{{amt}}</td>
-        </tr>
-    {{/each}}
-    </table>
-</div>
 
+    </tbody>
+    {{/each}}
+</table>
+</div>

@@ -1,60 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nelisa's Spaza Shop</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-<div id = 'navvy'>
-    <ul id="menu">
-        <li><a href="/">Home</a></li>
-        <li>
-            <a href="#">Product Stats</a>
-            <ul class="hidden">
-                <li><a href="/mostSoldProduct">Most Sold Product</a></li>
-                <li><a href="/leastSoldProduct">Least Sold Product</a></li>
-                <li><a href="/totalEarningsPerProduct">Total Earnings Per Product</a></li>
-                <li><a href="/mostRegularSales">Most Regular Sales</a></li>
-                <li><a href="/mostProfProduct">Most Profitable Product</a></li>
-                <li><a href="/leastProfProduct">Least Profitable Product</a></li>
-                <li><a href="/stockRem">Stock Remaining</a></li>
-                <li><a href="/supplierPopularProduct">Supplier (Most Popular Product)</a></li>
-                <li><a href="/supplierProfitProduct">Supplier (Most Profitable Product)</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Category Stats</a>
-            <ul class="hidden">
 
-                <li><a href="/totalPerCat">Total Quantity Sold Per Category</a></li>
-                <li><a href="/mostPopularCat">Most Popular Category</a></li>
-                <li><a href="/leastPopularCat">Least Popular Category</a></li>
-                <li><a href="/totalEarningsPerCat">Total Earnings Per Category</a></li>
-                <li><a href="/mostEarningCategory">Highest Earning Category</a></li>
-                <li><a href="/leastEarningCategory">Lowest Earning Category</a></li>
-                <li><a href="/mostProfitCategory">Most Profitable Category</a></li>
-                <li><a href="/leastProfitCategory">Least Profitable Category</a></li>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Nelisa's Spaza</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/shop-item.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">NeliSpaza</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+
             </ul>
-        </li>
-        <li>
-            <a href="#">Aggregates</a>
-            <ul class="hidden">
-                <li><a href="/totalSalesPerDay">Total Sales Per Day</a></li>
-                <li><a href="/avgTotalSalesPerDay">Average Total Sales Per Day</a></li>
-                <li><a href="/totalSalesPerWeek">Total Sales Per Week</a></li>
-                <li><a href="/avgTotalSalesPerWeek">Average Total Sales Per Week</a></li>
-                <li><a href="/avTotSalPerDayProd">Average Total Sales Per Day Per Product</a></li>
-                <li><a href="/avgTotalSalesPerWeekPerProd">Average Total Sales Per Week Per Product</a></li>
-                <li><a href="/avgTotalSalesPerDayPerCat">Average Total Sales Per Day Per Category</a></li>
-                <li><a href="/avgTotalSalesPerWeekPerCat">Average Total Sales Per Week Per Category</a></li>
-            </ul>
-        </li>
-    </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p class="lead">Product Stats</p>
+            <div class="list-group">
+                <a href="/mostSoldProduct" class = "list-group-item">Most Sold Product</a>
+                <a href="/leastSoldProduct" class = "list-group-item">Least Sold Product</a>
+                <a href="/totalEarningsPerProduct" class = "list-group-item">Total Earnings Per Product</a>
+                <a href="/mostRegularSales" class = "list-group-item">Most Regular Sales</a>
+                <a href="/mostProfProduct" class = "list-group-item">Most Profitable Product</a>
+                <a href="/leastProfProduct" class = "list-group-item">Least Profitable Product</a>
+                <a href="/stockRem" class = "list-group-item">Stock Remaining</a>
+                <a href="/supplierPopularProduct" class = "list-group-item">Supplier (Most Popular Product)</a>
+                <a href="/supplierProfitProduct" class = "list-group-item">Supplier (Most Profitable Product)</a>
+            </div>
+
+            <p class="lead">Category Stats</p>
+            <div class="list-group">
+                <a href="/totalPerCat" class = "list-group-item">Total Quantity Sold Per Category</a>
+                <a href="/mostPopularCat" class = "list-group-item">Most Popular Category</a>
+                <a href="/leastPopularCat" class = "list-group-item">Least Popular Category</a>
+                <a href="/totalEarningsPerCat" class = "list-group-item">Total Earnings Per Category</a>
+                <a href="/mostEarningCategory" class = "list-group-item">Highest Earning Category</a>
+                <a href="/leastEarningCategory" class = "list-group-item">Lowest Earning Category</a>
+                <a href="/mostProfitCategory" class = "list-group-item">Most Profitable Category</a>
+                <a href="/leastProfitCategory" class = "list-group-item">Least Profitable Category</a>
+            </div>
+
+            <p class="lead">Aggregate Stats</p>
+            <div class="list-group">
+                <a href="/totalSalesPerDay" class = "list-group-item">Total Sales Per Day</a>
+                <a href="/avgTotalSalesPerDay" class = "list-group-item">Average Total Sales Per Day</a>
+                <a href="/totalSalesPerWeek" class = "list-group-item">Total Sales Per Week</a>
+                <a href="/avgTotalSalesPerWeek" class = "list-group-item">Average Total Sales Per Week</a>
+                <a href="/avTotSalPerDayProd" class = "list-group-item">Average Total Sales Per Day Per Product</a>
+                <a href="/avgTotalSalesPerWeekPerProd" class = "list-group-item">Average Total Sales Per Week Per Product</a>
+                <a href="/avgTotalSalesPerDayPerCat" class = "list-group-item">Average Total Sales Per Day Per Category</a>
+                <a href="/avgTotalSalesPerWeekPerCat" class = "list-group-item">Average Total Sales Per Week Per Category</a>
+            </div>
+        </div>
+        <div class = "dataTable">
+            {{{body}}}
+        </div>
+
+
+    </div>
+
 </div>
 
-    {{{body}}}
- 
+</div>
+<!-- /.container -->
+
+<div class="container">
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Nelisa's Spaza 2015</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery -->
+<script src="/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/bootstrap.min.js"></script>
+
 </body>
+
 </html>

@@ -88,7 +88,7 @@ var stockArr = rdCSV.readCSV(fileName2);
     var refTotEarnings = refactor.refactorOutput(totEarnings);
     console.log("\nTOTAL EARNINGS PER PRODUCT: ");
     console.log(refTotEarnings);
-    var writ = write.writeToFile(refTotEarnings,"../data/totEarningsPerProd.json");
+    //var writ = write.writeToFile(refTotEarnings,"../data/totEarningsPerProd.json");
 
     var totCatCash = totEarnCat.totalEarningsPerCat(cat, totEarnings);
     var refTotCatCash = refactor.refactorOutput(totCatCash);
