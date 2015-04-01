@@ -12,31 +12,22 @@
         <!-- /. ROW  -->
         <div class="row">
 
-            <div class="col-md-6 col-sm-8 col-xs-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Name
-                    </div>
-                    <div class="panel-body">
-                        {{#each item}}
-                        <div>{{name}}</div>
-                        {{/each}}
-                    </div>
-                </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                    {{#each item}}
+                    <tr>
+                            <td>{{name}}</td>
+                            <td>{{amt}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
             </div>
 
-            <div class="col-md-6 col-sm-4 col-xs-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Value
-                    </div>
-                    <div class="panel-body">
-                        {{#each item}}
-                        <div>{{amt}}</div>
-                        {{/each}}
-                    </div>
-                </div>
-            </div>
+
 
         </div>
         <!-- /. ROW  -->

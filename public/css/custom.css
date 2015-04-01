@@ -1,19 +1,10 @@
-
-/*=============================================================
-    Authour URI: www.binarycart.com
-    License: Commons Attribution 3.0
-
-    http://creativecommons.org/licenses/by/3.0/
-
-    100% To use For Personal And Commercial Use.
-    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
-    ========================================================  */
-/*==============================================
-    GENERAL  STYLES    
-    =============================================*/
 body {
     font-family: 'Open Sans', sans-serif;
+}
+
+.nelisaFooter{
+    color: #e1edf7;
+    padding-bottom: 1em;
 }
 
  #wrapper {
@@ -32,7 +23,7 @@ body {
     margin:10px 20px 10px 0px;
     background-color:#fff!important;
     padding:10px;
-    min-height:1200px;
+
 }
 
 .text-center {
@@ -66,22 +57,7 @@ p {
     background-color:#F8F8F8;
 
 }
-   .noti-box {
-min-height: 100px;
-padding: 20px;
-}
 
-    .noti-box .icon-box {
-display: block;
-float: left;
-margin: 0 15px 10px 0;
-width: 70px;
-height: 70px;
-line-height: 75px;
-vertical-align: middle;
-text-align: center;
-font-size: 40px;
-}
 .text-box p{
     margin: 0 0 3px;
 }
@@ -359,7 +335,7 @@ line-height: 1.428571429;
      #page-wrapper{
                margin: 0 0 0 260px;
         padding: 15px 30px;
-        min-height: 1200px;
+
 		
     }
 	
