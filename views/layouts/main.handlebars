@@ -1,137 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nelisa's Spaza</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/shop-item.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <!-- BOOTSTRAP STYLES-->
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="/css/font-awesome.css" rel="stylesheet" />
+    <!-- MORRIS CHART STYLES-->
+    <link href="/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- CUSTOM STYLES-->
+    <link href="/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-
 <body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NeliSpaza</a>
+            <a class="navbar-brand" href="/">Nelisa's Spaza</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/">Home</a>
+
+    </nav>
+    <!-- /. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li class="text-center">
+                    <img src="/img/spaza.png" class="user-image img-responsive"/>
                 </li>
 
+
+                <li>
+                    <a class="active-menu"  href="/"><i class="fa fa-dashboard fa-3x"></i> Home</a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-sitemap fa-3x"></i> Inventory Statistics<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="#">Product Stats<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/mostSoldProduct" class = "list-group-item">Most Sold Product</a></li>
+                                <li><a href="/leastSoldProduct" class = "list-group-item">Least Sold Product</a></li>
+                                <li><a href="/totalEarningsPerProduct" class = "list-group-item">Total Earnings Per Product</a></li>
+                                <li><a href="/mostRegularSales" class = "list-group-item">Most Regular Sales</a></li>
+                                <li><a href="/mostProfProduct" class = "list-group-item">Most Profitable Product</a></li>
+                                <li><a href="/leastProfProduct" class = "list-group-item">Least Profitable Product</a></li>
+                                <li><a href="/stockRem" class = "list-group-item">Stock Remaining</a></li>
+                                <li><a href="/supplierPopularProduct" class = "list-group-item">Supplier (Most Popular Product)</a></li>
+                                <li><a href="/supplierProfitProduct" class = "list-group-item">Supplier (Most Profitable Product)</a></li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="#">Category Stats<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/totalPerCat" class = "list-group-item">Total Quantity Sold Per Category</a></li>
+                                <li><a href="/mostPopularCat" class = "list-group-item">Most Popular Category</a></li>
+                                <li><a href="/leastPopularCat" class = "list-group-item">Least Popular Category</a></li>
+                                <li><a href="/totalEarningsPerCat" class = "list-group-item">Total Earnings Per Category</a></li>
+                                <li><a href="/mostEarningCategory" class = "list-group-item">Highest Earning Category</a></li>
+                                <li><a href="/leastEarningCategory" class = "list-group-item">Lowest Earning Category</a></li>
+                                <li><a href="/mostProfitCategory" class = "list-group-item">Most Profitable Category</a></li>
+                                <li><a href="/leastProfitCategory" class = "list-group-item">Least Profitable Category</a></li>
+                            </ul>
+
+                        </li>
+
+                        <li>
+                            <a href="#">Aggregate Stats<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/totalSalesPerDay" class = "list-group-item">Total Sales Per Day</a></li>
+                                <li><a href="/avgTotalSalesPerDay" class = "list-group-item">Average Total Sales Per Day</a></li>
+                                <li><a href="/totalSalesPerWeek" class = "list-group-item">Total Sales Per Week</a></li>
+                                <li><a href="/avgTotalSalesPerWeek" class = "list-group-item">Average Total Sales Per Week</a></li>
+                                <li><a href="/avTotSalPerDayProd" class = "list-group-item">Average Total Sales Per Day Per Product</a></li>
+                                <li><a href="/avgTotalSalesPerWeekPerProd" class = "list-group-item">Average Total Sales Per Week Per Product</a></li>
+                                <li><a href="/avgTotalSalesPerDayPerCat" class = "list-group-item">Average Total Sales Per Day Per Category</a></li>
+                                <li><a href="/avgTotalSalesPerWeekPerCat" class = "list-group-item">Average Total Sales Per Week Per Category</a></li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </li>
             </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
 
-<!-- Page Content -->
-<div class="container">
-
-    <div class="row">
-
-        <div class="col-sm-3">
-            <p class="lead">Product Stats</p>
-            <div class="list-group">
-                <a href="/mostSoldProduct" class = "list-group-item">Most Sold Product</a>
-                <a href="/leastSoldProduct" class = "list-group-item">Least Sold Product</a>
-                <a href="/totalEarningsPerProduct" class = "list-group-item">Total Earnings Per Product</a>
-                <a href="/mostRegularSales" class = "list-group-item">Most Regular Sales</a>
-                <a href="/mostProfProduct" class = "list-group-item">Most Profitable Product</a>
-                <a href="/leastProfProduct" class = "list-group-item">Least Profitable Product</a>
-                <a href="/stockRem" class = "list-group-item">Stock Remaining</a>
-                <a href="/supplierPopularProduct" class = "list-group-item">Supplier (Most Popular Product)</a>
-                <a href="/supplierProfitProduct" class = "list-group-item">Supplier (Most Profitable Product)</a>
-            </div>
-
-            <p class="lead">Category Stats</p>
-            <div class="list-group">
-                <a href="/totalPerCat" class = "list-group-item">Total Quantity Sold Per Category</a>
-                <a href="/mostPopularCat" class = "list-group-item">Most Popular Category</a>
-                <a href="/leastPopularCat" class = "list-group-item">Least Popular Category</a>
-                <a href="/totalEarningsPerCat" class = "list-group-item">Total Earnings Per Category</a>
-                <a href="/mostEarningCategory" class = "list-group-item">Highest Earning Category</a>
-                <a href="/leastEarningCategory" class = "list-group-item">Lowest Earning Category</a>
-                <a href="/mostProfitCategory" class = "list-group-item">Most Profitable Category</a>
-                <a href="/leastProfitCategory" class = "list-group-item">Least Profitable Category</a>
-            </div>
-
-            <p class="lead">Aggregate Stats</p>
-            <div class="list-group">
-                <a href="/totalSalesPerDay" class = "list-group-item">Total Sales Per Day</a>
-                <a href="/avgTotalSalesPerDay" class = "list-group-item">Average Total Sales Per Day</a>
-                <a href="/totalSalesPerWeek" class = "list-group-item">Total Sales Per Week</a>
-                <a href="/avgTotalSalesPerWeek" class = "list-group-item">Average Total Sales Per Week</a>
-                <a href="/avTotSalPerDayProd" class = "list-group-item">Average Total Sales Per Day Per Product</a>
-                <a href="/avgTotalSalesPerWeekPerProd" class = "list-group-item">Average Total Sales Per Week Per Product</a>
-                <a href="/avgTotalSalesPerDayPerCat" class = "list-group-item">Average Total Sales Per Day Per Category</a>
-                <a href="/avgTotalSalesPerWeekPerCat" class = "list-group-item">Average Total Sales Per Week Per Category</a>
-            </div>
-        </div>
-        <div class = "dataTable">
-            {{{body}}}
         </div>
 
-
-    </div>
-
+    </nav>
+    <!-- /. NAV SIDE  -->
+    {{{body}}}
+    <!-- /. WRAPPER  -->
 </div>
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="/js/jquery.metisMenu.js"></script>
+    <!-- MORRIS CHART SCRIPTS -->
+    <script src="/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="/js/morris/morris.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="/js/custom.js"></script>
 
-</div>
-<!-- /.container -->
-
-<div class="container">
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Nelisa's Spaza 2015</p>
-            </div>
-        </div>
-    </footer>
-
-</div>
-<!-- /.container -->
-
-<!-- jQuery -->
-<script src="/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/bootstrap.min.js"></script>
 
 </body>
-
 </html>
