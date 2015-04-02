@@ -1,10 +1,14 @@
 body {
     font-family: 'Open Sans', sans-serif;
+
 }
 
 .nelisaFooter{
     color: #e1edf7;
-    padding-bottom: 1em;
+}
+
+.data-title{
+    padding-top: 1em;
 }
 
  #wrapper {
@@ -46,8 +50,9 @@ p {
 
 
 .footer-red {
-background-color: #AF0000;
-border-top: 0px solid #fff;
+    background-color: #AF0000;
+    border-top: 0px solid #fff;
+
 }
 
 
@@ -55,22 +60,23 @@ border-top: 0px solid #fff;
 
 
 .logo {
-    margin: 25px auto;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-max-height:170px;
-max-width:170px;
+    margin: 5em auto;
+    margin-bottom: 2em;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    max-height:170px;
+    max-width:170px;
 }
 
 .navbar-cls-top .navbar-brand {
 	color: #fff;
-background: #C90000;
-width: 260px;
-text-align: center;
-height: 60px;
-font-size: 30px;
-font-weight: 700;
+    background: #C90000;
+    width: 260px;
+    text-align: center;
+    height: 60px;
+    font-size: 30px;
+    font-weight: 700;
 }
 .active-menu {
     background-color:#C90000!important;
@@ -87,7 +93,6 @@ font-weight: 700;
 .active > a > .fa.arrow:before {
     content: "\f107";
 }
-
 
 .nav-second-level li,
 .nav-third-level li {
