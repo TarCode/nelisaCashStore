@@ -37,110 +37,108 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     res.render('home');
-
 });
 
 app.get('/mostSoldProduct', function (req, res) {
-    res.render('singlePage',mostSoldProd);
+    res.render('singlePage',{title:'MOST SOLD PRODUCT', prod:mostSoldProd}  );
 
 });
 
 app.get('/leastSoldProduct', function (req, res) {
-    res.render('singlePage',leastSoldProd);
-
+    res.render('singlePage',{title:'LEAST SOLD PRODUCT', prod:leastSoldProd} );
 });
 
 app.get('/avTotSalPerDayProd', function(req, res){
-    res.render('listPage', {item:avgTotDayPerProd});
+    res.render('listPage', {title: 'AVERAGE TOTAL SALES PER DAY PER PRODUCT' ,prod:avgTotDayPerProd});
 });
 
 app.get('/totalEarningsPerProduct', function(req, res){
-    res.render('listPage', {item:totEarningsPerProd});
+    res.render('listPage', {title: 'TOTAL EARNINGS PER PRODUCT' ,prod:totEarningsPerProd});
 });
 
 app.get('/mostRegularSales', function(req, res){
-    res.render('listPage', {item:mostRegSales});
+    res.render('listPage', {title: 'MOST REGULAR SALES' ,prod:mostRegSales});
 });
 
 app.get('/mostProfProduct', function(req, res){
-    res.render('singlePage', mostProfitProd);
+    res.render('singlePage',{title: 'MOST PROFITABLE PRODUCT' ,prod:mostProfitProd});
 });
 
 app.get('/leastProfProduct', function(req, res){
-    res.render('singlePage', leastProfitProd);
+    res.render('singlePage', {title: 'LEAST PROFITABLE PRODUCT' ,prod:leastProfitProd});
 });
 
 app.get('/stockRem', function(req, res){
-    res.render('listPage', {item:stockRemain});
+    res.render('listPage', {title: 'STOCK REMAINING' ,prod:stockRemain});
 });
 
 app.get('/supplierPopularProduct', function(req, res){
-    res.render('singlePage', supplyPopProd);
+    res.render('singlePage', {title: 'SUPPLIER OF MOST POPULAR PRODUCT' ,prod:supplyPopProd});
 });
 
 app.get('/supplierProfitProduct', function(req, res){
-    res.render('singlePage', supplyProfProd);
+    res.render('singlePage', {title: 'SUPPLIER OF MOST PROFITABLE PRODUCT' ,prod:supplyProfProd});
 });
 
 
 app.get('/totalPerCat', function(req, res){
-    res.render('listPage', {item:totPerCat});
+    res.render('listPage', {title: 'TOTAL SALES PER CATEGORY' ,prod:totPerCat});
 });
 
 app.get('/mostPopularCat', function(req, res){
-    res.render('singlePage', mostPopCat);
+    res.render('singlePage', {title: 'MOST POPULAR CATEGORY' ,prod:mostPopCat});
 });
 
 app.get('/leastPopularCat', function(req, res){
-    res.render('singlePage', leastPopCat);
+    res.render('singlePage', {title: 'LEAST POPULAR CATEGORY' ,prod:leastPopCat});
 });
 
 app.get('/totalEarningsPerCat', function(req, res){
-    res.render('listPage', {item: totEarningsPerCat});
+    res.render('listPage', {title: 'TOTAL EARNINGS PER CATEGORY' ,prod:totEarningsPerCat});
 });
 
 app.get('/mostEarningCategory', function(req, res){
-    res.render('singlePage', mostEarningCat);
+    res.render('singlePage', {title: 'HIGHEST EARNING CATEGORY' ,prod:mostEarningCat});
 });
 
 app.get('/leastEarningCategory', function(req, res){
-    res.render('singlePage', leastEarningCat);
+    res.render('singlePage', {title: 'LEAST EARNING CATEGORY' ,prod:leastEarningCat});
 });
 
 app.get('/mostProfitCategory', function(req, res){
-    res.render('singlePage', mostProfitCat);
+    res.render('singlePage', {title: 'MOST PROFITABLE CATEGORY' ,prod:mostProfitCat});
 });
 
 app.get('/leastProfitCategory', function(req, res){
-    res.render('singlePage', leastProfitCat);
+    res.render('singlePage', {title: 'LEAST PROFITABLE CATEGORY' ,prod:leastProfitCat});
 });
 
 app.get('/totalSalesPerDay', function(req, res){
-    res.render('listPage', {item:totDailySales});
+    res.render('listPage', {title: 'TOTAL SALES PER DAY' ,prod:totDailySales});
 });
 
 app.get('/avgTotalSalesPerDay', function(req, res){
-    res.render('singlePage', avgTotSalesPerDay);
+    res.render('singlePage', {title: 'AVERAGE TOTAL SALES PER DAY' ,prod:avgTotSalesPerDay});
 });
 
 app.get('/totalSalesPerWeek', function(req, res){
-    res.render('listPage', {item:totWeeklySales});
+    res.render('listPage', {title: 'TOTAL SALES PER WEEK' ,prod:totWeeklySales});
 });
 
 app.get('/avgTotalSalesPerWeek', function(req, res){
-    res.render('singlePage', avgTotWeeklySales);
+    res.render('singlePage', {title: 'AVERAGE TOTAL SALES PER WEEK' ,prod:avgTotWeeklySales});
 });
 
 app.get('/avgTotalSalesPerWeekPerProd', function(req, res){
-    res.render('listPage', {item:avgTotWeeklySalesPerProd});
+    res.render('listPage', {title: 'AVERAGE TOTAL SALES PER WEEK PER PRODUCT' ,prod:avgTotWeeklySalesPerProd});
 });
 
 app.get('/avgTotalSalesPerDayPerCat', function(req, res){
-    res.render('listPage', {item:avgTotDailySalesPerCat});
+    res.render('listPage', {title: 'AVERAGE TOTAL SALES PER DAY PER CATEGORY' ,prod:avgTotDailySalesPerCat});
 });
 
 app.get('/avgTotalSalesPerWeekPerCat', function(req, res){
-    res.render('listPage', {item:avgTotWeeklySalesPerCat});
+    res.render('listPage', {title: 'AVERAGE TOTAL SALES PER WEEK PER CATEGORY' ,prod:avgTotWeeklySalesPerCat});
 });
 
 var server = app.listen(3000, function () {
