@@ -2,9 +2,11 @@ body {
     font-family: 'Open Sans', sans-serif;
 
 }
-
+#place-holder{
+    height: 50%;
+}
 .nelisaFooter{
-    color: #e1edf7;
+    color: #f00;
 }
 
 .data-title{
@@ -14,11 +16,12 @@ body {
  #wrapper {
     width: 100%;
     background:#202020;
+     min-height: 50em;
 }
 
 #page-wrapper {
     padding: 15px 15px;
-    min-height: 600px;
+    min-height: 50em;
     background:#F3F3F3;
    
 }
@@ -46,15 +49,6 @@ p {
     line-height:25px;
     padding-top:20px;
 }
-
-
-
-.footer-red {
-    background-color: #AF0000;
-    border-top: 0px solid #fff;
-
-}
-
 
 /*Menu*/
 
@@ -174,13 +168,14 @@ p {
 }
 .navbar-cls-top .navbar-brand:hover {
 
-background: #C90000;
-color:#fff;
+    background: #C90000;
+    color:#fff;
 
 }
 
 .navbar-default {
-border:0px solid black;
+    border:0px solid black;
+
      
 }
 .navbar-header {
