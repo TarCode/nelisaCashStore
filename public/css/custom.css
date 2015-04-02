@@ -6,7 +6,10 @@ body {
     height: 50%;
 }
 .nelisaFooter{
-    color: #f00;
+    color: #e1edf7;
+    background-color: #C90000;
+    margin-bottom: 0;
+
 }
 
 .data-title{
@@ -38,7 +41,7 @@ body {
 }
 
 h2 {
-    color: #f00;
+    color: #C90000;
 }
 h4 {
     padding-top:10px;
