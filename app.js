@@ -1,32 +1,19 @@
 var express = require('express')
-var app = express()
-var exphbs  = require('express-handlebars')
+    mysql = require('mysql'),
+    exphbs  = require('express-handlebars'), 
+    myConnection = require('express-myconnection'),
+    bodyParser = require('body-parser'),
+    nelisaSpaza = require('./routes/nelisaSpaza');
 
-var supplyPopProd = require('./data/supplyPopProduct');
-var supplyProfProd = require('./data/supplyProfProduct');
-var avgTotDayPerProd = require('./data/avgTotDailySalesPerProd');
-var mostSoldProd = require('./data/most');
-var leastSoldProd = require('./data/least');
-var totEarningsPerProd = require('./data/totEarningsPerProd');
-var mostRegSales = require('./data/mostRegSales');
-var mostProfitProd = require('./data/mostEarningProd');
-var leastProfitProd = require('./data/leastEarningProd');
-var stockRemain = require('./data/stockRemaining');
-var totPerCat = require('./data/totPerCat');
-var mostPopCat = require('./data/mostPopCat');
-var leastPopCat = require('./data/leastPopCat');
-var totEarningsPerCat = require('./data/totEarningsPerCat');
-var mostEarningCat = require('./data/mostEarningCat');
-var leastEarningCat = require('./data/leastEarningCat');
-var mostProfitCat = require('./data/mostProfitCat');
-var leastProfitCat = require('./data/leastProfitCat');
-var totDailySales = require('./data/totalDailySales');
-var avgTotSalesPerDay = require('./data/avgTotDailySales');
-var totWeeklySales = require('./data/totalWeeklySales');
-var avgTotWeeklySales = require('./data/avgTotWeeklySales');
-var avgTotWeeklySalesPerProd = require('./data/avgTotWeeklySalesPerProd');
-var avgTotDailySalesPerCat = require('./data/avgTotDailySalesPerCat');
-var avgTotWeeklySalesPerCat = require('./data/avgTotWeeklySalesPerCat');
+var app = express();
+
+var dbOptions = {
+      host: 'localhost',
+      user: 'root',
+      password: 'coder123',
+      port: 3306,
+      database: 'nelisaRaw'
+};
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -34,19 +21,23 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
+//setup middleware
+app.use(myConnection(mysql, dbOptions, 'single'));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
 
 app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get('/mostSoldProduct', function (req, res) {
-    res.render('singlePage',{title:'MOST SOLD PRODUCT', prod:mostSoldProd}  );
+app.get('/products', nelisaSpaza.showProducts);
 
-});
+app.get('/purchases', nelisaSpaza.showPurchases);
 
-app.get('/leastSoldProduct', function (req, res) {
-    res.render('singlePage',{title:'LEAST SOLD PRODUCT', prod:leastSoldProd} );
-});
+app.get('/suppliers', nelisaSpaza.showSuppliers);
 
 app.get('/avTotSalPerDayProd', function(req, res){
     res.render('listPage', {title: 'AVERAGE TOTAL SALES PER DAY PER PRODUCT' ,prod:avgTotDayPerProd});

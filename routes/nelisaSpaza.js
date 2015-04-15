@@ -1,0 +1,46 @@
+/***
+ * A very basic CRUD example using MySQL
+ */	
+
+//todo - fix the error handling
+
+exports.showProducts = function (req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err) 
+			return next(err);
+		connection.query('SELECT * from product', [], function(err, results) {
+        	if (err) return next(err);
+
+    		res.render( 'productList', {
+    			product : results
+    		});
+      });
+	});
+};
+
+exports.showPurchases = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from stock', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'purchaseHistory', {
+                stock : results
+            });
+        });
+    });
+};
+exports.showSuppliers = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from supplier', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'suppliers', {
+                supplier : results
+            });
+        });
+    });
+};
