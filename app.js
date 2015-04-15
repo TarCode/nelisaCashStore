@@ -39,6 +39,8 @@ app.get('/purchases', nelisaSpaza.showPurchases);
 
 app.get('/suppliers', nelisaSpaza.showSuppliers);
 
+app.get('/popularity', nelisaSpaza.showPopularity);
+
 app.get('/avTotSalPerDayProd', function(req, res){
     res.render('listPage', {title: 'AVERAGE TOTAL SALES PER DAY PER PRODUCT' ,prod:avgTotDayPerProd});
 });

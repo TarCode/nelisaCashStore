@@ -49,11 +49,11 @@ exports.showPopularity = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-        connection.query('select product.prod_name, sum(qtySold) as totalSold from sales, product where sales.prod_id = product.prod_id group by sales.prod_id order by totalSold desc', [], function(err, results) {
+        connection.query('SELECT * from supplier', [], function(err, results) {
             if (err) return next(err);
 
             res.render( 'popularity', {
-                popularity : results
+                supplier : results
             });
         });
     });

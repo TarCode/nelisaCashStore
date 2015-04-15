@@ -14,18 +14,18 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <table class="table">
                     <tr>
-                        <th>Supplier</th>
+                        <th>Product ID</th>
+                        <th>Supplier ID</th>
                         <th>Date</th>
-                        <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Cost</th>
                         <th>Total Cost</th>
                     </tr>
                     {{#stock}}
                     <tr>
-                        <td>{{shop}}</td>
+                        <td>{{prod_id}}</td>
+                        <td>{{supplier_id}}</td>
                         <td>{{date}}</td>
-                        <td>{{item}}</td>
                         <td>{{quantity}}</td>
                         <td>{{cost}}</td>
                         <td>{{totalCost}}</td>
