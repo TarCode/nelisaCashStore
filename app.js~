@@ -12,7 +12,7 @@ var dbOptions = {
       user: 'root',
       password: 'coder123',
       port: 3306,
-      database: 'nelisaSpaza'
+      database: 'nelisaRaw'
 };
 
 
@@ -33,11 +33,16 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get('/stock', inventory.show);
+app.get('/products', nelisaSpaza.showProducts);
 
-app.get('/leastSoldProduct', function (req, res) {
-    res.render('singlePage',{title:'LEAST SOLD PRODUCT', prod:leastSoldProd} );
-});
+app.get('/purchases', nelisaSpaza.showPurchases);
+
+app.get('/suppliers', nelisaSpaza.showSuppliers);
+
+app.get('/prodPopularity', nelisaSpaza.showProdPopularity);
+
+app.get('/catPopularity', nelisaSpaza.showCatPopularity);
+
 
 app.get('/avTotSalPerDayProd', function(req, res){
     res.render('listPage', {title: 'AVERAGE TOTAL SALES PER DAY PER PRODUCT' ,prod:avgTotDayPerProd});

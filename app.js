@@ -10,9 +10,9 @@ var app = express();
 var dbOptions = {
       host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'UvEHEMoL4puS)',
       port: 3306,
-      database: 'nelisaRaw'
+      database: ' nelisaRaw'
 };
 
 
@@ -42,6 +42,9 @@ app.get('/suppliers', nelisaSpaza.showSuppliers);
 app.get('/prodPopularity', nelisaSpaza.showProdPopularity);
 
 app.get('/catPopularity', nelisaSpaza.showCatPopularity);
+
+app.get('/prodProfit', nelisaSpaza.showProdProfit);
+
 
 
 app.get('/avTotSalPerDayProd', function(req, res){

@@ -72,3 +72,17 @@ exports.showCatPopularity = function (req, res, next) {
         });
     });
 };
+
+exports.showProdProfit = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('select prod_name, (salePrice - cost) as profit from product,sales,stock where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id group by prod_name order by profit desc', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'prodProfit', {
+                prodProfit : results
+            });
+        });
+    });
+};
