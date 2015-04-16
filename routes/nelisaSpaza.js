@@ -45,15 +45,29 @@ exports.showSuppliers = function (req, res, next) {
     });
 };
 
-exports.showPopularity = function (req, res, next) {
+exports.showProdPopularity = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
         connection.query('select product.prod_name, sum(qtySold) as totalSold from sales, product where sales.prod_id = product.prod_id group by sales.prod_id order by totalSold desc', [], function(err, results) {
             if (err) return next(err);
 
-            res.render( 'popularity', {
-                popularity : results
+            res.render( 'prodPopularity', {
+                prodPopularity : results
+            });
+        });
+    });
+};
+
+exports.showCatPopularity = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('select cat_name, sum(qtySold) as totalSold from category, product, sales where category.cat_id = product.cat_id and product.prod_id = sales.prod_id group by cat_name order by totalSold desc', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'catPopularity', {
+                catPopularity : results
             });
         });
     });

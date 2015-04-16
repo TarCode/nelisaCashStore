@@ -1,0 +1,33 @@
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <!--<div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1 class = "data-title">Nelisa Spaza Inc</h1>
+                <p>Welcome to Nelisa Spaza Inc Inventory System</p>
+            </div>
+        </div>-->
+
+        <hr />
+        <div><h3 class = 'text-center'>PRODUCT POPULARITY</h3></div>
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table class="table">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Amount Sold</th>
+                    </tr>
+                    {{#prodPopularity}}
+                    <tr>
+                            <td>{{prod_name}}</td>
+                            <td>{{totalSold}}</td>
+                    </tr>
+                    {{/prodPopularity}}
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

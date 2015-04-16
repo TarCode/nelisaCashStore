@@ -8,21 +8,21 @@
         </div>-->
 
         <hr />
-        <div><h3 class = 'text-center'>PRODUCT POPULARITY</h3></div>
+        <div><h3 class = 'text-center'>CATEGORY POPULARITY</h3></div>
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <table class="table">
                     <tr>
-                        <th>Product Name</th>
+                        <th>Category Name</th>
                         <th>Amount Sold</th>
                     </tr>
-                    {{#popularity}}
+                    {{#catPopularity}}
                     <tr>
-                            <td>{{prod_name}}</td>
+                            <td>{{cat_name}}</td>
                             <td>{{totalSold}}</td>
                     </tr>
-                    {{/popularity}}
+                    {{/catPopularity}}
                 </table>
             </div>
 
