@@ -10,7 +10,6 @@
   "author": "Taariq Isaacs",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "sqlite3": "~3.0.5",
     "express": "~4.12.3",
     "express-handlebars": "~2.0.0"
   },
