@@ -1,17 +1,24 @@
 {
   "name": "nelisaCashStore",
+   "start": "node app.js",
   "version": "0.0.0",
   "description": "Narrative: Nelisa's Cash Store",
   "main": "index.js",
   "scripts": {
-    "test": "qunit -c ./functions/avgDailySalesPerCat.js -t ./tests/avgDailySalesPerCat_test.js"
+
+    "test": "qunit -c ./functions/supplyPopProduct.js -t ./tests/supplyPopProduct_test.js"
   },
   "author": "Taariq Isaacs",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "sqlite3": "~3.0.5"
+    "sqlite3": "~3.0.5",
+    "express": "~4.12.3",
+    "express-handlebars": "~2.0.0"
   },
   "devDependencies": {
-     "qunit": "~0.7.5"
-  }
+    "qunit": "~0.7.5"
+  },
+  "engines": {
+	"node": "0.10.25"
+   }
 }

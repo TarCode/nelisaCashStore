@@ -4,6 +4,7 @@
   "description": "Narrative: Nelisa's Cash Store",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "test": "qunit -c ./functions/supplyPopProduct.js -t ./tests/supplyPopProduct_test.js"
   },
   "author": "Taariq Isaacs",
@@ -15,5 +16,8 @@
   },
   "devDependencies": {
     "qunit": "~0.7.5"
-  }
+  },
+  "engines": {
+	"node": "0.10.25"
+   }
 }
