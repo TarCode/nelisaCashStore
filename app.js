@@ -10,9 +10,9 @@ var app = express();
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'UvEHEMoL4puS)',
       port: 3306,
-      database: 'nelisaSpaza'
+      database: ' nelisaRaw'
 };
 
 

@@ -12,7 +12,7 @@ var dbOptions = {
       user: 'root',
       password: 'coder123',
       port: 3306,
-      database: 'nelisaRaw'
+      database: 'nelisaSpaza'
 };
 
 
