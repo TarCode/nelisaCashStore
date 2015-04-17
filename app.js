@@ -141,7 +141,10 @@ app.get('/avgTotalSalesPerWeekPerCat', function(req, res){
     res.render('listPage', {title: 'AVERAGE TOTAL SALES PER WEEK PER CATEGORY' ,prod:avgTotWeeklySalesPerCat});
 });
 
-var server = app.listen(3000, function () {
+
+
+var port = process.env.PORT || 3000;
+var server = app.listen(port, function () {
 
   var host = server.address().address
   var port = server.address().port
