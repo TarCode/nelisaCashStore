@@ -49,7 +49,7 @@ exports.showProdPopularity = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-        connection.query('select product.prod_name, sum(qtySold) as totalSold from sales, product where sales.prod_id = product.prod_id group by sales.prod_id order by totalSold desc', [], function(err, results) {
+        connection.query('select prod_name, sum(qtySold) as totalSold, supplier_name from product, sales, supplier where product.prod_id = sales.prod_id and product.supplier_id = supplier.supplier_id group by prod_name order by totalSold desc', [], function(err, results) {
             if (err) return next(err);
 
             res.render( 'prodPopularity', {
@@ -63,7 +63,7 @@ exports.showCatPopularity = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-        connection.query('select cat_name, sum(qtySold) as totalSold from category, product, sales where category.cat_id = product.cat_id and product.prod_id = sales.prod_id group by cat_name order by totalSold desc', [], function(err, results) {
+        connection.query('select cat_name, sum(qtySold) as totalSold, supplier_name from category, product, sales, supplier where category.cat_id = product.cat_id and product.prod_id = sales.prod_id and product.supplier_id = supplier.supplier_id group by cat_name order by totalSold desc', [], function(err, results) {
             if (err) return next(err);
 
             res.render( 'catPopularity', {
@@ -77,11 +77,25 @@ exports.showProdProfit = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-        connection.query('select prod_name, (salePrice - cost) as profit from product,sales,stock where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id group by prod_name order by profit desc', [], function(err, results) {
+        connection.query('select prod_name, supplier_name, (salePrice - cost) as profit from product,sales,stock,supplier where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id and product.supplier_id = supplier.supplier_id group by prod_name order by profit desc', [], function(err, results) {
             if (err) return next(err);
 
             res.render( 'prodProfit', {
                 prodProfit : results
+            });
+        });
+    });
+};
+
+exports.showCatProfit = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('select cat_name, supplier_name, sum(salePrice - cost) as profit from product,sales,stock,supplier, category where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id and product.supplier_id = supplier.supplier_id and product.cat_id = category.cat_id group by cat_name order by profit desc', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'catProfit', {
+                catProfit : results
             });
         });
     });

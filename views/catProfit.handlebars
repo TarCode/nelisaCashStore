@@ -8,27 +8,23 @@
         </div>-->
 
         <hr />
-        <div><h3 class = 'text-center'>PURCHASE HISTORY</h3></div>
+        <div><h3 class = 'text-center'>PRODUCT PROFITS</h3></div>
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <table class="table">
                     <tr>
-                        <th>Product ID</th>
-                        <th>Date</th>
-                        <th>Quantity</th>
-                        <th>Cost</th>
-                        <th>Total Cost</th>
+                        <th>Category Name</th>
+                        <th>Supplier Name</th>
+                        <th>Profit</th>
                     </tr>
-                    {{#stock}}
+                    {{#catProfit}}
                     <tr>
-                        <td>{{prod_id}}</td>
-                        <td>{{date}}</td>
-                        <td>{{quantity}}</td>
-                        <td>{{cost}}</td>
-                        <td>{{totalCost}}</td>
+                            <td>{{cat_name}}</td>
+                            <td>{{supplier_name}}</td>
+                            <td>{{profit}}</td>
                     </tr>
-                    {{/stock}}
+                    {{/catProfit}}
                 </table>
             </div>
 
@@ -36,3 +32,4 @@
 
     </div>
 </div>
+
