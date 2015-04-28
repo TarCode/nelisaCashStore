@@ -1,0 +1,44 @@
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1 class = 'data-title'>Edit</h1>
+                <p>Welcome to Nelisa Spaza Inc Inventory System</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <h1 >Add a Category</h1>
+        <br />
+        <form action="/addCat" method="POST">
+            Category Name: <br /><input type="text" name="cat_name">
+            <br /><br /><input type="submit">
+        </form>
+        <hr />
+
+        <h1>Add a Product</h1>
+        <br />
+        <form action="/addProd" method="POST">
+            Product Name: <br /><input type="text" name="prod_name">
+            <br/><br/>Category ID: <br/>
+            <select>
+                {{#category}}
+                    <option value="{{cat_id}}">{{cat_name}}</option>
+                {{/category}}
+            </select>
+            <br /><br /><input type="submit">
+        </form>
+        <hr />
+
+        <h1>Add a Supplier</h1>
+        <br />
+        <form action="/addSupp" method="POST">
+            Supplier Name: <br /><input type="text" name="supplier_name">
+            <br /><br /><input type="submit">
+        </form>
+        <hr />
+
+    </div>
+</div>
+</div>

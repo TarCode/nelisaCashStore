@@ -33,11 +33,19 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
+app.get('/add', nelisaSpaza.showAddCat);
+
+app.post('/addCat', nelisaSpaza.addCat);
+app.post('/addProd', nelisaSpaza.addProd);
+app.post('/addSupp', nelisaSpaza.addSupp);
+
 app.get('/products', nelisaSpaza.showProducts);
 
 app.get('/purchases', nelisaSpaza.showPurchases);
 
 app.get('/suppliers', nelisaSpaza.showSuppliers);
+
+app.get('/category', nelisaSpaza.showCategory);
 
 app.get('/prodPopularity', nelisaSpaza.showProdPopularity);
 

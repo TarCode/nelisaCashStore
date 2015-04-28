@@ -3,6 +3,75 @@
  */	
 
 //todo - fix the error handling
+exports.showAddCat = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from category', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'addPage', {
+                category : results
+            });
+        });
+    });
+};
+
+exports.addCat = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            cat_name : input.cat_name
+        };
+        connection.query('insert into category set ?', data, function(err, results) {
+            if (err)
+                console.log("Error inserting : %s ",err );
+
+            res.redirect('/');
+        });
+    });
+};
+
+exports.addProd = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            prod_name : input.prod_name,
+            cat_id : input.cat_id
+        };
+        connection.query('insert into product set ?', data, function(err, results) {
+            if (err)
+                console.log("Error inserting : %s ",err );
+
+            res.redirect('/');
+        });
+    });
+};
+
+exports.addSupp = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            supplier_name : input.supplier_name
+        };
+        connection.query('insert into supplier set ?', data, function(err, results) {
+            if (err)
+                console.log("Error inserting : %s ",err );
+
+            res.redirect('/');
+        });
+    });
+};
+
 
 exports.showProducts = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -40,6 +109,20 @@ exports.showSuppliers = function (req, res, next) {
 
             res.render( 'suppliers', {
                 supplier : results
+            });
+        });
+    });
+};
+
+exports.showCategory = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from category', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'category', {
+                category : results
             });
         });
     });
