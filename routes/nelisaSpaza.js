@@ -77,7 +77,7 @@ exports.showProdProfit = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-        connection.query('SELECT prod_name, salePrice-cost as profit FROM product,sales,stock WHERE product.prod_id = sales.prod_id AND sales.prod_id = stock.prod_id GROUP BY prod_name ORDER BY profit DESC', [], function(err, results) {
+        connection.query('select prod_name, min(salePrice-cost) as minProfit, max(salePrice-cost) as maxProfit from product, sales, stock where product.prod_id = sales.prod_id and sales.prod_id = stock.prod_id group by prod_name order by maxProfit desc', [], function(err, results) {
             if (err) return next(err);
 
             res.render( 'prodProfit', {
