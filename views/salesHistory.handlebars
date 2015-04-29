@@ -8,30 +8,28 @@
         </div>-->
 
         <hr />
-        <div><h3 class = 'text-center'>PURCHASE HISTORY</h3></div>
+        <div><h3 class = 'text-center'>SALES HISTORY</h3></div>
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div><button><a href = "/addPurchases">Add a Purchase</a></button></div>
+                <div><button><a href = "/addSales">Add a Sale</a></button></div>
                 <table class="table">
                     <tr>
-                        <th>Purchase ID</th>
+                        <th>Sale ID</th>
                         <th>Product</th>
                         <th>Date</th>
                         <th>Quantity</th>
-                        <th>Cost</th>
-                        <th>Total Cost</th>
+                        <th>Sale Price</th>
                     </tr>
-                    {{#stock}}
+                    {{#sales}}
                     <tr>
-                        <td>{{purchase_id}}</td>
+                        <td>{{sale_id}}</td>
                         <td>{{prod_name}}</td>
                         <td>{{date}}</td>
-                        <td>{{quantity}}</td>
-                        <td>{{cost}}</td>
-                        <td>{{totalCost}}</td>
+                        <td>{{qtySold}}</td>
+                        <td>{{salePrice}}</td>
                     </tr>
-                    {{/stock}}
+                    {{/sales}}
                 </table>
             </div>
 

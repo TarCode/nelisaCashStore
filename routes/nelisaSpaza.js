@@ -24,10 +24,38 @@ exports.showAddProd = function (req, res, next) {
         connection.query('SELECT * from product', [], function(err, results) {
             if (err) return next(err);
 
-            res.render( 'addTransaction', {
+            res.render( 'addSale', {
                 product : results
             });
         });
+    });
+};
+
+
+
+exports.showAddSupp = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from supplier', [], function(err, supps) {
+            if (err) return next(err);
+            connection.query('SELECT * from stock', [], function(err, stock) {
+                if (err) return next(err);
+                connection.query('SELECT * from product', [], function(err, prod) {
+                    if (err) return next(err);
+                    res.render( 'addPurchase', {
+                        product : prod,
+                        supplier: supps,
+                        stock: stock
+                    });
+
+                });
+
+            });
+
+        });
+
+
     });
 };
 
@@ -108,6 +136,29 @@ exports.addSale = function (req, res, next) {
     });
 };
 
+exports.addPurchase = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            prod_id: input.prod_id,
+            supplier_id: input.supplier_id,
+            date : input.date,
+            quantity: input.quantity,
+            cost: input.cost,
+            totalCost: (input.cost*input.quantity)
+        };
+        connection.query('insert into stock set ?', data, function(err, results) {
+            if (err)
+                console.log("Error inserting : %s ",err );
+
+            res.redirect('/purchases');
+        });
+    });
+};
+
 exports.showProducts = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) 
@@ -122,11 +173,25 @@ exports.showProducts = function (req, res, next) {
 	});
 };
 
+exports.showSales = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'salesHistory', {
+                sales : results
+            });
+        });
+    });
+};
+
 exports.showPurchases = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-        connection.query('SELECT * from stock', [], function(err, results) {
+        connection.query('SELECT * from stock, product WHERE stock.prod_id = product.prod_id order by purchase_id desc', [], function(err, results) {
             if (err) return next(err);
 
             res.render( 'purchaseHistory', {

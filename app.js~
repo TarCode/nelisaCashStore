@@ -10,9 +10,9 @@ var app = express();
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'UvEHEMoL4puS)',
       port: 3306,
-      database: 'nelisaSpaza'
+      database: ' nelisaRaw'
 };
 
 
@@ -33,14 +33,18 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get('/add', nelisaSpaza.showAddCat); //renders add page and fetches categories from db for dropdown
+app.get('/addEntity', nelisaSpaza.showAddCat); //renders add page and fetches categories from db for dropdown
+app.get('/addTransaction', nelisaSpaza.showAddProd); //renders add page and fetches categories from db for dropdown
+
 
 //posts data to server and calls function to add data to database
 app.post('/addCat', nelisaSpaza.addCat);
 app.post('/addProd', nelisaSpaza.addProd);
 app.post('/addSupp', nelisaSpaza.addSupp);
+app.post('/addSale', nelisaSpaza.addSale);
 
 app.get('/products', nelisaSpaza.showProducts);
+app.get('/products', nelisaSpaza.showAddCat);
 
 app.get('/purchases', nelisaSpaza.showPurchases);
 
