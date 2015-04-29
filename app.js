@@ -33,8 +33,9 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get('/add', nelisaSpaza.showAddCat);
+app.get('/add', nelisaSpaza.showAddCat); //renders add page and fetches categories from db for dropdown
 
+//posts data to server and calls function to add data to database
 app.post('/addCat', nelisaSpaza.addCat);
 app.post('/addProd', nelisaSpaza.addProd);
 app.post('/addSupp', nelisaSpaza.addSupp);

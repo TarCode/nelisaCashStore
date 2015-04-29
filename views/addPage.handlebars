@@ -11,9 +11,10 @@
 
         <h1 >Add a Category</h1>
         <br />
+        <!-- form calls /addCat and posts input to database-->
         <form action="/addCat" method="POST">
             Category Name: <br /><input type="text" name="cat_name">
-            <br /><br /><input type="submit">
+            <br/><br/><input type="submit">
         </form>
         <hr />
 
@@ -22,7 +23,8 @@
         <form action="/addProd" method="POST">
             Product Name: <br /><input type="text" name="prod_name">
             <br/><br/>Category ID: <br/>
-            <select>
+            <!--dropdown menu gets cat_name from category-->
+            <select name="cat_id">
                 {{#category}}
                     <option value="{{cat_id}}">{{cat_name}}</option>
                 {{/category}}
