@@ -12,17 +12,21 @@
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
+                <div><button><a href = "/add">Add a Product</a></button></div>
+                <hr/>
                 <table class="table">
                     <tr>
                         <th>Product ID</th>
                         <th>Product Name</th>
-                        <th>Category ID</th>
+                        <th>Category Name</th>
                     </tr>
                     {{#product}}
                     <tr>
                             <td>{{prod_id}}</td>
                             <td>{{prod_name}}</td>
-                            <td>{{cat_id}}</td>
+                            <td>{{cat_name}}</td>
+                            <td><button>edit</button><button>delete</button></td>
+
                     </tr>
                     {{/product}}
                 </table>

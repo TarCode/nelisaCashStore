@@ -10,8 +10,22 @@ exports.showAddCat = function (req, res, next) {
         connection.query('SELECT * from category', [], function(err, results) {
             if (err) return next(err);
 
-            res.render( 'addPage', {
+            res.render( 'addEntity', {
                 category : results
+            });
+        });
+    });
+};
+
+exports.showAddProd = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from product', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render( 'addTransaction', {
+                product : results
             });
         });
     });
@@ -30,7 +44,7 @@ exports.addCat = function (req, res, next) {
             if (err)
                 console.log("Error inserting : %s ",err );
 
-            res.redirect('/');
+            res.redirect('/category');
         });
     });
 };
@@ -49,10 +63,11 @@ exports.addProd = function (req, res, next) {
             if (err)
                 console.log("Error inserting : %s ",err );
 
-            res.redirect('/');
+            res.redirect('/products');
         });
     });
 };
+
 
 exports.addSupp = function (req, res, next) {
     req.getConnection(function(err, connection){
@@ -67,17 +82,37 @@ exports.addSupp = function (req, res, next) {
             if (err)
                 console.log("Error inserting : %s ",err );
 
+            res.redirect('/suppliers');
+        });
+    });
+};
+
+exports.addSale = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            prod_id: input.prod_id,
+            date : input.date,
+            qtySold: input.qtySold,
+            salePrice: input.salePrice
+        };
+        connection.query('insert into sales set ?', data, function(err, results) {
+            if (err)
+                console.log("Error inserting : %s ",err );
+
             res.redirect('/');
         });
     });
 };
 
-
 exports.showProducts = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) 
 			return next(err);
-		connection.query('SELECT * from product', [], function(err, results) {
+		connection.query('SELECT prod_id,prod_name,cat_name from product,category where product.cat_id = category.cat_id', [], function(err, results) {
         	if (err) return next(err);
 
     		res.render( 'productList', {
