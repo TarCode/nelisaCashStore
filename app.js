@@ -45,6 +45,14 @@ app.post('/addSupp', nelisaSpaza.addSupp);
 app.post('/addSale', nelisaSpaza.addSale);
 app.post('/addPurchase', nelisaSpaza.addPurchase);
 
+// gets product id and inserts it into the route to execute the delete function
+app.get('/products/delProd/:prod_id', nelisaSpaza.delProd);
+app.get('/category/delCat/:cat_id', nelisaSpaza.delCat);
+app.get('/suppliers/delSupp/:supplier_id', nelisaSpaza.delSupp);
+app.get('/sales/delSale/:sale_id', nelisaSpaza.delSale);
+app.get('/stock/delPurchase/:purchase_id', nelisaSpaza.delPurchase);
+
+
 //gets data from the database and displays it on the web page
 app.get('/products', nelisaSpaza.showProducts);
 app.get('/purchases', nelisaSpaza.showPurchases);

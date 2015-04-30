@@ -3,6 +3,7 @@
  */	
 // Here is all the functions for getting data from the db and rendering it to the webpage and visa versa
 //todo - fix the error handling
+// the show add functions
 exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
@@ -57,6 +58,7 @@ exports.showAddSupp = function (req, res, next) {
     });
 };
 
+// the add functions
 exports.addCat = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err){
@@ -128,7 +130,7 @@ exports.addSale = function (req, res, next) {
             if (err)
                 console.log("Error inserting : %s ",err );
 
-            res.redirect('/');
+            res.redirect('/sales');
         });
     });
 };
@@ -154,8 +156,93 @@ exports.addPurchase = function (req, res, next) {
             res.redirect('/purchases');
         });
     });
+}
+
+
+//the delete functions
+exports.delProd = function (req, res, next) {
+    var prod_id = req.params.prod_id;
+
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+
+        connection.query('delete from product where prod_id = ?',[prod_id], function(err, results) {
+            if (err)
+                console.log("Error deleting : %s ",err );
+
+            res.redirect('/products');
+        });
+    });
 };
 
+exports.delCat = function (req, res, next) {
+    var cat_id = req.params.cat_id;
+
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+
+        connection.query('delete from category where cat_id = ?',[cat_id], function(err, results) {
+            if (err)
+                console.log("Error deleting : %s ",err );
+            res.redirect('/category');
+        });
+    });
+};
+
+exports.delSupp = function (req, res, next) {
+    var supplier_id = req.params.supplier_id;
+
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+
+        connection.query('delete from supplier where supplier_id = ?',[supplier_id], function(err, results) {
+            if (err)
+                console.log("Error deleting : %s ",err );
+            res.redirect('/suppliers');
+        });
+    });
+};
+
+exports.delSale = function (req, res, next) {
+    var sale_id = req.params.sale_id;
+
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+
+        connection.query('delete from sales where sale_id = ?',[sale_id], function(err, results) {
+            if (err)
+                console.log("Error deleting : %s ",err );
+            res.redirect('/sales');
+        });
+    });
+};
+
+exports.delPurchase = function (req, res, next) {
+    var purchase_id = req.params.purchase_id;
+
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+
+        connection.query('delete from stock where purchase_id = ?',[purchase_id], function(err, results) {
+            if (err)
+                console.log("Error deleting : %s ",err );
+            res.redirect('/purchases');
+        });
+    });
+};
+
+
+//
 exports.showProducts = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) 
