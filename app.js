@@ -10,9 +10,9 @@ var app = express();
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'UvEHEMoL4puS)',
       port: 3306,
-      database: 'nelisaSpaza'
+      database: ' nelisaRaw'
 };
 
 
@@ -33,8 +33,9 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get('/addEntity', nelisaSpaza.showAddCat); //renders add page and fetches categories from db for dropdown
-app.get('/addSales', nelisaSpaza.showAddProd); //renders add page and fetches categories from db for dropdown
+//renders add page and fetches data from db for dropdown
+app.get('/addEntity', nelisaSpaza.showAddCat);
+app.get('/addSales', nelisaSpaza.showAddProd);
 app.get('/addPurchases', nelisaSpaza.showAddSupp);
 
 //posts data to server and calls function to add data to database
@@ -44,22 +45,15 @@ app.post('/addSupp', nelisaSpaza.addSupp);
 app.post('/addSale', nelisaSpaza.addSale);
 app.post('/addPurchase', nelisaSpaza.addPurchase);
 
+//gets data from the database and displays it on the web page
 app.get('/products', nelisaSpaza.showProducts);
-
 app.get('/purchases', nelisaSpaza.showPurchases);
-
 app.get('/sales', nelisaSpaza.showSales);
-
 app.get('/suppliers', nelisaSpaza.showSuppliers);
-
 app.get('/category', nelisaSpaza.showCategory);
-
 app.get('/prodPopularity', nelisaSpaza.showProdPopularity);
-
 app.get('/catPopularity', nelisaSpaza.showCatPopularity);
-
 app.get('/prodProfit', nelisaSpaza.showProdProfit);
-
 app.get('/catProfit', nelisaSpaza.showCatProfit);
 
 var server = app.listen(3000, function () {

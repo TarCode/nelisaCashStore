@@ -1,7 +1,7 @@
 /***
  * A very basic CRUD example using MySQL
  */	
-
+// Here is all the functions for getting data from the db and rendering it to the webpage and visa versa
 //todo - fix the error handling
 exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){
@@ -30,8 +30,6 @@ exports.showAddProd = function (req, res, next) {
         });
     });
 };
-
-
 
 exports.showAddSupp = function (req, res, next) {
     req.getConnection(function(err, connection){
@@ -95,7 +93,6 @@ exports.addProd = function (req, res, next) {
         });
     });
 };
-
 
 exports.addSupp = function (req, res, next) {
     req.getConnection(function(err, connection){
@@ -200,6 +197,7 @@ exports.showPurchases = function (req, res, next) {
         });
     });
 };
+
 exports.showSuppliers = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
