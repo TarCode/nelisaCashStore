@@ -49,6 +49,9 @@ app.post('/addPurchase', nelisaSpaza.addPurchase);
 app.get('/category/getCat/:cat_id', nelisaSpaza.getCat);
 app.post('/category/updateCat/:cat_id', nelisaSpaza.updateCat);
 
+app.get('/suppliers/getSupp/:supplier_id', nelisaSpaza.getSupp);
+app.post('/suppliers/updateSupp/:supplier_id', nelisaSpaza.updateSupp);
+
 // gets product id and inserts it into the route to execute the delete function
 app.get('/products/delProd/:prod_id', nelisaSpaza.delProd);
 app.get('/category/delCat/:cat_id', nelisaSpaza.delCat);

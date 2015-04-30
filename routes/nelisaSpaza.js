@@ -324,6 +324,41 @@ exports.updateCat = function (req, res, next) {
     });
 };
 
+exports.getSupp = function (req, res, next) {
+    var supplier_id = req.params.supplier_id;
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        connection.query('select * from supplier where supplier_id = ?', [supplier_id], function(err, results) {
+            if (err)
+                console.log("Error getting : %s ",err );
+
+            res.render( 'updateSupp', {
+                supplier : results
+            });
+        });
+    });
+};
+
+exports.updateSupp = function (req, res, next) {
+    var supplier_id = req.params.supplier_id;
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            supplier_name : input.supplier_name
+        };
+        connection.query('update supplier set ? where supplier_id = ?',[data, supplier_id], function(err, results) {
+            if (err)
+                console.log("Error updating : %s ",err );
+
+            res.redirect('/suppliers');
+        });
+    });
+};
 
 
 
