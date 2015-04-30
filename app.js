@@ -38,12 +38,14 @@ app.get('/addEntity', nelisaSpaza.showAddCat);
 app.get('/addSales', nelisaSpaza.showAddProd);
 app.get('/addPurchases', nelisaSpaza.showAddSupp);
 
+
 //posts data to server and calls function to add data to database
 app.post('/addCat', nelisaSpaza.addCat);
 app.post('/addProd', nelisaSpaza.addProd);
 app.post('/addSupp', nelisaSpaza.addSupp);
 app.post('/addSale', nelisaSpaza.addSale);
 app.post('/addPurchase', nelisaSpaza.addPurchase);
+
 
 //update routes
 app.get('/category/getCat/:cat_id', nelisaSpaza.getCat);
@@ -53,12 +55,17 @@ app.post('/suppliers/updateSupp/:supplier_id', nelisaSpaza.updateSupp);
 app.get('/products/getProd/:prod_id', nelisaSpaza.getProd);
 app.post('/products/updateProd/:prod_id', nelisaSpaza.updateProd);
 
+app.get('/sales/getSale/:sale_id', nelisaSpaza.getSale);
+app.post('/sales/updateSale/:sale_id', nelisaSpaza.updateSale);
+
+
 // gets product id and inserts it into the route to execute the delete function
 app.get('/products/delProd/:prod_id', nelisaSpaza.delProd);
 app.get('/category/delCat/:cat_id', nelisaSpaza.delCat);
 app.get('/suppliers/delSupp/:supplier_id', nelisaSpaza.delSupp);
 app.get('/sales/delSale/:sale_id', nelisaSpaza.delSale);
 app.get('/stock/delPurchase/:purchase_id', nelisaSpaza.delPurchase);
+
 
 
 //gets data from the database and displays it on the web page
@@ -71,6 +78,7 @@ app.get('/prodPopularity', nelisaSpaza.showProdPopularity);
 app.get('/catPopularity', nelisaSpaza.showCatPopularity);
 app.get('/prodProfit', nelisaSpaza.showProdProfit);
 app.get('/catProfit', nelisaSpaza.showCatProfit);
+
 
 var server = app.listen(3000, function () {
 

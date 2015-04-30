@@ -396,6 +396,51 @@ exports.updateProd = function (req, res, next) {
     });
 };
 
+exports.getSale = function (req, res, next) {
+    var sale_id = req.params.sale_id;
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        connection.query('select * from sales where sale_id = ?', [sale_id], function(err, results) {
+            if (err)
+                console.log("Error getting : %s ",err );
+
+            connection.query('select * from product', [], function(err, prods) {
+                if (err)
+                    console.log("Error getting : %s ",err );
+                res.render( 'updateSale', {
+                    sale : results,
+                    product: prods
+                });
+
+            });
+        });
+    });
+};
+
+exports.updateSale = function (req, res, next) {
+    var sale_id = req.params.sale_id;
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            prod_id : input.prod_id,
+            date : input.date,
+            qtySold: input.qtySold,
+            salePrice: input.salePrice
+        };
+        connection.query('update sales set ? where sale_id = ?',[data, sale_id], function(err, results) {
+            if (err)
+                console.log("Error updating : %s ",err );
+
+            res.redirect('/sales');
+        });
+    });
+};
+
 
 
 
