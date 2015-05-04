@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Nelisa Spaza Inc</a>
+            <a class="navbar-brand" href="/">SpInS</a>
         </div>
 
     </nav>
@@ -40,15 +40,27 @@
 
 
                 <li>
-                    <a class="active-menu"  href="/"><i class="fa fa-dashboard fa-3x"></i> Home</a>
+                    <a class="active-menu"  href="/"><i class="fa fa-home fa-3x"></i> Home</a>
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-sitemap fa-3x"></i> Inventory Statistics<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-3x"></i>Table Data<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
 
                         <li>
-                            <a href="#">Edit<span class="fa arrow"></span></a>
+                            <a href="#">View/Edit<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/sales" class = "list-group-item">Sales</a></li>
+                                <li><a href="/purchases" class = "list-group-item">Purchases</a></li>
+                                <li><a href="/products" class = "list-group-item">Products</a></li>
+                                <li><a href="/suppliers" class = "list-group-item">Suppliers</a></li>
+                                <li><a href="/category" class = "list-group-item">Categories</a></li>
+                            </ul>
+
+                        </li>
+
+                        <li>
+                            <a href="#">Add<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li><a href="/addEntity" class = "list-group-item">Add Category/Product/Supplier</a></li>
                                 <li><a href="/addSales" class = "list-group-item">Add Sale</a></li>
@@ -57,17 +69,13 @@
 
                         </li>
 
-                        <li>
-                            <a href="#">Basic Info<span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                <li><a href="/products" class = "list-group-item">Products List</a></li>
-                                <li><a href="/purchases" class = "list-group-item">Stock Purchase History</a></li>
-                                <li><a href="/sales" class = "list-group-item">Sales History</a></li>
-                                <li><a href="/suppliers" class = "list-group-item">Supplier List</a></li>
-                                <li><a href="/category" class = "list-group-item">Category List</a></li>
-                            </ul>
+                    </ul>
+                </li>
 
-                        </li>
+                <li>
+                    <a href="#"><i class="fa fa-file-text fa-3x"></i> Inventory Statistics<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
                         <li>
                             <a href="#">Popularity<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
@@ -95,7 +103,7 @@
 
     {{{body}}}
     <footer class = "nelisaFooter navbar-fixed-bottom">
-        <p class = "text-center nelisaFooter">Nelisa Spaza Inc 2015</p>
+        <p class = "text-center nelisaFooter">TarCode & Pholisa 2015</p>
     </footer>
 
 </div>

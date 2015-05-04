@@ -15,7 +15,8 @@
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div><button><a href = "/addSales">Add a Sale</a></button></div>
+                <div class = "editButton2"><a href = "/addSales"><span class="fa fa-plus"></span></a></div>
+                <hr/>
                 <table class="table">
                     <tr>
                         <th>Sale ID</th>
@@ -23,6 +24,7 @@
                         <th>Date</th>
                         <th>Quantity</th>
                         <th>Sale Price</th>
+                        <th>Edit/Delete</th>
                     </tr>
                     {{#sales}}
                     <tr>
@@ -31,8 +33,7 @@
                         <td>{{date}}</td>
                         <td>{{qtySold}}</td>
                         <td>{{salePrice}}</td>
-                        <td><button><a href = "/sales/getSale/{{sale_id}}">Edit</a></button><button><a href = '/sales/delSale/{{sale_id}}'>Delete</a>
-                        </button></td>
+                        <td><div class = "editButtons"><a href = "/sales/getSale/{{sale_id}}"><span class="fa fa-edit"></span></a><a href = '/sales/delSale/{{sale_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
                     </tr>
                     {{/sales}}
                 </table>

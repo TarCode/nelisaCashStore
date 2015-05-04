@@ -5,6 +5,41 @@ body {
 #place-holder{
     height: 50%;
 }
+.editButtons a{
+    display: inline-block;
+    width: 2em;
+    text-align: center;
+    font-size: medium;
+    text-decoration: none;
+    background-color: #008800;
+    padding: 0.3em;
+    margin: 0.1em;
+    border-radius: 0.3em;
+    color: #e1edf7;
+}
+.editButtons a:hover{
+    color: #e1edf7;
+    background-color: #B40101;
+}
+
+.editButton2 a{
+    display: inline-block;
+    float: right;
+    width: 8em;
+    text-align: center;
+    font-size: medium;
+    text-decoration: none;
+    background-color: #008800;
+    padding: 0.3em;
+    margin: 0.1em;
+    border-radius: 0.3em;
+    color: #e1edf7;
+}
+.editButton2 a:hover{
+    color: #e1edf7;
+    background-color: #B40101;
+}
+
 .nelisaFooter{
     color: #e1edf7;
     background-color: #C90000;
@@ -204,14 +239,14 @@ background-color: #FFF;
 
 
  @media(min-width:768px) {
+
      #page-wrapper{
                margin: 0 0 0 260px;
         padding: 15px 30px;
 
 		
     }
-	
-	
+
     .navbar-side {
         z-index: 1;
         position: absolute;

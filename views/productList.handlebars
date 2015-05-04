@@ -13,21 +13,21 @@
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div><button><a href = "/addEntity">Add a Product</a></button></div>
+                <div class = "editButton2"><a href = "/addEntity"><span class="fa fa-plus"></span></a></div>
                 <hr/>
                 <table class="table">
                     <tr>
                         <th>Product ID</th>
                         <th>Product Name</th>
                         <th>Category Name</th>
+                        <th>Edit/Delete</th>
                     </tr>
                     {{#product}}
                     <tr>
                             <td>{{prod_id}}</td>
                             <td>{{prod_name}}</td>
                             <td>{{cat_name}}</td>
-                            <td><button><a href = "/products/getProd/{{prod_id}}">Edit</a></button><button><a href = '/products/delProd/{{prod_id}}'>Delete</a>
-                            </button></td>
+                            <td><div class = "editButtons"><a href = "/products/getProd/{{prod_id}}"><span class="fa fa-edit"></span></a><a href = '/products/delProd/{{prod_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
 
                     </tr>
                     {{/product}}

@@ -11,17 +11,19 @@
         <div><h3 class = 'text-center'>CATEGORY LIST</h3></div>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div><button><a href = "/addEntity">Add a Category</a></button></div>
+                <div class = "editButton2"><a href = "/addEntity"><span class="fa fa-plus"></span></a></div>
+                <hr/>
                 <table class="table">
                     <tr>
                         <th>Category ID</th>
                         <th>Category Name</th>
+                        <th>Edit/Delete</th>
                     </tr>
                     {{#category}}
                     <tr>
                             <td>{{cat_id}}</td>
                             <td>{{cat_name}}</td>
-                            <td><button><a href = "/category/getCat/{{cat_id}}">Edit</a></button><button><a href = '/category/delCat/{{cat_id}}'>Delete</a></button></td>
+                            <td><div class = "editButtons"><a href = "/category/getCat/{{cat_id}}"> <span class="fa fa-edit"></span> </a><a onclick = 'alert("Cannot delete categories linked to products!")' href = '/category/delCat/{{cat_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
                     </tr>
                     {{/category}}
                 </table>
