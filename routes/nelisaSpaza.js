@@ -441,6 +441,59 @@ exports.updateSale = function (req, res, next) {
     });
 };
 
+exports.getPurchase = function (req, res, next) {
+    var purchase_id = req.params.purchase_id;
+    req.getConnection(function (err, connection) {
+        if (err) {
+            return next(err);
+        }
+        connection.query('select * from stock where purchase_id = ?', [purchase_id], function (err, results) {
+            if (err)
+                console.log("Error getting : %s ", err);
+
+            connection.query('select * from product', [], function (err, prods) {
+                if (err)
+                    console.log("Error getting : %s ", err);
+
+                connection.query('select * from supplier', [], function (err, supps) {
+                    if (err)
+                        console.log("Error getting : %s ", err);
+                    res.render('updatePurchase', {
+                        stock: results,
+                        product: prods,
+                        supplier: supps
+                    });
+
+                });
+            });
+        });
+    });
+};
+
+exports.updatePurchase = function (req, res, next) {
+    var purchase_id = req.params.purchase_id;
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            prod_id : input.prod_id,
+            supplier_id: input.supplier_id,
+            date : input.date,
+            quantity: input.quantity,
+            cost: input.cost,
+            totalCost: (input.cost*input.quantity)
+        };
+        connection.query('update stock set ? where purchase_id = ?',[data, purchase_id], function(err, results) {
+            if (err)
+                console.log("Error updating : %s ",err );
+
+            res.redirect('/stock');
+        });
+    });
+};
+
 
 
 

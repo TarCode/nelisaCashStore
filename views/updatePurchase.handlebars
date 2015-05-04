@@ -10,26 +10,33 @@
         <hr />
 
 <!--Update sale section-->
-        <h1 >Update Sale</h1>
+        <h1 >Update Purchase</h1>
         <br />
         <!-- form calls /addCat and posts input to database-->
         <br />
 
-    {{#sale}}
-            <form action="/sales/updateSale/{{sale_id}}" method="POST">
-    {{/sale}}
+    {{#stock}}
+            <form action="/stock/updatePurchase/{{purchase_id}}" method="POST">
+    {{/stock}}
                 Date: <br /><input type="date" name="date">
                 <br/><br/>
-                Quantity Sold: <br /><input type="number" name="qtySold">
+                Quantity Sold: <br /><input type="number" name="quantity">
                 <br/><br/>Product: <br/>
                 <!--dropdown menu gets cat_name from category-->
                 <select name="prod_id">
                     {{#product}}
-                        <option selected name="prod_name" value="{{prod_id}}">{{prod_name}}</option>
+                        <option selected value="{{prod_id}}">{{prod_name}}</option>
                     {{/product}}
                 </select>
+                <br/><br/>Supplier: <br/>
+                <!--dropdown menu gets cat_name from category-->
+                <select name="supplier_id">
+                    {{#supplier}}
+                        <option selected value="{{supplier_id}}">{{supplier_name}}</option>
+                    {{/supplier}}
+                </select>
                 <br/><br/>
-                Sale Price: <br /><input type="number" step="0.01" name="salePrice">
+                Cost Price: <br /><input type="number" step="0.01" name="cost">
                 <br /><br /><input type="submit">
             </form>
 
