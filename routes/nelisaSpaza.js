@@ -69,6 +69,14 @@ exports.addCat = function (req, res, next) {
         var data = {
             cat_name : input.cat_name
         };
+
+        if(data.cat_name.trim() === "" ){
+            res.render( 'addEntity', {
+                error : "Category cannot be blank"
+            });
+            return;
+        }
+
         connection.query('insert into category set ?', data, function(err, results) {
             if (err)
                 console.log("Error inserting : %s ",err );

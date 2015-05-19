@@ -12,9 +12,11 @@
 <!--Add category section-->
         <h1 >Add a Category</h1>
         <br />
+
         <!-- form calls /addCat and posts input to database-->
         <form action="/addCat" method="POST">
             Category Name: <br /><input type="text" name="cat_name">
+            <div class = "error">{{error}}</div>
             <br/><br/><input type="submit">
         </form>
         <hr />
