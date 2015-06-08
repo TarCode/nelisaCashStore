@@ -7,7 +7,7 @@ var express = require('express'),
     session = require('express-session');
 
 var app = express();
-
+var user = "";
 var dbOptions = {
      host: 'localhost',
       user: 'root',
@@ -33,13 +33,21 @@ app.use(session({secret: "bookworms", cookie: {maxAge: 60000}, resave:true, save
 
 
 app.get('/', function (req, res) {
-    res.render('home');
+    if(req.session.user){
+        res.render('loggedIn', {
+                user: user
+            });
+    }
+    else{
+        res.render('home');
+    }
+    
 });
 
 app.post('/login', function (req,res,next) {
     req.session.user = req.body.user;
     if(req.session.user){
-        var user = req.session.user;
+        user = req.session.user;
             res.render('loggedIn', {
                 user: user
             });
@@ -55,6 +63,17 @@ app.get('/logout', function (req, res){
 	res.render('home',{
                 msg : msg
     });
+});
+
+app.use(function(req, res, next){
+  if(req.session.user){
+      //proceed to the next middleware component
+  next();
+  }
+  else{
+      res.redirect("/");
+  }
+  
 });
 
 //renders add page and fetches data from db for dropdown
@@ -102,6 +121,7 @@ app.get('/prodPopularity', nelisaSpaza.showProdPopularity);
 app.get('/catPopularity', nelisaSpaza.showCatPopularity);
 app.get('/prodProfit', nelisaSpaza.showProdProfit);
 app.get('/catProfit', nelisaSpaza.showCatProfit);
+
 
 
 var server = app.listen(3000, function () {
