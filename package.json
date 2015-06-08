@@ -12,12 +12,14 @@
   "dependencies": {
     "sqlite3": "~3.0.5",
     "express": "~4.12.3",
-    "express-handlebars": "~2.0.0"
+    "express-handlebars": "~2.0.0",
+    "body-parser": "~1.12.4",
+    "express-session": "~1.11.2"
   },
   "devDependencies": {
     "qunit": "~0.7.5"
   },
   "engines": {
-	"node": "0.10.25"
-   }
+    "node": "0.10.25"
+  }
 }

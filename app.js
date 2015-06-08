@@ -1,4 +1,4 @@
-var express = require('express')
+var express = require('express'),
     mysql = require('mysql'),
     exphbs  = require('express-handlebars'), 
     myConnection = require('express-myconnection'),
@@ -11,9 +11,9 @@ var app = express();
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'UvEHEMoL4puS)',
+      password: 'coder123',
       port: 3306,
-      database: ' nelisaRaw'
+      database: 'nelisa'
 };
 
 
@@ -36,7 +36,7 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.post('/login', function (res,req,next) {
+app.post('/login', function (req,res,next) {
     req.session.user = req.body.user;
     if(req.session.user){
         var user = req.session.user;
@@ -45,8 +45,16 @@ app.post('/login', function (res,req,next) {
             });
     }
     else{
-        res.redirect('/')
+        res.redirect('/');
     }
+});
+
+app.get('/logout', function (req, res){
+	var msg = "You have logged out";
+	delete req.session.user;
+	res.render('home',{
+                msg : msg
+    });
 });
 
 //renders add page and fetches data from db for dropdown
@@ -98,10 +106,10 @@ app.get('/catProfit', nelisaSpaza.showCatProfit);
 
 var server = app.listen(3000, function () {
 
-  var host = server.address().address
-  var port = server.address().port
+  var host = server.address().address;
+  var port = server.address().port;
 
-  console.log('Nelisa app listening at http://%s:%s', host, port)
+  console.log('Nelisa app listening at http://%s:%s', host, port);
 
 })
 
