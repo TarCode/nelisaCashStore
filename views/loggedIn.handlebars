@@ -10,10 +10,9 @@
 
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <h2 class = " text-center data-title">Login</h2>
-                <form class="text-center" action="/login" method="post">
-                    Name: <input type="text" name="user"> <br/><br/>
-                    <button type="submit">Login</button>
+                <h2 class = " text-center data-title">You are logged in as: <strong>{{user}}</strong></h2>
+                <form class="text-center" action="/logout" method="get">
+                    <button type="submit">Logout</button>
                 </form>
             </div>
         </div>

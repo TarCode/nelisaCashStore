@@ -3,16 +3,17 @@ var express = require('express')
     exphbs  = require('express-handlebars'), 
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
-    nelisaSpaza = require('./routes/nelisaSpaza');
+    nelisaSpaza = require('./routes/nelisaSpaza'),
+    session = require('express-session');
 
 var app = express();
 
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'UvEHEMoL4puS)',
       port: 3306,
-      database: 'nelisaSpaza'
+      database: ' nelisaRaw'
 };
 
 
@@ -28,9 +29,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.use(session({secret: "bookworms", cookie: {maxAge: 60000}, resave:true, saveUninitialized: false}));
+
 
 app.get('/', function (req, res) {
     res.render('home');
+});
+
+app.post('/login', function (res,req,next) {
+    req.session.user = req.body.user;
+    if(req.session.user){
+        var user = req.session.user;
+            res.render('loggedIn', {
+                user: user
+            });
+    }
+    else{
+        res.redirect('/')
+    }
 });
 
 //renders add page and fetches data from db for dropdown
