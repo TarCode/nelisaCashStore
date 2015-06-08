@@ -11,9 +11,9 @@ var user = "";
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'UvEHEMoL4puS)',
       port: 3306,
-      database: 'nelisa'
+      database: ' nelisaRaw'
 };
 
 
@@ -77,9 +77,11 @@ app.use(function(req, res, next){
 });
 
 //renders add page and fetches data from db for dropdown
-app.get('/addEntity', nelisaSpaza.showAddCat);
-app.get('/addSales', nelisaSpaza.showAddProd);
-app.get('/addPurchases', nelisaSpaza.showAddSupp);
+app.get('/addCategory', nelisaSpaza.showAddCat);
+app.get('/addProduct', nelisaSpaza.showAddProd);
+app.get('/addSupplier',nelisaSpaza.showAddSupplier);
+app.get('/addSales', nelisaSpaza.showAddSale);
+app.get('/addPurchases', nelisaSpaza.showAddPurchase);
 
 
 //posts data to server and calls function to add data to database

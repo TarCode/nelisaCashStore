@@ -9,17 +9,36 @@ exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-        connection.query('SELECT * from category', [], function(err, results) {
+            res.render('addCategory');
+    });
+};
+
+exports.showAddProd = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+               connection.query('SELECT * from category', [], function(err, results) {
             if (err) return next(err);
 
-            res.render( 'addEntity', {
+            res.render( 'addProduct', {
                 category : results
             });
         });
     });
 };
 
-exports.showAddProd = function (req, res, next) {
+exports.showAddSupplier = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+
+                    res.render( 'addSupplier');
+
+                });
+
+};
+
+exports.showAddSale = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
@@ -33,7 +52,7 @@ exports.showAddProd = function (req, res, next) {
     });
 };
 
-exports.showAddSupp = function (req, res, next) {
+exports.showAddPurchase = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
@@ -71,7 +90,7 @@ exports.addCat = function (req, res, next) {
         };
 
         if(data.cat_name.trim() === "" ){
-            res.render( 'addEntity', {
+            res.render( 'addCategory', {
                 error : "Category cannot be blank"
             });
             return;
