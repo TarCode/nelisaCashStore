@@ -1,4 +1,4 @@
-var express = require('express')
+var express = require('express'),
     mysql = require('mysql'),
     exphbs  = require('express-handlebars'), 
     myConnection = require('express-myconnection'),
@@ -7,7 +7,7 @@ var express = require('express')
     session = require('express-session');
 
 var app = express();
-
+var user = "";
 var dbOptions = {
      host: 'localhost',
       user: 'root',
@@ -33,26 +33,55 @@ app.use(session({secret: "bookworms", cookie: {maxAge: 60000}, resave:true, save
 
 
 app.get('/', function (req, res) {
-    res.render('home');
+    if(req.session.user){
+        res.render('loggedIn', {
+                user: user
+            });
+    }
+    else{
+        res.render('home');
+    }
+    
 });
 
-app.post('/login', function (res,req,next) {
+app.post('/login', function (req,res,next) {
     req.session.user = req.body.user;
     if(req.session.user){
-        var user = req.session.user;
+        user = req.session.user;
             res.render('loggedIn', {
                 user: user
             });
     }
     else{
-        res.redirect('/')
+        res.redirect('/');
     }
 });
 
+app.get('/logout', function (req, res){
+	var msg = "You have logged out";
+	delete req.session.user;
+	res.render('home',{
+                msg : msg
+    });
+});
+
+app.use(function(req, res, next){
+  if(req.session.user){
+      //proceed to the next middleware component
+  next();
+  }
+  else{
+      res.redirect("/");
+  }
+  
+});
+
 //renders add page and fetches data from db for dropdown
-app.get('/addEntity', nelisaSpaza.showAddCat);
-app.get('/addSales', nelisaSpaza.showAddProd);
-app.get('/addPurchases', nelisaSpaza.showAddSupp);
+app.get('/addCategory', nelisaSpaza.showAddCat);
+app.get('/addProduct', nelisaSpaza.showAddProd);
+app.get('/addSupplier',nelisaSpaza.showAddSupplier);
+app.get('/addSales', nelisaSpaza.showAddSale);
+app.get('/addPurchases', nelisaSpaza.showAddPurchase);
 
 
 //posts data to server and calls function to add data to database
@@ -96,12 +125,13 @@ app.get('/prodProfit', nelisaSpaza.showProdProfit);
 app.get('/catProfit', nelisaSpaza.showCatProfit);
 
 
+
 var server = app.listen(3000, function () {
 
-  var host = server.address().address
-  var port = server.address().port
+  var host = server.address().address;
+  var port = server.address().port;
 
-  console.log('Nelisa app listening at http://%s:%s', host, port)
+  console.log('Nelisa app listening at http://%s:%s', host, port);
 
 })
 

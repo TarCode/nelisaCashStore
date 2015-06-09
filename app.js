@@ -11,9 +11,9 @@ var user = "";
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'UvEHEMoL4puS)',
+      password: 'coder123',
       port: 3306,
-      database: ' nelisaRaw'
+      database: 'nelisa'
 };
 
 
@@ -33,21 +33,26 @@ app.use(session({secret: "bookworms", cookie: {maxAge: 60000}, resave:true, save
 
 
 app.get('/', function (req, res) {
-    if(req.session.user){
+    if(user &&  pass){
         res.render('loggedIn', {
                 user: user
             });
+
     }
     else{
         res.render('home');
+
     }
     
 });
 
 app.post('/login', function (req,res,next) {
-    req.session.user = req.body.user;
-    if(req.session.user){
-        user = req.session.user;
+    
+    var user = req.body.user;
+    var pass = req.body.pass;
+
+    if(user &&  pass){
+        req.session.user = user;
             res.render('loggedIn', {
                 user: user
             });
@@ -66,12 +71,16 @@ app.get('/logout', function (req, res){
 });
 
 app.use(function(req, res, next){
+
+
   if(req.session.user){
       //proceed to the next middleware component
   next();
   }
   else{
       res.redirect("/");
+
+
   }
   
 });
