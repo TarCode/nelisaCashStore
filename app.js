@@ -7,7 +7,7 @@ var express = require('express'),
     session = require('express-session');
 
 var app = express();
-var user = "";
+var user = {};
 var dbOptions = {
      host: 'localhost',
       user: 'root',
@@ -33,9 +33,10 @@ app.use(session({secret: "bookworms", cookie: {maxAge: 60000}, resave:true, save
 
 
 app.get('/', function (req, res) {
-    if(user &&  pass){
+    if(req.session.user ){
+        user.username = req.session.user;
         res.render('loggedIn', {
-                user: user
+                user: req.session.user
             });
 
     }
@@ -46,15 +47,19 @@ app.get('/', function (req, res) {
     
 });
 
+app.get('/signUp', function (req, res){
+  res.render('signUp');
+});
+
 app.post('/login', function (req,res,next) {
     
-    var user = req.body.user;
-    var pass = req.body.pass;
+    user.username = req.body.user;
+    user.password = req.body.pass;
 
-    if(user &&  pass){
-        req.session.user = user;
+    if(user.username &&  user.password){
+        req.session.user = user.username;
             res.render('loggedIn', {
-                user: user
+                user: req.session.user
             });
     }
     else{

@@ -40,11 +40,11 @@
                     <img src="/img/spaza.png" class="logo img-responsive"/>
                 </li>
 
-
+    {{#if user}}
                 <li>
                     <a class="active-menu"  href="/"><i class="fa fa-home fa-3x"></i> Home</a>
                 </li>
-
+    
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-3x"></i>Table Data<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -100,7 +100,7 @@
                     </ul>
                 </li>
             </ul>
-
+    {{/if}}
         </div>
 
     </nav>
