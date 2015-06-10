@@ -31,6 +31,18 @@ app.use(bodyParser.json());
 
 app.use(session({secret: "bookworms", cookie: {maxAge: 120000}, resave:true, saveUninitialized: false}));
 
+app.get('/home', function (req, res){
+  if(req.session.user ){
+        user.username = req.session.user;
+        res.render('loggedIn', {
+                user: req.session.user
+            });
+
+    }
+    else{
+  res.render('home');
+}
+});
 
 app.get('/', function (req, res) {
     if(req.session.user ){
@@ -41,7 +53,10 @@ app.get('/', function (req, res) {
 
     }
     else{
-        res.render('home');
+      msg = "Incorrect username/password combination";
+        res.render('home', {
+          msg:msg
+        });
 
     }
     
@@ -51,12 +66,21 @@ app.get('/signUp', function (req, res){
   res.render('signUp');
 });
 
+app.post('/signUp', function (req,res,next) {
+    
+    if(req.body.user && req.body.pass){
+        user.username = req.body.user;
+        user.password = req.body.pass;
+            res.render('home');
+    }
+    else{
+        res.redirect('/signUp');
+    }
+});
+
 app.post('/login', function (req,res,next) {
     
-    user.username = req.body.user;
-    user.password = req.body.pass;
-
-    if(user.username &&  user.password){
+    if(req.body.user == user.username && req.body.pass == user.password){
         req.session.user = user.username;
             res.render('loggedIn', {
                 user: req.session.user
