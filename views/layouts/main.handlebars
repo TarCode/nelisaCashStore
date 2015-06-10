@@ -29,7 +29,10 @@
             </button>
             <a class="navbar-brand" href="/">SpInS</a>
         </div>
-
+        {{#if user}}
+        <p class = "kop userHeader">You are logged in as: <strong>{{user}}</strong></p>
+        <a class = "kop logoutHead" href="/logout">Logout</a>
+        {{/if}}
     </nav>
 
     <!-- SIDE NAV -->

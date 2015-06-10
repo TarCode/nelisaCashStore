@@ -65,6 +65,8 @@ body {
     padding: 15px 15px;
     min-height: 50em;
     background:#F3F3F3;
+    margin-top: 5em;
+
    
 }
 #page-inner {
@@ -263,4 +265,27 @@ background-color: #FFF;
 
 
 
+}
+
+.input{
+    margin: 1em;
+    width: 10em;
+}
+
+.userHeader{
+    color: #fff;
+    display: inline;
+    margin-left: 2em;
+}
+
+.logoutHead{
+    background-color: #fff;
+    color: red;
+    padding: 2px;
+    border-radius: 3px;
+    display: inline;
+    float: right;
+    margin-right: 2em;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
