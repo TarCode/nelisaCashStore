@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(session({secret: "bookworms", cookie: {maxAge: 60000}, resave:true, saveUninitialized: false}));
+app.use(session({secret: "bookworms", cookie: {maxAge: 120000}, resave:true, saveUninitialized: false}));
 
 
 app.get('/', function (req, res) {
@@ -80,12 +80,10 @@ app.use(function(req, res, next){
 
   if(req.session.user){
       //proceed to the next middleware component
-  next();
+      next();
   }
   else{
       res.redirect("/");
-
-
   }
   
 });

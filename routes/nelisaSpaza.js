@@ -9,7 +9,9 @@ exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-            res.render('addCategory');
+            res.render('addCategory', {
+                user: req.session.user
+            });
     });
 };
 
@@ -21,7 +23,8 @@ exports.showAddProd = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'addProduct', {
-                category : results
+                category : results,
+                user: req.session.user
             });
         });
     });
@@ -32,7 +35,9 @@ exports.showAddSupplier = function (req, res, next) {
         if (err)
             return next(err);
 
-                    res.render( 'addSupplier');
+                    res.render( 'addSupplier',{
+                        user: req.session.user
+                    });
 
                 });
 
@@ -46,7 +51,8 @@ exports.showAddSale = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'addSale', {
-                product : results
+                product : results,
+                user: req.session.user
             });
         });
     });
@@ -65,7 +71,8 @@ exports.showAddPurchase = function (req, res, next) {
                     res.render( 'addPurchase', {
                         product : prod,
                         supplier: supps,
-                        stock: stock
+                        stock: stock,
+                user: req.session.user
                     });
 
                 });
@@ -196,7 +203,8 @@ exports.showProducts = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'productList', {
-                product : results
+                product : results,
+                user: req.session.user
             });
         });
     });
@@ -210,7 +218,8 @@ exports.showSales = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'salesHistory', {
-                sales : results
+                sales : results,
+                user: req.session.user
             });
         });
     });
@@ -224,7 +233,8 @@ exports.showPurchases = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'purchaseHistory', {
-                stock : results
+                stock : results,
+                user: req.session.user
             });
         });
     });
@@ -238,7 +248,8 @@ exports.showSuppliers = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'suppliers', {
-                supplier : results
+                supplier : results,
+                user: req.session.user
             });
         });
     });
@@ -252,7 +263,8 @@ exports.showCategory = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'category', {
-                category : results
+                category : results,
+                user: req.session.user
             });
         });
     });
@@ -266,7 +278,8 @@ exports.showProdPopularity = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'prodPopularity', {
-                prodPopularity : results
+                prodPopularity : results,
+                user: req.session.user
             });
         });
     });
@@ -280,7 +293,8 @@ exports.showCatPopularity = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'catPopularity', {
-                catPopularity : results
+                catPopularity : results,
+                user: req.session.user
             });
         });
     });
@@ -294,7 +308,8 @@ exports.showProdProfit = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'prodProfit', {
-                prodProfit : results
+                prodProfit : results,
+                user: req.session.user
             });
         });
     });
@@ -308,7 +323,8 @@ exports.showCatProfit = function (req, res, next) {
             if (err) return next(err);
 
             res.render( 'catProfit', {
-                catProfit : results
+                catProfit : results,
+                user: req.session.user
             });
         });
     });
@@ -326,7 +342,8 @@ exports.getCat = function (req, res, next) {
                 console.log("Error getting : %s ",err );
 
             res.render( 'updateCat', {
-                category : results
+                category : results,
+                user: req.session.user
             });
         });
     });
@@ -340,7 +357,8 @@ exports.updateCat = function (req, res, next) {
         }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
-            cat_name : input.cat_name
+            cat_name : input.cat_name,
+                user: req.session.user
         };
         connection.query('update category set ? where cat_id = ?',[data, cat_id], function(err, results) {
             if (err)
@@ -362,7 +380,8 @@ exports.getSupp = function (req, res, next) {
                 console.log("Error getting : %s ",err );
 
             res.render( 'updateSupp', {
-                supplier : results
+                supplier : results,
+                user: req.session.user
             });
         });
     });
@@ -376,7 +395,8 @@ exports.updateSupp = function (req, res, next) {
         }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
-            supplier_name : input.supplier_name
+            supplier_name : input.supplier_name,
+                user: req.session.user
         };
         connection.query('update supplier set ? where supplier_id = ?',[data, supplier_id], function(err, results) {
             if (err)
@@ -398,7 +418,8 @@ exports.getProd = function (req, res, next) {
                 console.log("Error getting : %s ",err );
 
             res.render( 'updateProd', {
-                product : results
+                product : results,
+                user: req.session.user
             });
         });
     });
@@ -438,7 +459,8 @@ exports.getSale = function (req, res, next) {
                     console.log("Error getting : %s ",err );
                 res.render( 'updateSale', {
                     sale : results,
-                    product: prods
+                    product: prods,
+                user: req.session.user
                 });
 
             });
@@ -488,7 +510,8 @@ exports.getPurchase = function (req, res, next) {
                     res.render('updatePurchase', {
                         stock: results,
                         product: prods,
-                        supplier: supps
+                        supplier: supps,
+                user: req.session.user
                     });
 
                 });
