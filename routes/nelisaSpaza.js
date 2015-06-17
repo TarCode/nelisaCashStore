@@ -33,6 +33,41 @@ exports.addUser = function (req, res, next) {
     });
 };
 
+exports.checkUser = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            username : input.user,
+            password: input.pass,
+            role: input.userRole
+        };
+
+        connection.query('SELECT password, role from users WHERE username = ? AND password = ?', [data.username, data.password], function(err, results) {
+            if (err) return next(err);
+            if(results.length == 1){
+                var user = results[0];
+                    req.session.user = {username: data.username,
+                                         role: user.role};
+
+                    res.render('loggedIn', {
+                        user: req.session.user
+                    });
+            }
+            else{
+                msg = "Incorrect username/password combination";
+                res.render('home', {
+                  msg:msg
+                });
+
+            }
+
+        });
+    });
+};
+
 // the show add functions, shows table data on add page(for drop down menu)
 exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){

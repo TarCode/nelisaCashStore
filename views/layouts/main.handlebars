@@ -30,7 +30,7 @@
             <a class="navbar-brand" href="/home">SpInS</a>
         </div>
         {{#if user}}
-        <p class = "kop userHeader">You are logged in as: <strong>{{user}}</strong></p>
+        <p class = "kop userHeader">You are logged in as: <strong>{{user.username}}</strong></p>
         <a class = "kop logoutHead" href="/logout">Logout</a>
         {{/if}}
     </nav>

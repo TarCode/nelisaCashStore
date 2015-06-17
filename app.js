@@ -68,18 +68,7 @@ app.get('/signUp', function (req, res){
 
 app.post('/signUp', nelisaSpaza.addUser);
 
-app.post('/login', function (req,res,next) {
-    
-    if(req.body.user == user.username && req.body.pass == user.password){
-        req.session.user = user.username;
-            res.render('loggedIn', {
-                user: req.session.user
-            });
-    }
-    else{
-        res.redirect('/');
-    }
-});
+app.post('/login', nelisaSpaza.checkUser);
 
 app.get('/logout', function (req, res){
 	var msg = "You have logged out";
