@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 
 app.use(session({secret: "bookworms", cookie: {maxAge: 120000}, resave:true, saveUninitialized: false}));
 
-app.get('/home', function (req, res){
+app.get('/', function (req, res){
   if(req.session.user ){
         user.username = req.session.user;
         res.render('loggedIn', {
