@@ -66,17 +66,7 @@ app.get('/signUp', function (req, res){
   res.render('signUp');
 });
 
-app.post('/signUp', function (req,res,next) {
-    
-    if(req.body.user && req.body.pass){
-        user.username = req.body.user;
-        user.password = req.body.pass;
-            res.render('home');
-    }
-    else{
-        res.redirect('/signUp');
-    }
-});
+app.post('/signUp', nelisaSpaza.addUser);
 
 app.post('/login', function (req,res,next) {
     

@@ -4,6 +4,35 @@
 // Here is all the functions for getting data from the db and rendering it to the webpage and visa versa
 //todo - fix the error handling
 
+//add user function
+exports.addUser = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            username : input.user,
+            password: input.pass,
+            role: input.userRole
+        };
+
+        if(data.username.trim() === "" || data.password.trim() === ""){
+            res.render( 'signUp', {
+                msg : "Fields cannot be blank"
+            });
+            return;
+        }
+
+        connection.query('insert into users set ?', data, function(err, results) {
+            if (err)
+                console.log("Error inserting : %s ",err );
+
+            res.render('home', {msg:"Successfully signed up"});
+        });
+    });
+};
+
 // the show add functions, shows table data on add page(for drop down menu)
 exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){
