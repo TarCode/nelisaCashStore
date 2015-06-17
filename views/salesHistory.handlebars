@@ -15,7 +15,9 @@
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class = "editButton2"><a href = "/addSales"><span class="fa fa-plus"></span></a></div>
+                {{#if admin}}
+                    <div class = "editButton2"><a href = "/addSales"><span class="fa fa-plus"></span></a></div>
+                {{/if}}    
                 <hr/>
                 <table class="table">
                     <tr>
@@ -24,18 +26,32 @@
                         <th>Date</th>
                         <th>Quantity</th>
                         <th>Sale Price</th>
-                        <th>Edit/Delete</th>
+                        {{#if admin}}
+                            <th>Edit/Delete</th>
+                        {{/if}}    
                     </tr>
-                    {{#sales}}
-                    <tr>
-                        <td>{{sale_id}}</td>
-                        <td>{{prod_name}}</td>
-                        <td>{{date}}</td>
-                        <td>{{qtySold}}</td>
-                        <td>{{salePrice}}</td>
-                        <td><div class = "editButtons"><a href = "/sales/getSale/{{sale_id}}"><span class="fa fa-edit"></span></a><a href = '/sales/delSale/{{sale_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
-                    </tr>
-                    {{/sales}}
+                    {{#if admin}}
+                        {{#sales}}
+                        <tr>
+                            <td>{{sale_id}}</td>
+                            <td>{{prod_name}}</td>
+                            <td>{{date}}</td>
+                            <td>{{qtySold}}</td>
+                            <td>{{salePrice}}</td>
+                            <td><div class = "editButtons"><a href = "/sales/getSale/{{sale_id}}"><span class="fa fa-edit"></span></a><a href = '/sales/delSale/{{sale_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
+                        </tr>
+                        {{/sales}}
+                    {{else}}
+                        {{#sales}}
+                        <tr>
+                            <td>{{sale_id}}</td>
+                            <td>{{prod_name}}</td>
+                            <td>{{date}}</td>
+                            <td>{{qtySold}}</td>
+                            <td>{{salePrice}}</td>
+                        </tr>
+                        {{/sales}}    
+                    {{/if}}    
                 </table>
             </div>
 

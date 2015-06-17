@@ -53,7 +53,7 @@
                     <ul class="nav nav-second-level">
 
                         <li>
-                            <a href="#">View/Edit<span class="fa arrow"></span></a>
+                            <a href="#">View{{#if admin}}/Edit{{/if}}<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                                 <li><a href="/sales" class = "list-group-item">Sales</a></li>
                                 <li><a href="/purchases" class = "list-group-item">Purchases</a></li>
@@ -63,7 +63,8 @@
                             </ul>
 
                         </li>
-
+    {{/if}}
+    {{#if admin}}
                         <li>
                             <a href="#">Add<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
@@ -75,10 +76,11 @@
                             </ul>
 
                         </li>
-
+    {{/if}}                    
                     </ul>
                 </li>
-
+    
+    {{#if user}}
                 <li>
                     <a href="#"><i class="fa fa-file-text fa-3x"></i> Inventory Statistics<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">

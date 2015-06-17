@@ -15,7 +15,9 @@
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class = "editButton2"><a href = "/addPurchases"><span class="fa fa-plus"></span></a></div>
+                {{#if admin}}
+                    <div class = "editButton2"><a href = "/addPurchases"><span class="fa fa-plus"></span></a></div>
+                {{/if}}
                 <hr/>
                 <table class="table">
                     <tr>
@@ -25,19 +27,35 @@
                         <th>Quantity</th>
                         <th>Cost</th>
                         <th>Total Cost</th>
-                        <th>Edit/Delete</th>
+                        {{#if admin}}
+                            <th>Edit/Delete</th>
+                        {{/if}}
                     </tr>
-                    {{#stock}}
-                    <tr>
-                        <td>{{purchase_id}}</td>
-                        <td>{{prod_name}}</td>
-                        <td>{{date}}</td>
-                        <td>{{quantity}}</td>
-                        <td>{{cost}}</td>
-                        <td>{{totalCost}}</td>
-                        <td><div class = "editButtons"><a href = "/stock/getPurchase/{{purchase_id}}"><span class="fa fa-edit"></span></a><a href = '/stock/delPurchase/{{purchase_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
-                    </tr>
-                    {{/stock}}
+                    {{#if admin}}
+                        {{#stock}}
+                        <tr>
+                            <td>{{purchase_id}}</td>
+                            <td>{{prod_name}}</td>
+                            <td>{{date}}</td>
+                            <td>{{quantity}}</td>
+                            <td>{{cost}}</td>
+                            <td>{{totalCost}}</td>
+                            <td><div class = "editButtons"><a href = "/stock/getPurchase/{{purchase_id}}"><span class="fa fa-edit"></span></a><a href = '/stock/delPurchase/{{purchase_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
+                        </tr>
+                        {{/stock}}
+                    {{else}}
+                        {{#stock}}
+                        <tr>
+                            <td>{{purchase_id}}</td>
+                            <td>{{prod_name}}</td>
+                            <td>{{date}}</td>
+                            <td>{{quantity}}</td>
+                            <td>{{cost}}</td>
+                            <td>{{totalCost}}</td>
+                            
+                        </tr>
+                        {{/stock}}
+                    {{/if}}        
                 </table>
             </div>
 

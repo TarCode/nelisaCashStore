@@ -12,20 +12,33 @@
         <div><h3 class = 'text-center'>SUPPLIER LIST</h3></div>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class = "editButton2"><a href = "/addSupplier"><span class="fa fa-plus"></span></a></div>
+                {{#if admin}}
+                    <div class = "editButton2"><a href = "/addSupplier"><span class="fa fa-plus"></span></a></div>
+                {{/if}}    
                 <table class="table">
                     <tr>
                         <th>Supplier ID</th>
                         <th>Supplier Name</th>
-                        <th>Edit/Delete</th>
+                        {{#if admin}}
+                            <th>Edit/Delete</th>
+                        {{/if}}    
                     </tr>
-                    {{#supplier}}
-                    <tr>
-                            <td>{{supplier_id}}</td>
-                            <td>{{supplier_name}}</td>
-                            <td><div class = "editButtons"><a href = "/suppliers/getSupp/{{supplier_id}}"><span class="fa fa-edit"></span></a><a onclick = 'alert("Cannot delete suppliers linked to products!")' href = '/suppliers/delSupp/{{supplier_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
-                    </tr>
-                    {{/supplier}}
+                    {{#if admin}}
+                        {{#supplier}}
+                        <tr>
+                                <td>{{supplier_id}}</td>
+                                <td>{{supplier_name}}</td>
+                                <td><div class = "editButtons"><a href = "/suppliers/getSupp/{{supplier_id}}"><span class="fa fa-edit"></span></a><a onclick = 'alert("Cannot delete suppliers linked to products!")' href = '/suppliers/delSupp/{{supplier_id}}'><span class="fa fa-trash-o"></span> </a></div></td>
+                        </tr>
+                        {{/supplier}}
+                    {{else}}
+                        {{#supplier}}
+                        <tr>
+                                <td>{{supplier_id}}</td>
+                                <td>{{supplier_name}}</td>
+                        </tr>
+                        {{/supplier}}
+                    {{/if}}        
                 </table>
             </div>
 
