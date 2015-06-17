@@ -8,7 +8,7 @@
             </div>
         </div>
         <hr />
-
+{{#if admin}}
 <!--Add category section-->
         <h1 >Add a Category</h1>
         <br />
@@ -22,6 +22,8 @@
             <br/><br/><input type="submit">
         </form>
         <hr />
-
+{{else}}
+    <h2>You do not have access to this page</h2>
+{{/if}}
     </div>
 </div>

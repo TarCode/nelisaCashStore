@@ -82,7 +82,10 @@ app.use(function(req, res, next){
 
 
   if(req.session.user){
+
       //proceed to the next middleware component
+
+      //for this users role can I access this...
       next();
   }
   else{
