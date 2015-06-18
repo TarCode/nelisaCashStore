@@ -1,11 +1,11 @@
 /***
  * A very basic CRUD example using MySQL
- */	
+ */ 
 // Here is all the functions for getting data from the db and rendering it to the webpage and visa versa
 //todo - fix the error handling
 var admin = false;
 var bcrypt = require('bcrypt');
-var salt = bcrypt.genSaltSync(10);
+
 //add user function
 exports.addUser = function (req, res, next) {
     req.getConnection(function(err, connection){
@@ -13,14 +13,12 @@ exports.addUser = function (req, res, next) {
             return next(err);
         }
         var input = JSON.parse(JSON.stringify(req.body));
-        var hash = bcrypt.hashSync(input.pass, salt);
+        
         var data = {
             username : input.user,
-            password: hash,
+            password: input.pass,
             role: input.userRole
         };
-
-        
 
         if(data.username.trim() === "" || data.password.trim() === ""){
             res.render( 'signUp', {
@@ -28,16 +26,23 @@ exports.addUser = function (req, res, next) {
             });
             return;
         }
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(input.pass, salt, function(err, hash) {
+                // Store hash in your password DB. 
+                data.password = hash;
+                connection.query('insert into users set ?', data, function(err, results) {
+                    if (err)
+                        console.log("Error inserting : %s ",err );
 
-        connection.query('insert into users set ?', data, function(err, results) {
-            if (err)
-                console.log("Error inserting : %s ",err );
-
-            res.render('home', {msg:"Successfully signed up"});
+                    res.render('home', {msg:"Successfully signed up"});
+                });
+            });
         });
+        
     });
 };
 
+//check if user exists in database
 exports.checkUser = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
@@ -49,37 +54,49 @@ exports.checkUser = function (req, res, next) {
             password: input.pass,
             role: input.userRole
         };
-        var hash = bcrypt.hashSync(data.password, salt);
-        console.log(hash);
-        connection.query('SELECT password, role from users WHERE username = ? AND password = ?', [data.username, hash], function(err, results) {
+        //hash password to check against hashed password in database
+        connection.query('SELECT password, role from users WHERE username = ?', [data.username], function(err, results) {
             if (err) return next(err);
-            if(results.length == 1){
-                var user = results[0];
-                req.session.user = {username: data.username,
-                                     role: user.role};
-                if(user.role == "admin"){
-                    admin = true;
+            if(results.length ==1){
+            var user = results[0];
+
+              console.log(data.password);
+              console.log(user.password);
+                bcrypt.compare(data.password, user.password, function(err, pass){
+                if(pass == true){
+                    req.session.user = {username: data.username,
+                                         role: user.role};
+                    if(user.role == "admin"){
+                        admin = true;
+                    }
+                    else{
+                        admin = false;
+                    };
+
+                    res.render('loggedIn', {
+                        user: req.session.user,
+                        admin:admin
+                    });
                 }
                 else{
-                    admin = false;
-                }
-
-                res.render('loggedIn', {
-                    user: req.session.user,
-                    admin:admin
-                });
-            }
-            else{
                 msg = "Incorrect username/password combination";
                 res.render('home', {
                   msg:msg
                 });
 
             }
+                });
+            }
+        });
+
+                
+            
+            
+            
 
         });
-    });
-};
+    }
+
 
 // the show add functions, shows table data on add page(for drop down menu)
 exports.showAddCat = function (req, res, next) {
