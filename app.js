@@ -6,6 +6,7 @@ var express = require('express'),
     nelisaSpaza = require('./routes/nelisaSpaza'),
     session = require('express-session');
 
+
 var app = express();
 var user = {};
 var dbOptions = {

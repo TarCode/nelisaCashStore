@@ -4,6 +4,8 @@
 // Here is all the functions for getting data from the db and rendering it to the webpage and visa versa
 //todo - fix the error handling
 var admin = false;
+var bcrypt = require('bcrypt');
+var salt = bcrypt.genSaltSync(10);
 //add user function
 exports.addUser = function (req, res, next) {
     req.getConnection(function(err, connection){
@@ -11,11 +13,14 @@ exports.addUser = function (req, res, next) {
             return next(err);
         }
         var input = JSON.parse(JSON.stringify(req.body));
+        var hash = bcrypt.hashSync(input.pass, salt);
         var data = {
             username : input.user,
-            password: input.pass,
+            password: hash,
             role: input.userRole
         };
+
+        
 
         if(data.username.trim() === "" || data.password.trim() === ""){
             res.render( 'signUp', {
@@ -44,8 +49,9 @@ exports.checkUser = function (req, res, next) {
             password: input.pass,
             role: input.userRole
         };
-
-        connection.query('SELECT password, role from users WHERE username = ? AND password = ?', [data.username, data.password], function(err, results) {
+        var hash = bcrypt.hashSync(data.password, salt);
+        console.log(hash);
+        connection.query('SELECT password, role from users WHERE username = ? AND password = ?', [data.username, hash], function(err, results) {
             if (err) return next(err);
             if(results.length == 1){
                 var user = results[0];
