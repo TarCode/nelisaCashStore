@@ -60,8 +60,7 @@ exports.checkUser = function (req, res, next) {
             if(results.length ==1){
             var user = results[0];
 
-              console.log(data.password);
-              console.log(user.password);
+              
                 bcrypt.compare(data.password, user.password, function(err, pass){
                 if(pass == true){
                     req.session.user = {username: data.username,
