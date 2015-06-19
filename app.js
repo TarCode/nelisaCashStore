@@ -53,6 +53,12 @@ app.get('/', function (req, res) {
             });
 
     }
+    else if(lock == true){
+       msg = "Your account has been locked";
+        res.render('home', {
+          msg:msg
+        });
+    }
     else{
       msg = "Incorrect username/password combination";
         res.render('home', {
@@ -82,7 +88,7 @@ app.get('/logout', function (req, res){
 app.use(function(req, res, next){
 
 
-  if(req.session.user){
+  if(req.session.user && nelisaSpaza.lock == false){
 
       //proceed to the next middleware component
 

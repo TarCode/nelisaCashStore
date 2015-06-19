@@ -5,6 +5,8 @@
 //todo - fix the error handling
 var admin = false;
 var bcrypt = require('bcrypt');
+var count = 0;
+var lock = false;
 
 //add user function
 exports.addUser = function (req, res, next) {
@@ -55,14 +57,15 @@ exports.checkUser = function (req, res, next) {
             role: input.userRole
         };
         //hash password to check against hashed password in database
-        connection.query('SELECT password, role from users WHERE username = ?', [data.username], function(err, results) {
+        connection.query('SELECT password, role, locked from users WHERE username = ?', [data.username], function(err, results) {
             if (err) return next(err);
             if(results.length ==1){
             var user = results[0];
 
               
                 bcrypt.compare(data.password, user.password, function(err, pass){
-                if(pass == true){
+                if(pass == true && user.locked == false){
+                    count = 0;
                     req.session.user = {username: data.username,
                                          role: user.role};
                     if(user.role == "admin"){
@@ -78,12 +81,26 @@ exports.checkUser = function (req, res, next) {
                     });
                 }
                 else{
-                msg = "Incorrect username/password combination";
-                res.render('home', {
-                  msg:msg
-                });
-
-            }
+                    count++;
+                    msg = "Incorrect username/password combination";
+                    if(count == 3){
+                        
+                        msg = "Your account has been locked because of too many incorrest login attempts";
+                        user.locked = true;
+                        lock = true;
+                        var locked = {
+                            locked:user.locked
+                        }
+                        connection.query('update users set ? where username = ?',[locked, data.username], function(err, results) {
+                            if (err)
+                                console.log("Error updating : %s ",err );
+                        });
+                    }
+                    res.render('home', {
+                      msg:msg
+                    });
+                    
+                }
                 });
             }
         });
