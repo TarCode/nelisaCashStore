@@ -3,10 +3,10 @@
  */ 
 // Here is all the functions for getting data from the db and rendering it to the webpage and visa versa
 //todo - fix the error handling
-var admin = false;
+admin = false;
 var bcrypt = require('bcrypt');
 var count = 0;
-var lock = false;
+lock = false;
 
 //add user function
 exports.addUser = function (req, res, next) {
@@ -68,7 +68,7 @@ exports.checkUser = function (req, res, next) {
                     count = 0;
                     req.session.user = {username: data.username,
                                          role: user.role};
-                    if(user.role == "admin"){
+                    if(req.session.user.role === "admin" || user.role === "admin"){
                         admin = true;
                     }
                     else{

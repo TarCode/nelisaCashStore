@@ -36,7 +36,8 @@ app.get('/', function (req, res){
   if(req.session.user ){
         user.username = req.session.user;
         res.render('loggedIn', {
-                user: req.session.user
+                user: req.session.user,
+                admin:admin
             });
 
     }
@@ -49,7 +50,8 @@ app.get('/', function (req, res) {
     if(req.session.user ){
         user.username = req.session.user;
         res.render('loggedIn', {
-                user: req.session.user
+                user: req.session.user,
+                admin:admin
             });
 
     }
@@ -88,7 +90,7 @@ app.get('/logout', function (req, res){
 app.use(function(req, res, next){
 
 
-  if(req.session.user && nelisaSpaza.lock == false){
+  if(req.session.user){
 
       //proceed to the next middleware component
 
