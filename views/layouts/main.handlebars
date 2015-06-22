@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- header icon -->
+    <link rel="shortcut icon" href="/img/spaza.ico">
+    <title>Nelisa Spaza Inc</title>
+    <!-- BOOTSTRAP STYLES-->
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLES-->
+    <link href="/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- TOP NAV -->
+    <nav class="navbar navbar-default navbar-cls-top navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">SpInS</a>
+        </div>
+        {{#if user}}
+        <p class = "kop userHeader">You are logged in as: <strong>{{user.username}}</strong></p>
+        <a class = "kop logoutHead" href="/logout">Logout</a>
+        {{/if}}
+    </nav>
+
+    <!-- SIDE NAV -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li class="text-center">
+                    <img src="/img/spaza.png" class="logo img-responsive"/>
+                </li>
+
+    {{#if user}}
+                <li>
+                    <a class="active-menu"  href="/"><i class="fa fa-home fa-3x"></i> Home</a>
+                </li>
+    
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-3x"></i>Table Data<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="#">View<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/sales" class = "list-group-item">Sales</a></li>
+                                <li><a href="/purchases" class = "list-group-item">Purchases</a></li>
+                                <li><a href="/products" class = "list-group-item">Products</a></li>
+                                <li><a href="/suppliers" class = "list-group-item">Suppliers</a></li>
+                                <li><a href="/category" class = "list-group-item">Categories</a></li>
+                            </ul>
+
+                        </li>
+    {{/if}}
+    {{#if admin}}
+                        <li>
+                            <a href="#">Add<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/addCategory" class = "list-group-item">Add Category</a></li>
+                                <li><a href="/addProduct" class = "list-group-item">Add Product</a></li>
+                                <li><a href="/addSupplier" class = "list-group-item">Add Supplier</a></li>
+                                <li><a href="/addSales" class = "list-group-item">Add Sale</a></li>
+                                <li><a href="/addPurchases" class = "list-group-item">Add Purchase</a></li>
+                            </ul>
+
+                        </li>
+    {{/if}}                    
+                    </ul>
+                </li>
+    
+    {{#if user}}
+                <li>
+                    <a href="#"><i class="fa fa-file-text fa-3x"></i> Inventory Statistics<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="#">Popularity<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/prodPopularity" class = "list-group-item">Product Popularity</a></li>
+                                <li><a href="/catPopularity" class = "list-group-item">Category Popularity</a></li>
+                            </ul>
+
+                        </li>
+
+                        <li>
+                            <a href="#">Earnings<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="/prodProfit" class = "list-group-item">Product Profits</a></li>
+                                <li><a href="/catProfit" class = "list-group-item">Category Profits</a></li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+    {{/if}}
+        </div>
+
+    </nav>
+    {{{body}}}
+    <footer class = "nelisaFooter navbar-fixed-bottom">
+        <p class = "text-center nelisaFooter">TarCode & Pholisa 2015</p>
+    </footer>
+
+</div>
+
+    <!-- JQUERY SCRIPTS -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="/js/custom.js"></script>
+
+
+</body>
+</html>

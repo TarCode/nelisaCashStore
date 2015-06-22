@@ -1,0 +1,46 @@
+<!-- Here is the handlebars page for the update sales, used to update the sale of a category/product/supplier-->
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1 class = 'data-title'>Edit</h1>
+                <p>Welcome to Nelisa Spaza Inc Inventory System</p>
+            </div>
+        </div>
+        <hr />
+
+<!--Update sale section-->
+        <h1 >Update Purchase</h1>
+        <br />
+        <!-- form calls /addCat and posts input to database-->
+        <br />
+
+    {{#stock}}
+            <form action="/stock/updatePurchase/{{purchase_id}}" method="POST">
+    {{/stock}}
+                Date: <br /><input type="date" name="date">
+                <br/><br/>
+                Quantity Sold: <br /><input type="number" name="quantity">
+                <br/><br/>Product: <br/>
+                <!--dropdown menu gets cat_name from category-->
+                <select name="prod_id">
+                    {{#product}}
+                        <option selected value="{{prod_id}}">{{prod_name}}</option>
+                    {{/product}}
+                </select>
+                <br/><br/>Supplier: <br/>
+                <!--dropdown menu gets cat_name from category-->
+                <select name="supplier_id">
+                    {{#supplier}}
+                        <option selected value="{{supplier_id}}">{{supplier_name}}</option>
+                    {{/supplier}}
+                </select>
+                <br/><br/>
+                Cost Price: <br /><input type="number" step="0.01" name="cost">
+                <br /><br /><input type="submit">
+            </form>
+
+        <hr />
+
+</div>
+</div>
