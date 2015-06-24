@@ -141,6 +141,7 @@ app.get('/stock/delPurchase/:purchase_id', nelisaSpaza.delPurchase);
 
 
 //gets data from the database and displays it on the web page
+app.get('/users', nelisaSpaza.showUsers);
 app.get('/products', nelisaSpaza.showProducts);
 app.get('/purchases', nelisaSpaza.showPurchases);
 app.get('/sales', nelisaSpaza.showSales);

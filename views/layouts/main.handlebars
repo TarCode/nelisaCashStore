@@ -42,7 +42,10 @@
                 <li class="text-center">
                     <img src="/img/spaza.png" class="logo img-responsive"/>
                 </li>
-
+    {{#unless user}}
+        <p class = 'instr'>Welcome to the Spaza Inventory System.</p>
+        <p class = 'instr'>Please login or sign up to continue</p>
+    {{/unless}}
     {{#if user}}
                 <li>
                     <a class="active-menu"  href="/"><i class="fa fa-home fa-3x"></i> Home</a>
@@ -87,8 +90,16 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
     {{/if}}
+    {{#if admin}}
+            <li>
+                <a href="/users"><i class="fa fa-user fa-3x"></i> Users</a>
+                    
+            </li>            
+    {{/if}}
+
+            </ul>
+    
         </div>
 
     </nav>

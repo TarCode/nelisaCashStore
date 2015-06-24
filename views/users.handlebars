@@ -1,0 +1,29 @@
+{{#if admin}}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <hr />
+        <div><h3 class = 'text-center'>USER LIST</h3></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <hr/>
+                <table class="table">
+                    <tr>
+                        <th>Username</th>
+                        <th>Role</th>
+                           
+                    </tr>
+                        {{#users}}
+                        <tr>
+                                <td>{{username}}</td>
+                                <td>{{role}}</td>
+                        </tr>
+                        {{/users}}
+                    
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{{/if}}

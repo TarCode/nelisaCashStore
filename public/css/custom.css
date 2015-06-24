@@ -289,3 +289,9 @@ background-color: #FFF;
     margin-top: 1px;
     margin-bottom: 1px;
 }
+
+.instr{
+    padding: 1em;
+    color: #fff;
+    text-align: center;
+}
