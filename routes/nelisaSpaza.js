@@ -1,12 +1,75 @@
-/***
- * A very basic CRUD example using MySQL
- */ 
-// Here is all the functions for getting data from the db and rendering it to the webpage and visa versa
-//todo - fix the error handling
-admin = false;
 var bcrypt = require('bcrypt');
 var count = 0;
+var user = {};
+
+admin = false;
 lock = false;
+
+//log user in or redirect 
+exports.login = function (req, res){
+    if(req.session.user ){
+        user.username = req.session.user;
+        res.render('loggedIn', {
+                user: req.session.user,
+                admin:admin
+        });
+
+    }
+    else{
+        res.render('home');
+    }
+}
+
+//render error msg if info entered incorrectly
+exports.loggedIn = function (req, res) {
+    if(req.session.user ){
+        user.username = req.session.user;
+        res.render('loggedIn', {
+                user: req.session.user,
+                admin:admin
+            });
+
+    }
+    else if(lock == true){
+       msg = "Your account has been locked";
+        res.render('home', {
+          msg:msg
+        });
+    }
+    else{
+      msg = "Incorrect username/password combination";
+        res.render('home', {
+          msg:msg
+        });
+
+    }
+    
+}
+
+//signup function
+exports.signUp = function (req, res){
+  res.render('signUp');
+}
+
+//logout function
+exports.logout = function (req, res){
+    var msg = "You have logged out";
+    delete req.session.user;
+    res.render('home',{
+                msg : msg
+    });
+}
+
+//proceed to the next middleware component 
+exports.middleCheck = function(req, res, next){
+  if(req.session.user){
+      next();
+  }
+  else{
+      res.redirect("/");
+  }
+  
+}
 
 //add user function
 exports.addUser = function (req, res, next) {
@@ -64,55 +127,48 @@ exports.checkUser = function (req, res, next) {
 
               
                 bcrypt.compare(data.password, user.password, function(err, pass){
-                if(pass == true && user.locked == false){
-                    count = 0;
-                    
-                    req.session.user = {username: data.username,
-                                         role: user.role};
-                    if(req.session.user.role === "admin" || user.role === "admin"){
-                        admin = true;
-                    }
-                    else{
-                        admin = false;
-                    };
-
-                    res.render('loggedIn', {
-                        user: req.session.user,
-                        admin:admin
-                    });
-                }
-                else{
-                    count++;
-                    msg = "Incorrect username/password combination";
-                    if(count == 3){
+                    if(pass == true && user.locked == false){
+                        count = 0;
                         
-                        msg = "Your account has been locked because of too many incorrest login attempts";
-                        user.locked = true;
-                        lock = true;
-                        var locked = {
-                            locked:user.locked
+                        req.session.user = {username: data.username,
+                                             role: user.role};
+                        if(req.session.user.role === "admin" || user.role === "admin"){
+                            admin = true;
                         }
-                        connection.query('update users set ? where username = ?',[locked, data.username], function(err, results) {
-                            if (err)
-                                console.log("Error updating : %s ",err );
+                        else{
+                            admin = false;
+                        };
+
+                        res.render('loggedIn', {
+                            user: req.session.user,
+                            admin:admin
                         });
                     }
-                    res.render('home', {
-                      msg:msg
-                    });
-                    
-                }
+                    else{
+                        count++;
+                        msg = "Incorrect username/password combination";
+                        if(count == 3){
+                            
+                            msg = "Your account has been locked because of too many incorrest login attempts";
+                            user.locked = true;
+                            lock = true;
+                            var locked = {
+                                locked:user.locked
+                            }
+                            connection.query('update users set ? where username = ?',[locked, data.username], function(err, results) {
+                                if (err)
+                                    console.log("Error updating : %s ",err );
+                            });
+                        }
+                        res.render('home', {
+                          msg:msg
+                        });                        
+                    }
                 });
             }
-        });
-
-                
-            
-            
-            
-
-        });
-    }
+        });   
+    });
+}
 
 //shows list of users
 exports.showUsers = function (req, res, next) {
@@ -131,14 +187,13 @@ exports.showUsers = function (req, res, next) {
         });
     });
 };
+
 //update user roles  from admin page
 exports.updateUserRole = function (req, res, next) {
     
     var role = req.params.role;
     var username = req.params.username;
     
-
-
     req.getConnection(function(err, connection){
         if (err){
             return next(err);
@@ -172,15 +227,15 @@ exports.showAddProd = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
-               connection.query('SELECT * from category', [], function(err, results) {
-                    if (err) return next(err);
+       connection.query('SELECT * from category', [], function(err, results) {
+            if (err) return next(err);
 
-                    res.render( 'addProduct', {
-                        category : results,
-                        user: req.session.user,
-                        admin:admin
-                    });
-                });
+            res.render( 'addProduct', {
+                category : results,
+                user: req.session.user,
+                admin:admin
+            });
+        });
     });
 };
 
@@ -189,13 +244,11 @@ exports.showAddSupplier = function (req, res, next) {
         if (err)
             return next(err);
 
-                    res.render( 'addSupplier',{
-                        user: req.session.user,
-                        admin:admin
-                    });
-
-                });
-
+        res.render( 'addSupplier',{
+            user: req.session.user,
+            admin:admin
+        });
+    });
 };
 
 exports.showAddSale = function (req, res, next) {
@@ -231,14 +284,9 @@ exports.showAddPurchase = function (req, res, next) {
                 user: req.session.user,
                 admin:admin
                     });
-
                 });
-
             });
-
         });
-
-
     });
 };
 
@@ -630,7 +678,6 @@ exports.getSale = function (req, res, next) {
                 user: req.session.user,
                 admin:admin
                 });
-
             });
         });
     });
@@ -682,7 +729,6 @@ exports.getPurchase = function (req, res, next) {
                 user: req.session.user,
                 admin:admin
                     });
-
                 });
             });
         });
@@ -797,4 +843,3 @@ exports.delPurchase = function (req, res, next) {
         });
     });
 };
-
