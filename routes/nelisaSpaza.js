@@ -19,7 +19,7 @@ exports.addUser = function (req, res, next) {
         var data = {
             username : input.user,
             password: input.pass,
-            role: input.userRole
+            role: "readOnly"
         };
 
         if(data.username.trim() === "" || data.password.trim() === ""){
@@ -66,6 +66,7 @@ exports.checkUser = function (req, res, next) {
                 bcrypt.compare(data.password, user.password, function(err, pass){
                 if(pass == true && user.locked == false){
                     count = 0;
+                    
                     req.session.user = {username: data.username,
                                          role: user.role};
                     if(req.session.user.role === "admin" || user.role === "admin"){
@@ -118,14 +119,39 @@ exports.showUsers = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
             return next(err);
+
         connection.query('SELECT username,role FROM users', [], function(err, results) {
             if (err) return next(err);
-
+            
             res.render( 'users', {
                 users : results,
                 user: req.session.user,
                 admin:admin
             });
+        });
+    });
+};
+//update user roles  from admin page
+exports.updateUserRole = function (req, res, next) {
+    
+    var role = req.params.role;
+    var username = req.params.username;
+    
+
+
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            role : input.role
+        };
+        connection.query('update users set ? where username = ?',[data, username], function(err, results) {
+            if (err)
+                console.log("Error updating : %s ",err );
+
+            res.redirect('/users');
         });
     });
 };
@@ -147,14 +173,14 @@ exports.showAddProd = function (req, res, next) {
         if (err)
             return next(err);
                connection.query('SELECT * from category', [], function(err, results) {
-            if (err) return next(err);
+                    if (err) return next(err);
 
-            res.render( 'addProduct', {
-                category : results,
-                user: req.session.user,
-                admin:admin
-            });
-        });
+                    res.render( 'addProduct', {
+                        category : results,
+                        user: req.session.user,
+                        admin:admin
+                    });
+                });
     });
 };
 

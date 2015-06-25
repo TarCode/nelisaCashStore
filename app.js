@@ -76,7 +76,7 @@ app.get('/signUp', function (req, res){
 });
 
 app.post('/signUp', nelisaSpaza.addUser);
-
+app.post('/updateUserRole/:username', nelisaSpaza.updateUserRole);
 app.post('/login', nelisaSpaza.checkUser);
 
 app.get('/logout', function (req, res){

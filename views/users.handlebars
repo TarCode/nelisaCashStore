@@ -16,6 +16,20 @@
                         <tr>
                                 <td>{{username}}</td>
                                 <td>{{role}}</td>
+                                
+                                    <form action="/updateUserRole/{{username}}" method="post">
+                                <td>
+
+                                   <select name="role">
+                                        <option value = "admin">admin</option>
+                                        <option value = "readOnly">read only</option>
+                                   </select>
+                                    
+                               </td>
+                               <td> <button type = "submit">Update Role</button>
+                               </td>
+                           </form>
+                                                                
                         </tr>
                         {{/users}}
                     
