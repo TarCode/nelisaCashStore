@@ -36,52 +36,49 @@ app.get('/logout', nelisaSpaza.logout);
 //middleware user check
 app.use(nelisaSpaza.middleCheck);
 
-//renders add page and fetches data from db for dropdown
-app.get('/addCategory', nelisaSpaza.showAddCat);
-app.get('/addProduct', nelisaSpaza.showAddProd);
-app.get('/addSupplier',nelisaSpaza.showAddSupplier);
-app.get('/addSales', nelisaSpaza.showAddSale);
-app.get('/addPurchases', nelisaSpaza.showAddPurchase);
-
-
-//posts data to server and calls function to add data to database
-app.post('/addCat', nelisaSpaza.addCat);
-app.post('/addProd', nelisaSpaza.addProd);
-app.post('/addSupp', nelisaSpaza.addSupp);
-app.post('/addSale', nelisaSpaza.addSale);
-app.post('/addPurchases', nelisaSpaza.addPurchase);
-
-//update routes
-app.get('/category/getCat/:cat_id', nelisaSpaza.getCat);
-app.post('/category/updateCat/:cat_id', nelisaSpaza.updateCat);
-app.get('/suppliers/getSupp/:supplier_id', nelisaSpaza.getSupp);
-app.post('/suppliers/updateSupp/:supplier_id', nelisaSpaza.updateSupp);
-app.get('/products/getProd/:prod_id', nelisaSpaza.getProd);
-app.post('/products/updateProd/:prod_id', nelisaSpaza.updateProd);
-app.get('/sales/getSale/:sale_id', nelisaSpaza.getSale);
-app.post('/sales/updateSale/:sale_id', nelisaSpaza.updateSale);
-app.get('/stock/getPurchase/:purchase_id', nelisaSpaza.getPurchase);
-app.post('/stock/updatePurchase/:purchase_id', nelisaSpaza.updatePurchase);
+app.get('/users', nelisaSpaza.showUsers);
 app.post('/updateUserRole/:username', nelisaSpaza.updateUserRole);
 
-// gets product id and inserts it into the route to execute the delete function
-app.get('/products/delProd/:prod_id', nelisaSpaza.delProd);
+app.get('/category', nelisaSpaza.showCategory);
+app.get('/category/add', nelisaSpaza.showAddCat);
+app.post('/category/add', nelisaSpaza.addCat);
+app.get('/category/getCat/:cat_id', nelisaSpaza.getCat);
 app.get('/category/delCat/:cat_id', nelisaSpaza.delCat);
+app.post('/category/updateCat/:cat_id', nelisaSpaza.updateCat);
+
+app.get('/products', nelisaSpaza.showProducts);
+app.get('/products/add', nelisaSpaza.showAddProd);
+app.post('/products/add', nelisaSpaza.addProd);
+app.get('/products/getProd/:prod_id', nelisaSpaza.getProd);
+app.post('/products/updateProd/:prod_id', nelisaSpaza.updateProd);
+app.get('/products/delProd/:prod_id', nelisaSpaza.delProd);
+
+app.get('/suppliers', nelisaSpaza.showSuppliers);
+app.get('/suppliers/add',nelisaSpaza.showAddSupplier);
+app.post('/suppliers/add', nelisaSpaza.addSupp);
+app.get('/suppliers/getSupp/:supplier_id', nelisaSpaza.getSupp);
+app.post('/suppliers/updateSupp/:supplier_id', nelisaSpaza.updateSupp);
 app.get('/suppliers/delSupp/:supplier_id', nelisaSpaza.delSupp);
+
+app.get('/sales', nelisaSpaza.showSales);
+app.get('/sales/add', nelisaSpaza.showAddSale);
+app.post('/sales/add', nelisaSpaza.addSale);
+app.get('/sales/getSale/:sale_id', nelisaSpaza.getSale);
+app.post('/sales/updateSale/:sale_id', nelisaSpaza.updateSale);
 app.get('/sales/delSale/:sale_id', nelisaSpaza.delSale);
+
+app.get('/purchases', nelisaSpaza.showPurchases);
+app.get('/purchases/add', nelisaSpaza.showAddPurchase);
+app.post('/purchases/add', nelisaSpaza.addPurchase);
+app.get('/stock/getPurchase/:purchase_id', nelisaSpaza.getPurchase);
+app.post('/stock/updatePurchase/:purchase_id', nelisaSpaza.updatePurchase);
 app.get('/stock/delPurchase/:purchase_id', nelisaSpaza.delPurchase);
 
-//gets data from the database and displays it on the web page
-app.get('/users', nelisaSpaza.showUsers);
-app.get('/products', nelisaSpaza.showProducts);
-app.get('/purchases', nelisaSpaza.showPurchases);
-app.get('/sales', nelisaSpaza.showSales);
-app.get('/suppliers', nelisaSpaza.showSuppliers);
-app.get('/category', nelisaSpaza.showCategory);
-app.get('/prodPopularity', nelisaSpaza.showProdPopularity);
-app.get('/catPopularity', nelisaSpaza.showCatPopularity);
-app.get('/prodProfit', nelisaSpaza.showProdProfit);
-app.get('/catProfit', nelisaSpaza.showCatProfit);
+
+app.get('/products/popularity', nelisaSpaza.showProdPopularity);
+app.get('/category/popularity', nelisaSpaza.showCatPopularity);
+app.get('/products/profit', nelisaSpaza.showProdProfit);
+app.get('/category/profit', nelisaSpaza.showCatProfit);
 
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {

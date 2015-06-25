@@ -11,7 +11,7 @@ body {
     text-align: center;
     font-size: medium;
     text-decoration: none;
-    background-color: #008800;
+    background-color: #333;
     padding: 0.3em;
     margin: 0.1em;
     border-radius: 0.3em;
@@ -19,7 +19,7 @@ body {
 }
 .editButtons a:hover{
     color: #e1edf7;
-    background-color: #B40101;
+    background-color: #C90000;
 }
 
 .editButton2 a{
@@ -29,7 +29,7 @@ body {
     text-align: center;
     font-size: medium;
     text-decoration: none;
-    background-color: #008800;
+    background-color: #333;
     padding: 0.3em;
     margin: 0.1em;
     border-radius: 0.3em;
@@ -37,7 +37,7 @@ body {
 }
 .editButton2 a:hover{
     color: #e1edf7;
-    background-color: #B40101;
+    background-color: #C90000;
 }
 
 .nelisaFooter{

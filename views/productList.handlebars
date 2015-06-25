@@ -1,20 +1,12 @@
-<!-- Here is the handlebars page for the product list and a button to add,edit and delete products to the list-->
 <div id="page-wrapper" >
     <div id="page-inner">
-        <!--<div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <h1 class = "data-title">Nelisa Spaza Inc</h1>
-                <p>Welcome to Nelisa Spaza Inc Inventory System</p>
-            </div>
-        </div>-->
-
         <hr />
         <div><h3 class = 'text-center'>PRODUCT LIST</h3></div>
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
                 {{#if admin}}
-                    <div class = "editButton2"><a href = "/addProduct"><span class="fa fa-plus"></span></a></div>
+                    <div class = "editButton2"><a href = "/products/add"><span class="fa fa-plus"></span></a></div>
                 {{/if}}    
                 <hr/>
                 <table class="table">
