@@ -239,6 +239,29 @@ exports.showAddProd = function (req, res, next) {
     });
 };
 
+exports.getSearchProduct = function(req, res, next){
+    req.getConnection(function(err, connection){
+        if(err)
+                return next(err);
+        var searchValue = req.params.searchValue;
+        searchValue = searchValue + "%";
+
+        console.log(searchValue);
+
+        connection.query("SELECT * from product WHERE prod_name like ?",[searchValue], function(err, results){
+            if (err) return next(err);
+            console.log(results);
+
+            res.render('product_list', {
+                admin: admin,
+                user: req.session.user,
+                products : results,
+                layout : false
+            });
+        });
+    });
+};
+
 exports.showAddSupplier = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)

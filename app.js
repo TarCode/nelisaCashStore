@@ -24,7 +24,7 @@ app.use(express.static('public'));
 app.use(myConnection(mysql, dbOptions, 'single'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(session({secret: "bookworms", cookie: {maxAge: 120000}, resave:true, saveUninitialized: false}));
+app.use(session({secret: "bookworms", cookie: {maxAge: 1000000}, resave:true, saveUninitialized: false}));
 
 app.get('/', nelisaSpaza.login);
 app.get('/', nelisaSpaza.loggedIn);
@@ -52,6 +52,8 @@ app.post('/products/add', nelisaSpaza.addProd);
 app.get('/products/getProd/:prod_id', nelisaSpaza.getProd);
 app.post('/products/updateProd/:prod_id', nelisaSpaza.updateProd);
 app.get('/products/delProd/:prod_id', nelisaSpaza.delProd);
+app.get('/products/search/:searchValue', nelisaSpaza.getSearchProduct);
+
 
 app.get('/suppliers', nelisaSpaza.showSuppliers);
 app.get('/suppliers/add',nelisaSpaza.showAddSupplier);

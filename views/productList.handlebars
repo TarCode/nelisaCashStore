@@ -3,13 +3,16 @@
         <hr />
         <div><h3 class = 'text-center'>PRODUCT LIST</h3></div>
         <div class="row">
-
             <div class="col-md-12 col-sm-12 col-xs-12">
                 {{#if admin}}
                     <div class = "editButton2"><a href = "/products/add"><span class="fa fa-plus"></span></a></div>
                 {{/if}}    
                 <hr/>
-                <table class="table">
+                <form>
+                    <input id = "searchBar" type = "text" name = "product"></input>
+                </form>
+            <div id = "counts"></div>
+                <table class="table" id="productList">
                     <tr>
                         <th>Product ID</th>
                         <th>Product Name</th>
