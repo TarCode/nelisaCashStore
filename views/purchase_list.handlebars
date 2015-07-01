@@ -1,0 +1,21 @@
+
+<table class="table" id="purchaseList">
+    <tr>
+        <th>Purchase ID</th>
+        <th>Product</th>
+        <th>Date</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Total Cost</th>
+    </tr>                          
+    {{#purchases}}
+    <tr>
+        <td>{{this.purchase_id}}</td>
+        <td>{{this.prod_name}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.quantity}}</td>
+        <td>{{this.cost}}</td>
+        <td>{{this.totalCost}}</td>
+    </tr>
+    {{/purchases}}                
+</table>

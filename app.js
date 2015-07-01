@@ -76,7 +76,7 @@ app.post('/purchases/add', nelisaSpaza.addPurchase);
 app.get('/stock/getPurchase/:purchase_id', nelisaSpaza.getPurchase);
 app.post('/stock/updatePurchase/:purchase_id', nelisaSpaza.updatePurchase);
 app.get('/stock/delPurchase/:purchase_id', nelisaSpaza.delPurchase);
-
+app.get('/purchases/search/:searchValue', nelisaSpaza.getSearchPurchase);
 
 app.get('/products/popularity', nelisaSpaza.showProdPopularity);
 app.get('/category/popularity', nelisaSpaza.showCatPopularity);

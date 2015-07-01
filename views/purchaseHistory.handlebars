@@ -9,7 +9,10 @@
                     <div class = "editButton2"><a href = "/purchases/add"><span class="fa fa-plus"></span></a></div>
                 {{/if}}
                 <hr/>
-                <table class="table">
+                <form>
+                    <input class = "searchBar"id = "purchaseSearchBar" type = "text" name = "purchases"></input>
+                </form>
+                <table class="table" id = "purchaseList">
                     <tr>
                         <th>Purchase ID</th>
                         <th>Product</th>

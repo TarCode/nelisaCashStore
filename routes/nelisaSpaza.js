@@ -277,6 +277,25 @@ exports.getSearchSale = function(req, res, next){
     });
 };
 
+exports.getSearchPurchase = function(req, res, next){
+    req.getConnection(function(err, connection){
+        if(err)
+                return next(err);
+        var searchValue = req.params.searchValue;
+        searchValue = searchValue + "%";
+
+        connection.query("SELECT purchase_id, prod_name, date, quantity, cost, totalCost from stock, product WHERE stock.prod_id = product.prod_id AND (prod_name LIKE ?)",[searchValue], function(err, results){
+            if (err) return next(err);
+            res.render('purchase_list', {
+                admin: admin,
+                user: req.session.user,
+                purchases : results,
+                layout : false
+            });
+        });
+    });
+};
+
 
 exports.showAddSupplier = function (req, res, next) {
     req.getConnection(function(err, connection){

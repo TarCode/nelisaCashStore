@@ -13,4 +13,11 @@ $(document).ready(function() {
 				$( "#saleList" ).html( results );
 			});
 	});
+
+	$("#purchaseSearchBar").keypress(function(){
+			var searchValue = $("#purchaseSearchBar").val();
+			$.get("/purchases/search/" + searchValue, function(results){
+				$( "#purchaseList" ).html( results );
+			});
+	});
 });
