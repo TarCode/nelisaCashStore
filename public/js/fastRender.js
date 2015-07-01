@@ -27,4 +27,11 @@ $(document).ready(function() {
 				$( "#supplierList" ).html( results );
 			});
 	});
+
+	$("#categorySearchBar").keypress(function(){
+			var searchValue = $("#categorySearchBar").val();
+			$.get("/category/search/" + searchValue, function(results){
+				$( "#categoryList" ).html( results );
+			});
+	});
 });

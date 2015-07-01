@@ -1,0 +1,13 @@
+
+<table class="table" id="categoryList">
+    <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>
+    </tr>                          
+    {{#categories}}
+    <tr>
+        <td>{{this.cat_id}}</td>
+        <td>{{this.cat_name}}</td>
+    </tr>
+    {{/categories}}                
+</table>

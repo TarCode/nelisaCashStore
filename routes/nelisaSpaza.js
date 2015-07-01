@@ -315,6 +315,25 @@ exports.getSearchSupplier = function(req, res, next){
     });
 };
 
+exports.getSearchCategory = function(req, res, next){
+    req.getConnection(function(err, connection){
+        if(err)
+                return next(err);
+        var searchValue = req.params.searchValue;
+        searchValue = searchValue + "%";
+
+        connection.query("SELECT cat_id, cat_name from category WHERE cat_name LIKE ?",[searchValue], function(err, results){
+            if (err) return next(err);
+            res.render('category_list', {
+                admin: admin,
+                user: req.session.user,
+                categories : results,
+                layout : false
+            });
+        });
+    });
+};
+
 exports.showAddSupplier = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)

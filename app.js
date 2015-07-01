@@ -45,6 +45,7 @@ app.post('/category/add', nelisaSpaza.addCat);
 app.get('/category/getCat/:cat_id', nelisaSpaza.getCat);
 app.get('/category/delCat/:cat_id', nelisaSpaza.delCat);
 app.post('/category/updateCat/:cat_id', nelisaSpaza.updateCat);
+app.get('/category/search/:searchValue', nelisaSpaza.getSearchCategory);
 
 app.get('/products', nelisaSpaza.showProducts);
 app.get('/products/add', nelisaSpaza.showAddProd);
