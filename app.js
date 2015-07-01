@@ -68,6 +68,7 @@ app.post('/sales/add', nelisaSpaza.addSale);
 app.get('/sales/getSale/:sale_id', nelisaSpaza.getSale);
 app.post('/sales/updateSale/:sale_id', nelisaSpaza.updateSale);
 app.get('/sales/delSale/:sale_id', nelisaSpaza.delSale);
+app.get('/sales/search/:searchValue', nelisaSpaza.getSearchSale);
 
 app.get('/purchases', nelisaSpaza.showPurchases);
 app.get('/purchases/add', nelisaSpaza.showAddPurchase);

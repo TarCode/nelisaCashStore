@@ -1,13 +1,16 @@
 $(document).ready(function() {
-   var count = 0;
-	$("#searchBar").keypress(function(){
-		count++;
-		//if(count >= 3){
-			var searchValue = $("#searchBar").val();
+   
+	$("#productSearchBar").keypress(function(){
+			var searchValue = $("#productSearchBar").val();
 			$.get("/products/search/" + searchValue, function(results){
 				$( "#productList" ).html( results );
 			});
+	});
 
-		//}
-	})
+	$("#saleSearchBar").keypress(function(){
+			var searchValue = $("#saleSearchBar").val();
+			$.get("/sales/search/" + searchValue, function(results){
+				$( "#saleList" ).html( results );
+			});
+	});
 });
