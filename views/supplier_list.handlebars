@@ -1,0 +1,13 @@
+
+<table class="table" id="supplierList">
+    <tr>
+        <th>Supplier ID</th>
+        <th>Supplier Name</th>
+    </tr>                          
+    {{#suppliers}}
+    <tr>
+        <td>{{this.supplier_id}}</td>
+        <td>{{this.supplier_name}}</td>
+    </tr>
+    {{/suppliers}}                
+</table>

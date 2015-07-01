@@ -296,6 +296,24 @@ exports.getSearchPurchase = function(req, res, next){
     });
 };
 
+exports.getSearchSupplier = function(req, res, next){
+    req.getConnection(function(err, connection){
+        if(err)
+                return next(err);
+        var searchValue = req.params.searchValue;
+        searchValue = searchValue + "%";
+
+        connection.query("SELECT supplier_id, supplier_name from supplier WHERE supplier_name LIKE ?",[searchValue], function(err, results){
+            if (err) return next(err);
+            res.render('supplier_list', {
+                admin: admin,
+                user: req.session.user,
+                suppliers : results,
+                layout : false
+            });
+        });
+    });
+};
 
 exports.showAddSupplier = function (req, res, next) {
     req.getConnection(function(err, connection){

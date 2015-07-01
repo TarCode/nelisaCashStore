@@ -7,7 +7,10 @@
                 {{#if admin}}
                     <div class = "editButton2"><a href = "/suppliers/add"><span class="fa fa-plus"></span></a></div>
                 {{/if}}    
-                <table class="table">
+                <form>
+                    <input class = "searchBar"id = "supplierSearchBar" type = "text" name = "suppliers"></input>
+                </form>
+                <table class="table" id = "supplierList">
                     <tr>
                         <th>Supplier ID</th>
                         <th>Supplier Name</th>

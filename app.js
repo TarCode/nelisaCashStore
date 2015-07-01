@@ -61,6 +61,7 @@ app.post('/suppliers/add', nelisaSpaza.addSupp);
 app.get('/suppliers/getSupp/:supplier_id', nelisaSpaza.getSupp);
 app.post('/suppliers/updateSupp/:supplier_id', nelisaSpaza.updateSupp);
 app.get('/suppliers/delSupp/:supplier_id', nelisaSpaza.delSupp);
+app.get('/suppliers/search/:searchValue', nelisaSpaza.getSearchSupplier);
 
 app.get('/sales', nelisaSpaza.showSales);
 app.get('/sales/add', nelisaSpaza.showAddSale);

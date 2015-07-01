@@ -20,4 +20,11 @@ $(document).ready(function() {
 				$( "#purchaseList" ).html( results );
 			});
 	});
+
+	$("#supplierSearchBar").keypress(function(){
+			var searchValue = $("#supplierSearchBar").val();
+			$.get("/suppliers/search/" + searchValue, function(results){
+				$( "#supplierList" ).html( results );
+			});
+	});
 });
