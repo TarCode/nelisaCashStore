@@ -246,12 +246,8 @@ exports.getSearchProduct = function(req, res, next){
         var searchValue = req.params.searchValue;
         searchValue = searchValue + "%";
 
-        console.log(searchValue);
-
-        connection.query("SELECT * from product WHERE prod_name like ?",[searchValue], function(err, results){
+        connection.query("SELECT prod_id, prod_name, cat_name from category, product WHERE category.cat_id = product.cat_id AND (prod_name LIKE ? OR cat_name LIKE ?)",[searchValue, searchValue], function(err, results){
             if (err) return next(err);
-            console.log(results);
-
             res.render('product_list', {
                 admin: admin,
                 user: req.session.user,

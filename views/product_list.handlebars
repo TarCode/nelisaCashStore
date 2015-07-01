@@ -1,8 +1,15 @@
-    
-{{#products}}
-<tr>
-        <td>{{this.prod_id}}</td>
-        <td>{{this.prod_name}}</td>
-        <td>{{this.cat_name}}</td>
-</tr>
-{{/products}}
+
+<table class="table" id="productList">
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Category Name</th>
+    </tr>                          
+    {{#products}}
+    <tr>
+            <td>{{this.prod_id}}</td>
+            <td>{{this.prod_name}}</td>
+            <td>{{this.cat_name}}</td>
+    </tr>
+    {{/products}}                
+</table>

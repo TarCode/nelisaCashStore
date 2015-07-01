@@ -295,3 +295,11 @@ background-color: #FFF;
     color: #fff;
     text-align: center;
 }
+
+#searchBar{
+    width: 100%;
+    height: 2.5em;
+    font-size: large;
+    padding: 0.5em;
+    margin-bottom: 5px;
+}
