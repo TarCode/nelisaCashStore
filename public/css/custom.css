@@ -5,6 +5,25 @@ body {
 #place-holder{
     height: 50%;
 }
+.loginButt{
+    text-decoration: none;
+    background-color: #333;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    color: #e1edf7;
+    width: 6em;
+}
+
+.signButt{
+    text-decoration: none;
+    background-color: #C90000;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    color: #e1edf7;
+    width: 6em;
+    margin-top: 0.5em;
+}
+
 .editButtons a{
     display: inline-block;
     width: 2em;
