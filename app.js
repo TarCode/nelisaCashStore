@@ -38,6 +38,7 @@ app.use(nelisaSpaza.middleCheck);
 
 app.get('/users', nelisaSpaza.showUsers);
 app.post('/updateUserRole/:username', nelisaSpaza.updateUserRole);
+app.post('/users/deleteUser/:username', nelisaSpaza.deleteUser);
 
 app.get('/category', nelisaSpaza.showCategory);
 app.get('/category/add', nelisaSpaza.showAddCat);

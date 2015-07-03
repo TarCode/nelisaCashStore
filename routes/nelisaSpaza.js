@@ -4,6 +4,7 @@ var user = {};
 
 admin = false;
 lock = false;
+exists = false;
 
 //log user in or redirect 
 exports.login = function (req, res){
@@ -74,36 +75,61 @@ exports.middleCheck = function(req, res, next){
 //add user function
 exports.addUser = function (req, res, next) {
     req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-        var input = JSON.parse(JSON.stringify(req.body));
-        
-        var data = {
-            username : input.user,
-            password: input.pass,
-            role: "readOnly"
-        };
+        connection.query('SELECT username FROM users', [], function(err, exists) {
+            if (err){
+                return next(err);
+            }
+            var input = JSON.parse(JSON.stringify(req.body));
+            
+            var data = {
+                username : input.user,
+                password: input.pass,
+                role: "readOnly"
+            };
 
-        if(data.username.trim() === "" || data.password.trim() === ""){
-            res.render( 'signUp', {
-                msg : "Fields cannot be blank"
-            });
-            return;
-        }
-        bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(input.pass, salt, function(err, hash) {
-                // Store hash in your password DB. 
-                data.password = hash;
-                connection.query('insert into users set ?', data, function(err, results) {
-                    if (err)
-                        console.log("Error inserting : %s ",err );
+            var password2 = input.pass2;
 
-                    res.render('home', {msg:"Successfully signed up"});
+            if(data.username.trim() === "" || data.password.trim() === ""){
+                res.render( 'signUp', {
+                    msg : "Fields cannot be blank"
                 });
-            });
+                return;
+            }
+            else if( data.password != password2){
+                res.render( 'signUp', {
+                    msg : "Passwords do not match"
+                });
+                return;
+            }
+            else{
+                for (var x = 0; x < exists.length; x++){
+                        if(data.username === exists[x].username){
+                             exists === true;
+                        }
+                }
+                if(exists === false){
+                    bcrypt.genSalt(10, function(err, salt) {
+                        bcrypt.hash(input.pass, salt, function(err, hash) {
+                            // Store hash in your password DB. 
+                            data.password = hash;
+                            connection.query('insert into users set ?', data, function(err, results) {
+                                if (err)
+                                    console.log("Error inserting : %s ",err );
+
+                                res.render('home', {msg:"Successfully signed up"});
+                            });
+                        });
+                    }); 
+                }
+                else{
+                    res.render( 'signUp', {
+                        msg: "Username already exists"
+                    });
+                    exists = false;
+                }
+            }
+
         });
-        
     });
 };
 
@@ -211,6 +237,24 @@ exports.updateUserRole = function (req, res, next) {
     });
 };
 
+exports.deleteUser = function (req, res, next) {
+    
+    var username = req.params.username;
+    
+    req.getConnection(function(err, connection){
+        if (err){
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        connection.query('DELETE FROM users where username = ?',[username], function(err, results) {
+            if (err)
+                console.log("Error updating : %s ",err );
+
+            res.redirect('/users');
+        });
+    });
+};
+
 // the show add functions, shows table data on add page(for drop down menu)
 exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){
@@ -244,7 +288,7 @@ exports.getSearchProduct = function(req, res, next){
         if(err)
                 return next(err);
         var searchValue = req.params.searchValue;
-        searchValue = searchValue + "%";
+        searchValue ="%" + searchValue + "%";
 
         connection.query("SELECT prod_id, prod_name, cat_name from category, product WHERE category.cat_id = product.cat_id AND (prod_name LIKE ? OR cat_name LIKE ?)",[searchValue, searchValue], function(err, results){
             if (err) return next(err);
@@ -263,7 +307,7 @@ exports.getSearchSale = function(req, res, next){
         if(err)
                 return next(err);
         var searchValue = req.params.searchValue;
-        searchValue = searchValue + "%";
+        searchValue = "%" + searchValue + "%";
 
         connection.query("SELECT sale_id, prod_name, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id AND (prod_name LIKE ?)",[searchValue], function(err, results){
             if (err) return next(err);
@@ -282,7 +326,7 @@ exports.getSearchPurchase = function(req, res, next){
         if(err)
                 return next(err);
         var searchValue = req.params.searchValue;
-        searchValue = searchValue + "%";
+        searchValue = "%" + searchValue + "%";
 
         connection.query("SELECT purchase_id, prod_name, date, quantity, cost, totalCost from stock, product WHERE stock.prod_id = product.prod_id AND (prod_name LIKE ?)",[searchValue], function(err, results){
             if (err) return next(err);
@@ -301,7 +345,7 @@ exports.getSearchSupplier = function(req, res, next){
         if(err)
                 return next(err);
         var searchValue = req.params.searchValue;
-        searchValue = searchValue + "%";
+        searchValue = "%" + searchValue + "%";
 
         connection.query("SELECT supplier_id, supplier_name from supplier WHERE supplier_name LIKE ?",[searchValue], function(err, results){
             if (err) return next(err);
@@ -320,7 +364,7 @@ exports.getSearchCategory = function(req, res, next){
         if(err)
                 return next(err);
         var searchValue = req.params.searchValue;
-        searchValue = searchValue + "%";
+        searchValue = "%" + searchValue + "%";
 
         connection.query("SELECT cat_id, cat_name from category WHERE cat_name LIKE ?",[searchValue], function(err, results){
             if (err) return next(err);

@@ -18,17 +18,21 @@
                                 <td>{{role}}</td>
                                 
                                     <form action="/updateUserRole/{{username}}" method="post">
-                                <td>
+                                        <td>
 
-                                   <select name="role">
-                                        <option value = "admin">admin</option>
-                                        <option value = "readOnly">read only</option>
-                                   </select>
-                                    
-                               </td>
-                               <td> <button type = "submit">Update Role</button>
-                               </td>
-                           </form>
+                                           <select name="role">
+                                                <option value = "admin">admin</option>
+                                                <option value = "readOnly">read only</option>
+                                           </select>
+                                            
+                                       </td>
+                                       <td> <button type = "submit">Update Role</button>
+                                       </td>
+                                   </form>
+                                    <form action="/users/deleteUser/{{username}}" method="post">
+                                       <td> <button type = "submit">Delete</button>
+                                       </td>
+                                   </form>
                                                                 
                         </tr>
                         {{/users}}
