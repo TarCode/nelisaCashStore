@@ -5,7 +5,7 @@ exports.showAddProd = function (req, res, next) {
        connection.query('SELECT * from category', [], function(err, results) {
             if (err) return next(err);
 
-            res.render( 'addProduct', {
+            res.render(  {
                 category : results,
                 user: req.session.user,
                 admin:admin
@@ -32,6 +32,7 @@ exports.getSearchProduct = function(req, res, next){
         });
     });
 };
+
 exports.addProd = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err){
