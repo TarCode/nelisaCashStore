@@ -142,22 +142,29 @@ exports.checkUser = function (req, res, next) {
         if (err)
             return next(err);
 
-        var input = JSON.parse(JSON.stringify(req.body));
-        var data = {
-            username : input.user,
-            password: input.pass,
-            role: input.userRole
-        };
-         if(data.username.trim() === "" || data.password.trim() === ""){
-                msg = "Fields cannot be blank";
-                 res.render('home', {
-                          msg:msg
-                        });
-         }
-        //hash password to check against hashed password in database
-        connection.query('SELECT password, role, locked from users WHERE username = ?', [data.username], function(err, results) {
-            if (err) return next(err);
-            if(results.length ==1){
+            var input = JSON.parse(JSON.stringify(req.body));
+            var data = {
+                username : input.user,
+                password: input.pass,
+                role: input.userRole
+            };
+            connection.query('SELECT password, role, locked from users WHERE username = ?', [data.username], function(err, results) {
+                if (err) return next(err);
+             if(data.username.trim() === "" || data.password.trim() === ""){
+                    msg = "Fields cannot be blank";
+                     res.render('home', {
+                              msg:msg
+                            });
+             }
+             else if (results.length === 0){
+               msg = "Username does not exist";
+                res.render('home', {
+                         msg:msg
+                       });
+             }
+            //hash password to check against hashed password in database
+
+            else if(results.length ==1){
             var user = results[0];
 
 
