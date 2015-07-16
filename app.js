@@ -1,6 +1,6 @@
 var express = require('express'),
     mysql = require('mysql'),
-    exphbs  = require('express-handlebars'), 
+    exphbs  = require('express-handlebars'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
     purchaseMethods = require('./routes/purchaseMethods'),
@@ -89,11 +89,6 @@ app.get('/stock/getPurchase/:purchase_id', purchaseMethods.getPurchase);
 app.post('/stock/updatePurchase/:purchase_id', purchaseMethods.updatePurchase);
 app.get('/stock/delPurchase/:purchase_id', purchaseMethods.delPurchase);
 app.get('/purchases/search/:searchValue', purchaseMethods.getSearchPurchase);
-
-
-
-
-
 
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {

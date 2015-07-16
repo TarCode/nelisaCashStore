@@ -5,7 +5,7 @@ exports.showAddProd = function (req, res, next) {
        connection.query('SELECT * from category', [], function(err, results) {
             if (err) return next(err);
 
-            res.render(  {
+            res.render( 'addProduct', {
                 category : results,
                 user: req.session.user,
                 admin:admin

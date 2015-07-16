@@ -1,3 +1,18 @@
+exports.showCategory = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err)
+            return next(err);
+        connection.query('SELECT * from category', [], function(err, results) {
+            if (err) return next(err);
+            res.render( 'category', {
+                category : results,
+                user: req.session.user,
+                admin:admin
+            });
+        });
+    });
+};
+
 exports.showAddCat = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
@@ -34,21 +49,6 @@ exports.addCat = function (req, res, next) {
     });
 };
 
-exports.showCategory = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT * from category', [], function(err, results) {
-            if (err) return next(err);
-
-            res.render( 'category', {
-                category : results,
-                user: req.session.user,
-                admin:admin
-            });
-        });
-    });
-};
 exports.showCatPopularity = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)

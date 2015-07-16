@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "qunit -c ./routes/categoryMethods.js -t ./routes/routeTests.js"
+    "test": "qunit -c ./functions/supplyPopProduct.js -t ./tests/supplyPopProduct_test.js"
   },
   "author": "Taariq Isaacs",
   "license": "BSD-2-Clause",
@@ -18,9 +18,7 @@
     "mysql": "~2.7.0",
     "express-myconnection": "~1.0.4",
     "bcrypt": "~0.8.3",
-    "qunit": "~0.7.6",
-    "should": "~7.0.2",
-    "supertest": "~1.0.1"
+    "qunit": "~0.7.6"
   },
   "devDependencies": {
     "qunit": "~0.7.5"
