@@ -1,14 +1,25 @@
+var mysql = require('mysql');
+var connection =  mysql.createConnection({
+  host : 'localhost',
+  user : 'root',
+  password: 'coder123'
+});
+connection.connect();
+connection.query('use nelisa');
+
+var categoryData = function(cb){
+      var strQuery = 'SELECT * from category';
+
+      connection.query( strQuery, cb);
+    }
+
 exports.showCategory = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT * from category', [], function(err, results) {
-            if (err) return next(err);
-            res.render( 'category', {
-                category : results,
-                user: req.session.user,
-                admin:admin
-            });
+    categoryData(function(err, rows){
+      if(err)	throw err;
+        res.render( 'category', {
+            category : rows,
+            user: req.session.user,
+            admin:admin
         });
     });
 };
