@@ -1,20 +1,18 @@
 var mysql = require('mysql');
+var categoryDataService = require('./categoryDataService');
 var connection =  mysql.createConnection({
   host : 'localhost',
   user : 'root',
   password: 'coder123'
 });
+
 connection.connect();
 connection.query('use nelisa');
-
-var categoryData = function(cb){
-      var strQuery = 'SELECT * from category';
-
-      connection.query( strQuery, cb);
-    }
+var catDataServ = new categoryDataService(connection);
 
 exports.showCategory = function (req, res, next) {
-    categoryData(function(err, rows){
+
+    catDataServ.getAllCategories(function(err, rows){
       if(err)	throw err;
         res.render( 'category', {
             category : rows,
@@ -25,20 +23,12 @@ exports.showCategory = function (req, res, next) {
 };
 
 exports.showAddCat = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
             res.render('addCategory', {
                 user: req.session.user,
                 admin:admin
             });
-    });
 };
 exports.addCat = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
             cat_name : input.cat_name
@@ -48,16 +38,14 @@ exports.addCat = function (req, res, next) {
             res.render( 'addCategory', {
                 error : "Category cannot be blank"
             });
-            return;
+        }
+        else{
+          catDataServ.insertCategory(data, function(err, rows){
+            if(err)	throw err;
+              res.redirect('/category');
+          });
         }
 
-        connection.query('insert into category set ?', data, function(err, results) {
-            if (err)
-                console.log("Error inserting : %s ",err );
-
-            res.redirect('/category');
-        });
-    });
 };
 
 exports.showCatPopularity = function (req, res, next) {
