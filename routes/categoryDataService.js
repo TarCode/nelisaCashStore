@@ -9,11 +9,19 @@ module.exports = function (connection) {
   };
 
   this.getAllCategories = function (cb) {
-    getData('SELECT * FROM category', cb );
+      getData('SELECT * FROM category', cb );
   };
 
   this.insertCategory = function (data, cb) {
-    insertData('INSERT INTO category SET ?', data, cb );
+      insertData('INSERT INTO category SET ?', data, cb );
+  };
+
+  this.updateCategory = function (data, cb) {
+      insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
+  };
+
+  this.getUpdateCategory = function (data, cb) {
+      insertData('SELECT * from category WHERE cat_id = ?', data, cb );
   };
 
 };

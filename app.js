@@ -48,7 +48,7 @@ app.post('/users/deleteUser/:username', userMethods.deleteUser);
 app.get('/category', categoryMethods.showCategory);
 app.get('/category/add', categoryMethods.showAddCat);
 app.post('/category/add', categoryMethods.addCat);
-app.get('/category/getCat/:cat_id', categoryMethods.getCat);
+app.get('/category/getCat/:cat_id', categoryMethods.getUpdateCat);
 app.get('/category/delCat/:cat_id', categoryMethods.delCat);
 app.post('/category/updateCat/:cat_id', categoryMethods.updateCat);
 app.get('/category/search/:searchValue', categoryMethods.getSearchCategory);
