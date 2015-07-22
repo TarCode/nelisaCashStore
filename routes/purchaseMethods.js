@@ -63,20 +63,16 @@ exports.addPurchase = function (req, res, next) {
 };//done
 
 exports.showPurchases = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT * from stock, product WHERE stock.prod_id = product.prod_id order by purchase_id desc', [], function(err, results) {
-            if (err) return next(err);
+    purchaseDataService.getAllPurchases(function(err, results) {
+        if (err) return next(err);
 
-            res.render( 'purchaseHistory', {
-                stock : results,
-                user: req.session.user,
-                admin:admin
-            });
+        res.render( 'purchaseHistory', {
+            stock : results,
+            user: req.session.user,
+            admin:admin
         });
     });
-};
+};//done
 
 exports.getUpdatePurchase = function (req, res, next) {
     var purchase_id = req.params.purchase_id;
