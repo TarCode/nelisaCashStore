@@ -29,7 +29,7 @@ module.exports = function (connection) {
   };
 
   this.deleteProduct = function (data, cb) {
-      insertData('DELETE FROM category WHERE cat_id = ?', data, cb );
+      insertData('DELETE FROM product WHERE prod_id = ?', data, cb );
   };
 
   this.searchProduct = function (data, cb) {

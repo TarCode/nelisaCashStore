@@ -71,18 +71,9 @@ exports.getUpdateProd = function (req, res, next) {
 
 exports.delProd = function (req, res, next) {
     var prod_id = req.params.prod_id;
-
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-
-        connection.query('delete from product where prod_id = ?',[prod_id], function(err, results) {
-            if (err)
-                console.log("Error deleting : %s ",err );
-
-            res.redirect('/products');
-        });
+    prodDataServ.deleteProduct([prod_id], function(err, results) {
+        if (err) return (err);
+        res.redirect('/products');
     });
 };
 
