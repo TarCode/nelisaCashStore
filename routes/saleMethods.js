@@ -1,21 +1,26 @@
-exports.getSearchSale = function(req, res, next){
-    req.getConnection(function(err, connection){
-        if(err)
-                return next(err);
-        var searchValue = req.params.searchValue;
-        searchValue = "%" + searchValue + "%";
+var mysql = require('mysql');
+var SaleDataService = require('./saleDataService');
+var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : 'coder123'
+});
 
-        connection.query("SELECT sale_id, prod_name, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id AND (prod_name LIKE ?)",[searchValue], function(err, results){
-            if (err) return next(err);
-            res.render('sale_list', {
-                admin: admin,
-                user: req.session.user,
-                sales : results,
-                layout : false
-            });
+connection.connect();
+connection.query('use nelisa');
+var saleDataService = new SaleDataService(connection);
+
+exports.showSales = function (req, res, next) {
+    saleDataService.getAllSales(function(err, results) {
+        if (err) return next(err);
+        res.render( 'salesHistory', {
+            sales : results,
+            user: req.session.user,
+            admin:admin
         });
     });
 };
+
 exports.showAddSale = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
@@ -51,22 +56,8 @@ exports.addSale = function (req, res, next) {
         });
     });
 };
-exports.showSales = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT * from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', [], function(err, results) {
-            if (err) return next(err);
 
-            res.render( 'salesHistory', {
-                sales : results,
-                user: req.session.user,
-                admin:admin
-            });
-        });
-    });
-};
-exports.getSale = function (req, res, next) {
+exports.getUpdateSale = function (req, res, next) {
     var sale_id = req.params.sale_id;
     req.getConnection(function(err, connection){
         if (err){
@@ -123,6 +114,24 @@ exports.delSale = function (req, res, next) {
             if (err)
                 console.log("Error deleting : %s ",err );
             res.redirect('/sales');
+        });
+    });
+};
+exports.getSearchSale = function(req, res, next){
+    req.getConnection(function(err, connection){
+        if(err)
+                return next(err);
+        var searchValue = req.params.searchValue;
+        searchValue = "%" + searchValue + "%";
+
+        connection.query("SELECT sale_id, prod_name, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id AND (prod_name LIKE ?)",[searchValue], function(err, results){
+            if (err) return next(err);
+            res.render('sale_list', {
+                admin: admin,
+                user: req.session.user,
+                sales : results,
+                layout : false
+            });
         });
     });
 };

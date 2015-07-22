@@ -3,11 +3,11 @@ var categoryDataService = require('./categoryDataService');
 var connection =  mysql.createConnection({
   host : 'localhost',
   user : 'root',
-  password: 'spot'
+  password: 'coder123'
 });
 
 connection.connect();
-connection.query('use NelisaSpaza');
+connection.query('use nelisa');
 var catDataServ = new categoryDataService(connection);
 
 exports.showCategory = function (req, res, next) {

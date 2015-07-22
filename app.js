@@ -17,9 +17,9 @@ var app = express();
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'spot',
+      password: 'coder123',
       port: 3306,
-      database: 'NelisaSpaza'
+      database: 'nelisa'
 };
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -77,7 +77,7 @@ app.get('/suppliers/search/:searchValue', supplierMethods.getSearchSupplier);
 app.get('/sales', saleMethods.showSales);
 app.get('/sales/add', saleMethods.showAddSale);
 app.post('/sales/add', saleMethods.addSale);
-app.get('/sales/getSale/:sale_id', saleMethods.getSale);
+app.get('/sales/getSale/:sale_id', saleMethods.getUpdateSale);
 app.post('/sales/updateSale/:sale_id', saleMethods.updateSale);
 app.get('/sales/delSale/:sale_id', saleMethods.delSale);
 app.get('/sales/search/:searchValue', saleMethods.getSearchSale);
