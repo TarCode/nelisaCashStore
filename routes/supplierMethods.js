@@ -11,20 +11,16 @@ connection.query('use NelisaSpaza');
 var supplierDataService = new SupplierDataSrvice(connection);
 
 exports.getSearchSupplier = function(req, res, next){
-    req.getConnection(function(err, connection){
-        if(err)
-                return next(err);
-        var searchValue = req.params.searchValue;
-        searchValue = "%" + searchValue + "%";
+    var searchValue = req.params.searchValue;
+    searchValue = "%" + searchValue + "%";
 
-        connection.query("SELECT supplier_id, supplier_name from supplier WHERE supplier_name LIKE ?",[searchValue], function(err, results){
-            if (err) return next(err);
-            res.render('supplier_list', {
-                admin: admin,
-                user: req.session.user,
-                suppliers : results,
-                layout : false
-            });
+    supplierDataService.searchSupplier([searchValue], function(err, results){
+        if (err) return next(err);
+         res.render('supplier_list', {
+            admin: admin,
+            user: req.session.user,
+            suppliers : results,
+            layout : false
         });
     });
 };
