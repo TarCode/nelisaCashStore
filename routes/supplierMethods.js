@@ -42,20 +42,15 @@ exports.showAddSupplier = function (req, res, next) {
 };
 
 exports.addSupp = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
             supplier_name : input.supplier_name
         };
-        connection.query('insert into supplier set ?', data, function(err, results) {
+        supplierDataService.insertSupplier(data, function(err, results) {
             if (err)
                 console.log("Error inserting : %s ",err );
 
             res.redirect('/suppliers');
-        });
     });
 };
 

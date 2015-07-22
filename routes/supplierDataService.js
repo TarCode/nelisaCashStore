@@ -12,9 +12,9 @@ module.exports = function (connection) {
       getData('SELECT * from supplier', cb );
   };
 
- // this.insertCategory = function (data, cb) {
- //     insertData('INSERT INTO category SET ?', data, cb );
- // };
+  this.insertSupplier = function (data, cb) {
+      insertData('INSERT INTO supplier SET ?', data, cb );
+  };
 
  // this.updateCategory = function (data, cb) {
  //     insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
