@@ -121,16 +121,9 @@ exports.updatePurchase = function (req, res, next) {
 
 exports.delPurchase = function (req, res, next) {
     var purchase_id = req.params.purchase_id;
-
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-
-        connection.query('delete from stock where purchase_id = ?',[purchase_id], function(err, results) {
+        purchaseDataService.deletePurchase([purchase_id], function(err, results) {
             if (err)
                 console.log("Error deleting : %s ",err );
             res.redirect('/purchases');
         });
-    });
-};
+};//done

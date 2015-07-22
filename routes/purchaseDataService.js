@@ -20,9 +20,9 @@ module.exports = function (connection) {
       insertData('UPDATE stock SET ? WHERE purchase_id = ?', data, cb );
   };//done
 
-  this.deleteCategory = function (data, cb) {
-      insertData('DELETE FROM category WHERE cat_id = ?', data, cb );
-  };
+  this.deletePurchase = function (data, cb) {
+      insertData('DELETE FROM stock WHERE purchase_id = ?', data, cb );
+  };//done
 
   this.searchPurchase = function (data, cb) {
       insertData('SELECT purchase_id, prod_name, date, quantity, cost, totalCost FROM stock, product WHERE stock.prod_id = product.prod_id AND (prod_name LIKE ?)', data, cb );
