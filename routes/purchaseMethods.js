@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var purchaseDataService = require('./purchaseDataService');
+var PurchaseDataService = require('./purchaseDataService');
 var connection = mysql.createConnection({
     host : 'localhost',
     user : 'root',
@@ -8,26 +8,22 @@ var connection = mysql.createConnection({
 
 connection.connect();
 connection.query('use NelisaSpaza');
-var purchaseDataServ = new purchaseDataService(connection);
+var purchaseDataService = new PurchaseDataService(connection);
 
 exports.getSearchPurchase = function(req, res, next){
-    req.getConnection(function(err, connection){
-        if(err)
-                return next(err);
-        var searchValue = req.params.searchValue;
-        searchValue = "%" + searchValue + "%";
+    var searchValue = req.params.searchValue;
+    searchValue = "%" + searchValue + "%";
 
-        connection.query("SELECT purchase_id, prod_name, date, quantity, cost, totalCost from stock, product WHERE stock.prod_id = product.prod_id AND (prod_name LIKE ?)",[searchValue], function(err, results){
-            if (err) return next(err);
-            res.render('purchase_list', {
-                admin: admin,
-                user: req.session.user,
-                purchases : results,
-                layout : false
-            });
+    purchaseDataService.searchPurchase([searchValue], function(err, results){
+        if (err) return next(err);
+        res.render('purchase_list', {
+            admin: admin,
+            user: req.session.user,
+            purchases : results,
+            layout : false
         });
     });
-};
+};//done
 
 exports.showAddPurchase = function (req, res, next) {
     req.getConnection(function(err, connection){
