@@ -12,6 +12,10 @@ module.exports = function (connection) {
       getData('SELECT prod_id,prod_name,cat_name from product,category where product.cat_id = category.cat_id', cb );
   };
 
+  this.showInsertProducts = function (cb) {
+      getData('SELECT * FROM category', cb );
+  };
+
   this.insertProduct = function (data, cb) {
       insertData('INSERT INTO category SET ?', data, cb );
   };

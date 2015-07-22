@@ -13,7 +13,6 @@ var prodDataServ = new productDataService(connection);
 exports.showProducts = function (req, res, next) {
     prodDataServ.getAllProducts(function(err, results) {
         if (err) return next(err);
-
         res.render( 'productList', {
             product : results,
             user: req.session.user,
@@ -23,17 +22,12 @@ exports.showProducts = function (req, res, next) {
 };
 
 exports.showAddProd = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-       connection.query('SELECT * from category', [], function(err, results) {
-            if (err) return next(err);
-
-            res.render( 'addProduct', {
-                category : results,
-                user: req.session.user,
-                admin:admin
-            });
+    prodDataServ.showInsertProducts(function(err, results) {
+        if (err) return next(err);
+        res.render( 'addProduct', {
+            category : results,
+            user: req.session.user,
+            admin:admin
         });
     });
 };
