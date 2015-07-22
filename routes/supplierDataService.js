@@ -24,9 +24,9 @@ module.exports = function (connection) {
       insertData('SELECT * FROM supplier WHERE supplier_id = ?', data, cb );
   };
 
- // this.deleteCategory = function (data, cb) {
- //     insertData('DELETE FROM category WHERE cat_id = ?', data, cb );
- // };
+  this.deleteSupplier = function (data, cb) {
+      insertData('DELETE FROM supplier WHERE supplier_id = ?', data, cb );
+  };
 
  // this.searchCategory = function (data, cb) {
  //     insertData('SELECT cat_id, cat_name from category WHERE cat_name LIKE ?', data, cb );

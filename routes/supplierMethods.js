@@ -97,15 +97,9 @@ exports.updateSupp = function (req, res, next) {
 exports.delSupp = function (req, res, next) {
     var supplier_id = req.params.supplier_id;
 
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-
-        connection.query('delete from supplier where supplier_id = ?',[supplier_id], function(err, results) {
-            if (err)
-                console.log("Error deleting : %s ",err );
-            res.redirect('/suppliers');
-        });
+    supplierDataService.deleteSupplier([supplier_id], function(err, results) {
+        if (err)
+            console.log("Error deleting : %s ",err );
+        res.redirect('/suppliers');
     });
-};
+};//done
