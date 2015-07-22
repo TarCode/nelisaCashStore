@@ -23,19 +23,14 @@ exports.getSearchSupplier = function(req, res, next){
             layout : false
         });
     });
-};
+};//done
 
 exports.showAddSupplier = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-
-        res.render( 'addSupplier',{
-            user: req.session.user,
-            admin:admin
-        });
+    res.render( 'addSupplier',{
+        user: req.session.user,
+        admin:admin
     });
-};
+};//done
 
 exports.addSupp = function (req, res, next) {
         var input = JSON.parse(JSON.stringify(req.body));
