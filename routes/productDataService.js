@@ -41,7 +41,7 @@ module.exports = function (connection) {
   };
 
   this.profitsPerProduct = function (cb) {
-      getData('SELECT cat_name, supplier_name, sum(salePrice - cost) as profit FROM product,sales,stock,supplier, category where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id and stock.supplier_id = supplier.supplier_id and product.cat_id = category.cat_id group by cat_name order by profit desc', cb );
+      getData('SELECT prod_name, min(salePrice-cost) as minProfit, max(salePrice-cost) as maxProfit FROM product, sales, stock where product.prod_id = sales.prod_id and sales.prod_id = stock.prod_id group by prod_name order by maxProfit desc', cb );
   };
 
 };

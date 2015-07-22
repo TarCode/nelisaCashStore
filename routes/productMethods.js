@@ -103,17 +103,12 @@ exports.showProdPopularity = function (req, res, next) {
 };
 
 exports.showProdProfit = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('select prod_name, min(salePrice-cost) as minProfit, max(salePrice-cost) as maxProfit from product, sales, stock where product.prod_id = sales.prod_id and sales.prod_id = stock.prod_id group by prod_name order by maxProfit desc', [], function(err, results) {
-            if (err) return next(err);
-
-            res.render( 'prodProfit', {
-                prodProfit : results,
-                user: req.session.user,
-                admin:admin
-            });
+    prodDataServ.profitsPerProduct(function(err, results) {
+        if (err) return next(err);
+        res.render( 'prodProfit', {
+            prodProfit : results,
+            user: req.session.user,
+            admin:admin
         });
     });
 };
