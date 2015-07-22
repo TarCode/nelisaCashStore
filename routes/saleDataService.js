@@ -17,7 +17,7 @@ module.exports = function (connection) {
   };//done
 
   this.insertSale = function (data, cb) {
-      insertData('INSERT INTO stock SET ?', data, cb );
+      insertData('INSERT INTO sales SET ?', data, cb );
   };
 
   this.getUpdateSale = function (data, cb) {

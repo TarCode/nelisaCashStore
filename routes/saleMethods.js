@@ -33,23 +33,16 @@ exports.showAddSale = function (req, res, next) {
 };
 
 exports.addSale = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-        var input = JSON.parse(JSON.stringify(req.body));
-        var data = {
-            prod_id: input.prod_id,
-            date : input.date,
-            qtySold: input.qtySold,
-            salePrice: input.salePrice
-        };
-        connection.query('insert into sales set ?', data, function(err, results) {
-            if (err)
-                console.log("Error inserting : %s ",err );
-
-            res.redirect('/sales');
-        });
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+        prod_id: input.prod_id,
+        date : input.date,
+        qtySold: input.qtySold,
+        salePrice: input.salePrice
+    };
+    saleDataService.insertSale(data, function(err, results) {
+        if (err) return next(err);
+        res.redirect('/sales');
     });
 };
 
