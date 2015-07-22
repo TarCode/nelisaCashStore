@@ -20,9 +20,9 @@ module.exports = function (connection) {
       insertData('UPDATE supplier SET ? WHERE supplier_id = ?', data, cb );
   };
 
- // this.getUpdateCategory = function (data, cb) {
- //     insertData('SELECT * FROM category WHERE cat_id = ?', data, cb );
- // };
+  this.getUpdatedSupplier = function (data, cb) {
+      insertData('SELECT * FROM supplier WHERE supplier_id = ?', data, cb );
+  };
 
  // this.deleteCategory = function (data, cb) {
  //     insertData('DELETE FROM category WHERE cat_id = ?', data, cb );

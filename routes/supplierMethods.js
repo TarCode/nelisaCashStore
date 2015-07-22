@@ -68,22 +68,17 @@ exports.showSuppliers = function (req, res, next) {
 
 exports.getSupp = function (req, res, next) {
     var supplier_id = req.params.supplier_id;
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-        connection.query('select * from supplier where supplier_id = ?', [supplier_id], function(err, results) {
-            if (err)
-                console.log("Error getting : %s ",err );
+    supplierDataService.getUpdatedSupplier( [supplier_id], function(err, results) {
+        if (err)
+            console.log("Error getting : %s ",err );
 
-            res.render( 'updateSupp', {
-                supplier : results,
-                user: req.session.user,
-                admin:admin
-            });
+        res.render( 'updateSupp', {
+            supplier : results,
+            user: req.session.user,
+            admin:admin
         });
     });
-};
+};//done
 
 exports.updateSupp = function (req, res, next) {
     var supplier_id = req.params.supplier_id;
@@ -97,7 +92,7 @@ exports.updateSupp = function (req, res, next) {
 
         res.redirect('/suppliers');
     });
-};
+};//done
 
 exports.delSupp = function (req, res, next) {
     var supplier_id = req.params.supplier_id;
