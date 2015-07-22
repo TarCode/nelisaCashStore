@@ -102,10 +102,6 @@ exports.getUpdatePurchase = function (req, res, next) {
 
 exports.updatePurchase = function (req, res, next) {
     var purchase_id = req.params.purchase_id;
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
             prod_id : input.prod_id,
@@ -115,14 +111,13 @@ exports.updatePurchase = function (req, res, next) {
             cost: input.cost,
             totalCost: (input.cost*input.quantity)
         };
-        connection.query('update stock set ? where purchase_id = ?',[data, purchase_id], function(err, results) {
+        purchaseDataService.updatePurchase([data, purchase_id], function(err, results) {
             if (err)
                 console.log("Error updating : %s ",err );
 
             res.redirect('/purchases');
         });
-    });
-};
+};//done
 
 exports.delPurchase = function (req, res, next) {
     var purchase_id = req.params.purchase_id;

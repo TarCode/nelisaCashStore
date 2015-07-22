@@ -10,15 +10,15 @@ module.exports = function (connection) {
 
   this.getAllPurchases = function (cb) {
       getData('SELECT * from stock, product WHERE stock.prod_id = product.prod_id order by purchase_id desc', cb );
-  };
+  };//done
 
   this.insertPurchase = function (data, cb) {
       insertData('INSERT INTO stock SET ?', data, cb );
   };//done
 
-  this.updateCategory = function (data, cb) {
-      insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
-  };
+  this.updatePurchase = function (data, cb) {
+      insertData('UPDATE stock SET ? WHERE purchase_id = ?', data, cb );
+  };//done
 
   this.deleteCategory = function (data, cb) {
       insertData('DELETE FROM category WHERE cat_id = ?', data, cb );
