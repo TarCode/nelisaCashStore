@@ -45,8 +45,19 @@ exports.addProd = function (req, res, next) {
       });
 };
 
+exports.updateProd = function (req, res, next) {
+    var prod_id = req.params.prod_id;
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+        prod_name : input.prod_name
+    };
+    prodDataServ.updateProduct([data, prod_id], function(err, results) {
+        if (err) return(err);
+        res.redirect('/products');
+    });
+};
 
-exports.getProd = function (req, res, next) {
+exports.getUpdateProd = function (req, res, next) {
     var prod_id = req.params.prod_id;
     req.getConnection(function(err, connection){
         if (err){
@@ -64,24 +75,7 @@ exports.getProd = function (req, res, next) {
         });
     });
 };
-exports.updateProd = function (req, res, next) {
-    var prod_id = req.params.prod_id;
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-        var input = JSON.parse(JSON.stringify(req.body));
-        var data = {
-            prod_name : input.prod_name
-        };
-        connection.query('update product set ? where prod_id = ?',[data, prod_id], function(err, results) {
-            if (err)
-                console.log("Error updating : %s ",err );
 
-            res.redirect('/products');
-        });
-    });
-};
 exports.delProd = function (req, res, next) {
     var prod_id = req.params.prod_id;
 

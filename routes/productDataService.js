@@ -21,7 +21,7 @@ module.exports = function (connection) {
   };
 
   this.updateProduct = function (data, cb) {
-      insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
+      insertData('UPDATE product SET ? WHERE prod_id = ?', data, cb );
   };
 
   this.getUpdateProduct = function (data, cb) {

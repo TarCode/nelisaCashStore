@@ -58,7 +58,7 @@ app.get('/category/profit', categoryMethods.showCatProfit);
 app.get('/products', productMethods.showProducts);
 app.get('/products/add', productMethods.showAddProd);
 app.post('/products/add', productMethods.addProd);
-app.get('/products/getProd/:prod_id', productMethods.getProd);
+app.get('/products/getProd/:prod_id', productMethods.getUpdateProd);
 app.post('/products/updateProd/:prod_id', productMethods.updateProd);
 app.get('/products/delProd/:prod_id', productMethods.delProd);
 app.get('/products/search/:searchValue', productMethods.getSearchProduct);
