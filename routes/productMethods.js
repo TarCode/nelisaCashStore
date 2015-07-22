@@ -92,17 +92,12 @@ exports.getSearchProduct = function(req, res, next){
 };
 
 exports.showProdPopularity = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT prod_name, sum(qtySold) as total_sold FROM product,sales WHERE product.prod_id = sales.prod_id GROUP BY prod_name ORDER BY total_sold DESC', [], function(err, results) {
-            if (err) return next(err);
-
-            res.render( 'prodPopularity', {
-                prodPopularity : results,
-                user: req.session.user,
-                admin:admin
-            });
+    prodDataServ.popularProduct(function(err, results) {
+        if (err) return next(err);
+        res.render( 'prodPopularity', {
+            prodPopularity : results,
+            user: req.session.user,
+            admin:admin
         });
     });
 };

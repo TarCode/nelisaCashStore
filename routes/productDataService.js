@@ -37,7 +37,7 @@ module.exports = function (connection) {
   };
 
   this.popularProduct = function (cb) {
-      getData('SELECT cat_name, sum(qtySold) as total_sold FROM product,category,sales  WHERE product.prod_id = sales.prod_id AND category.cat_id = product.cat_id GROUP BY cat_name ORDER BY total_sold DESC', cb );
+      getData('SELECT prod_name, sum(qtySold) as total_sold FROM product,sales WHERE product.prod_id = sales.prod_id GROUP BY prod_name ORDER BY total_sold DESC', cb );
   };
 
   this.profitsPerProduct = function (cb) {
