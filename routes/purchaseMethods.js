@@ -26,26 +26,22 @@ exports.getSearchPurchase = function(req, res, next){
 };//done
 
 exports.showAddPurchase = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT * from supplier', [], function(err, supps) {
+        purchaseDataService.showAddPurchaseSupplier(function(err, supps) {
             if (err) return next(err);
-            connection.query('SELECT * from stock', [], function(err, stock) {
+            purchaseDataService.showAddPurchaseStock(function(err, stock) {
                 if (err) return next(err);
-                connection.query('SELECT * from product', [], function(err, prod) {
+                purchaseDataService.showAddPurchaseProduct(function(err, prod) {
                     if (err) return next(err);
                     res.render( 'addPurchase', {
                         product : prod,
                         supplier: supps,
                         stock: stock,
-                user: req.session.user,
-                admin:admin
+                        user: req.session.user,
+                        admin:admin
                     });
                 });
             });
         });
-    });
 };
 
 exports.addPurchase = function (req, res, next) {
@@ -87,7 +83,7 @@ exports.showPurchases = function (req, res, next) {
     });
 };
 
-exports.getPurchase = function (req, res, next) {
+exports.getUpdatePurchase = function (req, res, next) {
     var purchase_id = req.params.purchase_id;
     req.getConnection(function (err, connection) {
         if (err) {

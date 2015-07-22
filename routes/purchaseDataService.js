@@ -39,4 +39,16 @@ module.exports = function (connection) {
   this.profitsPerCategory = function (cb) {
       getData('SELECT cat_name, supplier_name, sum(salePrice - cost) as profit FROM product,sales,stock,supplier, category where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id and stock.supplier_id = supplier.supplier_id and product.cat_id = category.cat_id group by cat_name order by profit desc', cb );
   };
+
+  this.showAddPurchaseSupplier = function(cb) {
+  	getData('SELECT * FROM supplier',cb);
+  };
+
+    this.showAddPurchaseStock = function(cb) {
+  	getData('SELECT * FROM stock',cb);
+  };
+
+    this.showAddPurchaseProduct = function(cb) {
+  	getData('SELECT * FROM product',cb);
+  };
 };

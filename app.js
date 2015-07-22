@@ -85,7 +85,7 @@ app.get('/sales/search/:searchValue', saleMethods.getSearchSale);
 app.get('/purchases', purchaseMethods.showPurchases);
 app.get('/purchases/add', purchaseMethods.showAddPurchase);
 app.post('/purchases/add', purchaseMethods.addPurchase);
-app.get('/stock/getPurchase/:purchase_id', purchaseMethods.getPurchase);
+app.get('/stock/getPurchase/:purchase_id', purchaseMethods.getUpdatePurchase);
 app.post('/stock/updatePurchase/:purchase_id', purchaseMethods.updatePurchase);
 app.get('/stock/delPurchase/:purchase_id', purchaseMethods.delPurchase);
 app.get('/purchases/search/:searchValue', purchaseMethods.getSearchPurchase);
