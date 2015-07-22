@@ -33,7 +33,7 @@ module.exports = function (connection) {
   };
 
   this.searchProduct = function (data, cb) {
-      insertData('SELECT cat_id, cat_name from category WHERE cat_name LIKE ?', data, cb );
+      insertData('SELECT prod_id, prod_name, cat_name from category, product WHERE category.cat_id = product.cat_id AND (prod_name LIKE ? OR cat_name LIKE ?)', data, cb );
   };
 
   this.popularProduct = function (cb) {

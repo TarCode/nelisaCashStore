@@ -78,20 +78,15 @@ exports.delProd = function (req, res, next) {
 };
 
 exports.getSearchProduct = function(req, res, next){
-    req.getConnection(function(err, connection){
-        if(err)
-                return next(err);
-        var searchValue = req.params.searchValue;
-        searchValue ="%" + searchValue + "%";
-
-        connection.query("SELECT prod_id, prod_name, cat_name from category, product WHERE category.cat_id = product.cat_id AND (prod_name LIKE ? OR cat_name LIKE ?)",[searchValue, searchValue], function(err, results){
-            if (err) return next(err);
-            res.render('product_list', {
-                admin: admin,
-                user: req.session.user,
-                products : results,
-                layout : false
-            });
+    var searchValue = req.params.searchValue;
+    searchValue ="%" + searchValue + "%";
+    prodDataServ.searchProduct([searchValue, searchValue], function(err, results){
+        if (err) return next(err);
+        res.render('product_list', {
+            admin: admin,
+            user: req.session.user,
+            products : results,
+            layout : false
         });
     });
 };
