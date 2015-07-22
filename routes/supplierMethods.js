@@ -1,3 +1,15 @@
+var mysql = require('mysql');
+var SupplierDataSrvice = require('./supplierDataService');
+var connection = mysql.createConnection ({
+    host : 'localhost',
+    user : 'root',
+    password : 'spot'
+});
+
+connection.connect();
+connection.query('use NelisaSpaza');
+var supplierDataService = new SupplierDataSrvice(connection);
+
 exports.getSearchSupplier = function(req, res, next){
     req.getConnection(function(err, connection){
         if(err)
@@ -17,8 +29,6 @@ exports.getSearchSupplier = function(req, res, next){
     });
 };
 
-
-
 exports.showAddSupplier = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
@@ -30,6 +40,7 @@ exports.showAddSupplier = function (req, res, next) {
         });
     });
 };
+
 exports.addSupp = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err){
@@ -47,18 +58,15 @@ exports.addSupp = function (req, res, next) {
         });
     });
 };
-exports.showSuppliers = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT * from supplier', [], function(err, results) {
-            if (err) return next(err);
 
-            res.render( 'suppliers', {
-                supplier : results,
-                user: req.session.user,
-                admin:admin
-            });
+exports.showSuppliers = function (req, res, next) {
+    supplierDataService.getAllSuppliers(function(err, results) {
+        if (err) return next(err);
+
+        res.render( 'suppliers', {
+            supplier : results,
+            user: req.session.user,
+            admin:admin
         });
     });
 };
@@ -100,6 +108,7 @@ exports.updateSupp = function (req, res, next) {
         });
     });
 };
+
 exports.delSupp = function (req, res, next) {
     var supplier_id = req.params.supplier_id;
 

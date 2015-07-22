@@ -17,9 +17,9 @@ var app = express();
 var dbOptions = {
      host: 'localhost',
       user: 'root',
-      password: 'coder123',
+      password: 'spot',
       port: 3306,
-      database: 'nelisa'
+      database: 'NelisaSpaza'
 };
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -91,11 +91,12 @@ app.get('/stock/delPurchase/:purchase_id', purchaseMethods.delPurchase);
 app.get('/purchases/search/:searchValue', purchaseMethods.getSearchPurchase);
 
 var port = process.env.PORT || 3000;
+
 var server = app.listen(port, function () {
 
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Nelisa app listening at http://%s:%s', host, port);
 
 });

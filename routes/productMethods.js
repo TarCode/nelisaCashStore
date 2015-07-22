@@ -3,11 +3,11 @@ var productDataService = require('./productDataService');
 var connection =  mysql.createConnection({
   host : 'localhost',
   user : 'root',
-  password: 'coder123'
+  password: 'spot'
 });
 
 connection.connect();
-connection.query('use nelisa');
+connection.query('use NelisaSpaza');
 var prodDataServ = new productDataService(connection);
 
 exports.showProducts = function (req, res, next) {
@@ -31,7 +31,6 @@ exports.showAddProd = function (req, res, next) {
         });
     });
 };
-
 
 exports.addProd = function (req, res, next) {
       var input = JSON.parse(JSON.stringify(req.body));

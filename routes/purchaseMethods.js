@@ -1,3 +1,14 @@
+var mysql = require('mysql');
+var purchaseDataService = require('./purchaseDataService');
+var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : 'spot'
+});
+
+connection.connect();
+connection.query('use NelisaSpaza');
+var purchaseDataServ = new purchaseDataService(connection);
 
 exports.getSearchPurchase = function(req, res, next){
     req.getConnection(function(err, connection){
@@ -17,7 +28,6 @@ exports.getSearchPurchase = function(req, res, next){
         });
     });
 };
-
 
 exports.showAddPurchase = function (req, res, next) {
     req.getConnection(function(err, connection){

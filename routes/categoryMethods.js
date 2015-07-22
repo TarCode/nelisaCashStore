@@ -3,11 +3,11 @@ var categoryDataService = require('./categoryDataService');
 var connection =  mysql.createConnection({
   host : 'localhost',
   user : 'root',
-  password: 'coder123'
+  password: 'spot'
 });
 
 connection.connect();
-connection.query('use nelisa');
+connection.query('use NelisaSpaza');
 var catDataServ = new categoryDataService(connection);
 
 exports.showCategory = function (req, res, next) {
@@ -27,6 +27,7 @@ exports.showAddCat = function (req, res, next) {
         admin:admin
     });
 };
+
 exports.addCat = function (req, res, next) {
     var input = JSON.parse(JSON.stringify(req.body));
     var data = {
@@ -44,7 +45,6 @@ exports.addCat = function (req, res, next) {
         res.redirect('/category');
       });
     }
-
 };
 
 exports.getUpdateCat = function (req, res, next) {
@@ -71,6 +71,7 @@ exports.updateCat = function (req, res, next) {
           res.redirect('/category');
     });
 };
+
 exports.delCat = function (req, res, next) {
     var cat_id = req.params.cat_id;
     catDataServ.deleteCategory([cat_id], function(err, results) {
@@ -89,6 +90,7 @@ exports.showCatPopularity = function (req, res, next) {
         });
     });
 };
+
 exports.showCatProfit = function (req, res, next) {
     catDataServ.profitsPerCategory(function(err, results) {
         if (err) return next(err);
