@@ -1,3 +1,27 @@
+var mysql = require('mysql');
+var productDataService = require('./productDataService');
+var connection =  mysql.createConnection({
+  host : 'localhost',
+  user : 'root',
+  password: 'coder123'
+});
+
+connection.connect();
+connection.query('use nelisa');
+var prodDataServ = new productDataService(connection);
+
+exports.showProducts = function (req, res, next) {
+    prodDataServ.getAllProducts(function(err, results) {
+        if (err) return next(err);
+
+        res.render( 'productList', {
+            product : results,
+            user: req.session.user,
+            admin:admin
+        });
+    });
+};
+
 exports.showAddProd = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
@@ -51,21 +75,7 @@ exports.addProd = function (req, res, next) {
         });
     });
 };
-exports.showProducts = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT prod_id,prod_name,cat_name from product,category where product.cat_id = category.cat_id', [], function(err, results) {
-            if (err) return next(err);
 
-            res.render( 'productList', {
-                product : results,
-                user: req.session.user,
-                admin:admin
-            });
-        });
-    });
-};
 exports.showProdProfit = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err)
