@@ -25,7 +25,7 @@ module.exports = function (connection) {
   };
 
   this.getUpdateProduct = function (data, cb) {
-      insertData('SELECT * FROM category WHERE cat_id = ?', data, cb );
+      insertData('SELECT * FROM product WHERE prod_id = ?', data, cb );
   };
 
   this.deleteProduct = function (data, cb) {
