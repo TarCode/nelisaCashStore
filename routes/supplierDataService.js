@@ -16,9 +16,9 @@ module.exports = function (connection) {
       insertData('INSERT INTO supplier SET ?', data, cb );
   };
 
- // this.updateCategory = function (data, cb) {
- //     insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
- // };
+  this.updateSupplier = function (data, cb) {
+      insertData('UPDATE supplier SET ? WHERE supplier_id = ?', data, cb );
+  };
 
  // this.getUpdateCategory = function (data, cb) {
  //     insertData('SELECT * FROM category WHERE cat_id = ?', data, cb );

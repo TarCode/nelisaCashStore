@@ -51,8 +51,8 @@ exports.addSupp = function (req, res, next) {
                 console.log("Error inserting : %s ",err );
 
             res.redirect('/suppliers');
-    });
-};
+        });
+};//done
 
 exports.showSuppliers = function (req, res, next) {
     supplierDataService.getAllSuppliers(function(err, results) {
@@ -64,7 +64,7 @@ exports.showSuppliers = function (req, res, next) {
             admin:admin
         });
     });
-};
+};//done
 
 exports.getSupp = function (req, res, next) {
     var supplier_id = req.params.supplier_id;
@@ -87,20 +87,15 @@ exports.getSupp = function (req, res, next) {
 
 exports.updateSupp = function (req, res, next) {
     var supplier_id = req.params.supplier_id;
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-        var input = JSON.parse(JSON.stringify(req.body));
-        var data = {
-            supplier_name : input.supplier_name
-        };
-        connection.query('update supplier set ? where supplier_id = ?',[data, supplier_id], function(err, results) {
-            if (err)
-                console.log("Error updating : %s ",err );
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+        supplier_name : input.supplier_name
+    };
+    supplierDataService.updateSupplier([data, supplier_id], function(err, results) {
+        if (err)
+            console.log("Error updating : %s ",err );
 
-            res.redirect('/suppliers');
-        });
+        res.redirect('/suppliers');
     });
 };
 
