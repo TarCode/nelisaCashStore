@@ -42,13 +42,9 @@ exports.showAddPurchase = function (req, res, next) {
                 });
             });
         });
-};
+};//done
 
 exports.addPurchase = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
             prod_id: input.prod_id,
@@ -58,14 +54,13 @@ exports.addPurchase = function (req, res, next) {
             cost: input.cost,
             totalCost: (input.cost*input.quantity)
         };
-        connection.query('insert into stock set ?', data, function(err, results) {
+        purchaseDataService.insertPurchase( data, function(err, results) {
             if (err)
                 console.log("Error inserting : %s ",err );
 
             res.redirect('/purchases');
         });
-    });
-};
+};//done
 
 exports.showPurchases = function (req, res, next) {
     req.getConnection(function(err, connection){

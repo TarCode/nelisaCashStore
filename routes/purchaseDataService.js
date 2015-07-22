@@ -12,9 +12,9 @@ module.exports = function (connection) {
       getData('SELECT * FROM category', cb );
   };
 
-  this.insertCategory = function (data, cb) {
-      insertData('INSERT INTO category SET ?', data, cb );
-  };
+  this.insertPurchase = function (data, cb) {
+      insertData('INSERT INTO stock SET ?', data, cb );
+  };//done
 
   this.updateCategory = function (data, cb) {
       insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
@@ -42,13 +42,13 @@ module.exports = function (connection) {
 
   this.showAddPurchaseSupplier = function(cb) {
   	getData('SELECT * FROM supplier',cb);
-  };
+  };//done
 
     this.showAddPurchaseStock = function(cb) {
   	getData('SELECT * FROM stock',cb);
-  };
+  };//done
 
     this.showAddPurchaseProduct = function(cb) {
   	getData('SELECT * FROM product',cb);
-  };
+  };//done
 };

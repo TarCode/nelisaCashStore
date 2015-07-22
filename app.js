@@ -29,7 +29,7 @@ app.use(express.static('public'));
 app.use(myConnection(mysql, dbOptions, 'single'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(session({secret: "bookworms", cookie: {maxAge: 1000000}, resave:true, saveUninitialized: false}));
+app.use(session({secret: "bookworms", cookie: {maxAge: 24000000}, resave:true, saveUninitialized: false}));
 
 app.get('/', userMethods.login);
 app.get('/', userMethods.loggedIn);
