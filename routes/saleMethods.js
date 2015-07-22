@@ -22,20 +22,16 @@ exports.showSales = function (req, res, next) {
 };
 
 exports.showAddSale = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-        connection.query('SELECT * from product', [], function(err, results) {
-            if (err) return next(err);
-
-            res.render( 'addSale', {
-                product : results,
-                user: req.session.user,
-                admin:admin
-            });
+    saleDataService.showInsertSale(function(err, results) {
+        if (err) return next(err);
+        res.render( 'addSale', {
+            product : results,
+            user: req.session.user,
+            admin:admin
         });
     });
 };
+
 exports.addSale = function (req, res, next) {
     req.getConnection(function(err, connection){
         if (err){
