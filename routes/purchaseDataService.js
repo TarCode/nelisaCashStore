@@ -20,10 +20,6 @@ module.exports = function (connection) {
       insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
   };
 
-  this.getUpdateCategory = function (data, cb) {
-      insertData('SELECT * FROM category WHERE cat_id = ?', data, cb );
-  };
-
   this.deleteCategory = function (data, cb) {
       insertData('DELETE FROM category WHERE cat_id = ?', data, cb );
   };
@@ -43,4 +39,17 @@ module.exports = function (connection) {
     this.showAddPurchaseProduct = function(cb) {
   	getData('SELECT * FROM product',cb);
   };//done
+
+  this.getUpdatePurchaseSupplier = function (data, cb) {
+      insertData('SELECT * FROM supplier', data, cb );
+  };//done
+
+  this.getUpdatePurchaseStock = function (data, cb) {
+      insertData('SELECT * FROM stock WHERE purchase_id = ?', data, cb );
+  };//done
+
+  this.getUpdatePurchaseProduct = function (data, cb) {
+      insertData('SELECT * FROM product', data, cb );
+  };//done
+
 };

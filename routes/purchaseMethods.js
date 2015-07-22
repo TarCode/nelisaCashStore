@@ -76,33 +76,29 @@ exports.showPurchases = function (req, res, next) {
 
 exports.getUpdatePurchase = function (req, res, next) {
     var purchase_id = req.params.purchase_id;
-    req.getConnection(function (err, connection) {
-        if (err) {
-            return next(err);
-        }
-        connection.query('select * from stock where purchase_id = ?', [purchase_id], function (err, results) {
+        purchaseDataService.getUpdatePurchaseStock([purchase_id], function (err, results) {
             if (err)
                 console.log("Error getting : %s ", err);
 
-            connection.query('select * from product', [], function (err, prods) {
+            purchaseDataService.getUpdatePurchaseProduct(function (err, prods) {
                 if (err)
                     console.log("Error getting : %s ", err);
 
-                connection.query('select * from supplier', [], function (err, supps) {
+                purchaseDataService.getUpdatePurchaseSupplier(function (err, supps) {
                     if (err)
                         console.log("Error getting : %s ", err);
+
                     res.render('updatePurchase', {
                         stock: results,
                         product: prods,
                         supplier: supps,
-                user: req.session.user,
-                admin:admin
+                        user: req.session.user,
+                        admin:admin
                     });
                 });
             });
         });
-    });
-};
+};//done
 
 exports.updatePurchase = function (req, res, next) {
     var purchase_id = req.params.purchase_id;
@@ -123,7 +119,7 @@ exports.updatePurchase = function (req, res, next) {
             if (err)
                 console.log("Error updating : %s ",err );
 
-            res.redirect('/stock');
+            res.redirect('/purchases');
         });
     });
 };
