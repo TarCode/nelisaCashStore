@@ -17,7 +17,7 @@ module.exports = function (connection) {
   };
 
   this.insertProduct = function (data, cb) {
-      insertData('INSERT INTO category SET ?', data, cb );
+      insertData('INSERT INTO product SET ?', data, cb );
   };
 
   this.updateProduct = function (data, cb) {
