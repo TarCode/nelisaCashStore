@@ -48,23 +48,15 @@ exports.addSale = function (req, res, next) {
 
 exports.getUpdateSale = function (req, res, next) {
     var sale_id = req.params.sale_id;
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-        connection.query('select * from sales where sale_id = ?', [sale_id], function(err, results) {
-            if (err)
-                console.log("Error getting : %s ",err );
-
-            connection.query('select * from product', [], function(err, prods) {
-                if (err)
-                    console.log("Error getting : %s ",err );
-                res.render( 'updateSale', {
-                    sale : results,
-                    product: prods,
+    saleDataService.getUpdateSale([sale_id], function(err, results) {
+        if (err) return next(err);
+        saleDataService.getUpdateSaleProducts(function(err, prods) {
+            if (err) return next(err);
+            res.render( 'updateSale', {
+                sale : results,
+                product: prods,
                 user: req.session.user,
                 admin:admin
-                });
             });
         });
     });

@@ -18,10 +18,14 @@ module.exports = function (connection) {
 
   this.insertSale = function (data, cb) {
       insertData('INSERT INTO sales SET ?', data, cb );
-  };
+  };//done
 
   this.getUpdateSale = function (data, cb) {
-      insertData('SELECT * FROM supplier', data, cb );
+      insertData('select * from sales where sale_id = ?', data, cb );
+  };
+
+  this.getUpdateSaleProducts = function (cb) {
+      getData('select * from product', cb);
   };
 
   this.updateSale = function (data, cb) {
