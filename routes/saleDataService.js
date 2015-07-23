@@ -37,7 +37,7 @@ module.exports = function (connection) {
   };
 
   this.searchSale = function (data, cb) {
-      insertData('SELECT purchase_id, prod_name, date, quantity, cost, totalCost FROM stock, product WHERE stock.prod_id = product.prod_id AND (prod_name LIKE ?)', data, cb );
+      insertData('SELECT sale_id, prod_name, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id AND (prod_name LIKE ?)', data, cb );
   };
 
 };
