@@ -64,10 +64,6 @@ exports.getUpdateSale = function (req, res, next) {
 
 exports.updateSale = function (req, res, next) {
     var sale_id = req.params.sale_id;
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
             prod_id : input.prod_id,
@@ -75,17 +71,14 @@ exports.updateSale = function (req, res, next) {
             qtySold: input.qtySold,
             salePrice: input.salePrice
         };
-        connection.query('update sales set ? where sale_id = ?',[data, sale_id], function(err, results) {
-            if (err)
-                console.log("Error updating : %s ",err );
-
+        saleDataService.updateSale([data, sale_id], function(err, results) {
+            if (err) return next(err);
             res.redirect('/sales');
         });
-    });
 };
+
 exports.delSale = function (req, res, next) {
     var sale_id = req.params.sale_id;
-
     req.getConnection(function(err, connection){
         if (err){
             return next(err);

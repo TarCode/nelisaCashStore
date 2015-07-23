@@ -29,7 +29,7 @@ module.exports = function (connection) {
   };
 
   this.updateSale = function (data, cb) {
-      insertData('UPDATE stock SET ? WHERE purchase_id = ?', data, cb );
+      insertData('UPDATE sales SET ? WHERE sale_id = ?', data, cb );
   };
 
   this.deleteSale = function (data, cb) {
