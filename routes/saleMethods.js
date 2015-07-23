@@ -79,18 +79,12 @@ exports.updateSale = function (req, res, next) {
 
 exports.delSale = function (req, res, next) {
     var sale_id = req.params.sale_id;
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-
-        connection.query('delete from sales where sale_id = ?',[sale_id], function(err, results) {
-            if (err)
-                console.log("Error deleting : %s ",err );
+    saleDataService.deleteSale([sale_id], function(err, results) {
+            if (err) return next(err);
             res.redirect('/sales');
-        });
     });
 };
+
 exports.getSearchSale = function(req, res, next){
     req.getConnection(function(err, connection){
         if(err)

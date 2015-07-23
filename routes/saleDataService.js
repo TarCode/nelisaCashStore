@@ -33,7 +33,7 @@ module.exports = function (connection) {
   };
 
   this.deleteSale = function (data, cb) {
-      insertData('DELETE FROM stock WHERE purchase_id = ?', data, cb );
+      insertData('DELETE FROM sales WHERE sale_id = ?', data, cb );
   };
 
   this.searchSale = function (data, cb) {
