@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var categoryDataService = require('./categoryDataService');
 var connection =  mysql.createConnection({
   host : 'localhost',
-  user : 'root',
+  user : 'tarcode',
   password: 'coder123'
 });
 

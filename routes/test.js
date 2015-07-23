@@ -1,7 +1,7 @@
 var catMethods = require('./categoryMethods');
-admin = "";
-try{
+var assert = require("assert");
 
+admin = "";
   var request = {
     getConnection : function(func) {
       // body...
@@ -19,14 +19,15 @@ var response = {
 
   }
 }
+catRes = catMethods.showCategory(request, {
+  render : function(templateName, params) {
+    return(params);
+  }
+});
 
-  catMethods.showCategory(request, {
-    render : function(templateName, params) {
-      console.log(templateName)
-      console.log(params);
-    }
+
+  describe('categoryMethods', function () {
+    it('should return -1 when the value is not present', function () {
+      assert.equal(-1, catRes);
+    });
   });
-}
-catch(err){
-  console.log(err);
-}

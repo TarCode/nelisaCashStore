@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var PurchaseDataService = require('./purchaseDataService');
 var connection = mysql.createConnection({
     host : 'localhost',
-    user : 'root',
+    user : 'tarcode',
     password : 'coder123'
 });
 
