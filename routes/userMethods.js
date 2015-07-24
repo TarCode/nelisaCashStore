@@ -202,7 +202,7 @@ exports.checkUser = function (req, res, next) {
                             var locked = {
                                 locked:user.locked
                             }
-                            userDataService.lockUser([locked, data.username], function(err, results) {
+                            userDataService.updateUser([locked, data.username], function(err, results) {
                                 if (err)
                                     console.log("Error updating : %s ",err );
                             });
@@ -235,37 +235,23 @@ exports.updateUserRole = function (req, res, next) {
     var role = req.params.role;
     var username = req.params.username;
 
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
-        var input = JSON.parse(JSON.stringify(req.body));
-        var data = {
-            role : input.role
-        };
-        connection.query('update users set ? where username = ?',[data, username], function(err, results) {
-            if (err)
-                console.log("Error updating : %s ",err );
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+        role : input.role
+    };
+    userDataService.updateUser([data, username], function(err, results) {
+        if (err) return next(err);
 
-            res.redirect('/users');
-        });
+        res.redirect('/users');
     });
 };
 
 exports.deleteUser = function (req, res, next) {
 
     var username = req.params.username;
-
-    req.getConnection(function(err, connection){
-        if (err){
-            return next(err);
-        }
         var input = JSON.parse(JSON.stringify(req.body));
-        connection.query('DELETE FROM users where username = ?',[username], function(err, results) {
-            if (err)
-                console.log("Error updating : %s ",err );
-
+        userDataService.deleteUser([username], function(err, results) {
+            if (err) return next(err);
             res.redirect('/users');
         });
-    });
 };
