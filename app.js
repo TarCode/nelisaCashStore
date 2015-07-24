@@ -1,7 +1,5 @@
 var express = require('express'),
-    mysql = require('mysql'),
     exphbs  = require('express-handlebars'),
-    myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
     purchaseMethods = require('./routes/purchaseMethods'),
     userMethods = require('./routes/userMethods'),
@@ -14,19 +12,10 @@ var express = require('express'),
 
 var app = express();
 
-var dbOptions = {
-     host: 'localhost',
-      user: 'tarcode',
-      password: 'coder123',
-      port: 3306,
-      database: 'nelisa'
-};
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
-app.use(myConnection(mysql, dbOptions, 'single'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({secret: "bookworms", cookie: {maxAge: 1000000}, resave:true, saveUninitialized: false}));
