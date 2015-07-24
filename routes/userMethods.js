@@ -2,6 +2,18 @@ var bcrypt = require('bcrypt');
 var count = 0;
 var user = {};
 
+var mysql = require('mysql');
+var UserDataService = require('./userDataService');
+var connection = mysql.createConnection ({
+    host : 'localhost',
+    user : 'tarcode',
+    password : 'coder123'
+});
+
+connection.connect();
+connection.query('use nelisa');
+var userDataService = new UserDataService(connection);
+
 admin = false;
 lock = false;
 exist = false;
@@ -74,11 +86,9 @@ exports.middleCheck = function(req, res, next){
 
 //add user function
 exports.addUser = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        connection.query('SELECT username FROM users', [], function(err, exists) {
-            if (err){
-                return next(err);
-            }
+        userDataService.getUsername(function(err, exists) {
+            if (err) return next(err);
+
             var input = JSON.parse(JSON.stringify(req.body));
 
             var data = {
@@ -115,7 +125,7 @@ exports.addUser = function (req, res, next) {
                         bcrypt.hash(input.pass, salt, function(err, hash) {
                             // Store hash in your password DB.
                             data.password = hash;
-                            connection.query('insert into users set ?', data, function(err, results) {
+                            userDataService.insertUser(data, function(err, results) {
                                 if (err)
                                     console.log("Error inserting : %s ",err );
 
@@ -133,22 +143,17 @@ exports.addUser = function (req, res, next) {
             }
 
         });
-    });
 };
 
 //check if user exists in database
 exports.checkUser = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-
             var input = JSON.parse(JSON.stringify(req.body));
             var data = {
                 username : input.user,
                 password: input.pass,
                 role: input.userRole
             };
-            connection.query('SELECT password, role, locked from users WHERE username = ?', [data.username], function(err, results) {
+            userDataService.checkUser([data.username], function(err, results) {
                 if (err) return next(err);
              if(data.username.trim() === "" || data.password.trim() === ""){
                     msg = "Fields cannot be blank";
@@ -197,7 +202,7 @@ exports.checkUser = function (req, res, next) {
                             var locked = {
                                 locked:user.locked
                             }
-                            connection.query('update users set ? where username = ?',[locked, data.username], function(err, results) {
+                            userDataService.lockUser([locked, data.username], function(err, results) {
                                 if (err)
                                     console.log("Error updating : %s ",err );
                             });
@@ -209,7 +214,7 @@ exports.checkUser = function (req, res, next) {
                 });
             }
         });
-    });
+
 }
 
 //shows list of users

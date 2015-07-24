@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var SupplierDataSrvice = require('./supplierDataService');
+var SupplierDataService = require('./supplierDataService');
 var connection = mysql.createConnection ({
     host : 'localhost',
     user : 'tarcode',
@@ -8,7 +8,7 @@ var connection = mysql.createConnection ({
 
 connection.connect();
 connection.query('use nelisa');
-var supplierDataService = new SupplierDataSrvice(connection);
+var supplierDataService = new SupplierDataService(connection);
 
 exports.getSearchSupplier = function(req, res, next){
     var searchValue = req.params.searchValue;
