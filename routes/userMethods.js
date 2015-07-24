@@ -219,20 +219,14 @@ exports.checkUser = function (req, res, next) {
 
 //shows list of users
 exports.showUsers = function (req, res, next) {
-    req.getConnection(function(err, connection){
-        if (err)
-            return next(err);
-
-        connection.query('SELECT username,role FROM users', [], function(err, results) {
+        userDataService.showUsers(function(err, results) {
             if (err) return next(err);
-
             res.render( 'users', {
                 users : results,
                 user: req.session.user,
                 admin:admin
             });
         });
-    });
 };
 
 //update user roles  from admin page

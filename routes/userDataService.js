@@ -24,4 +24,8 @@ module.exports = function (connection) {
       insertData('UPDATE users SET ? WHERE username = ?', data, cb );
   };
 
+  this.showUsers = function (cb) {
+      getData('SELECT username, role FROM users', cb );
+  };
+
 };
