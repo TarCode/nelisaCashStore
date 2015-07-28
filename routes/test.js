@@ -1,45 +1,21 @@
-var catMethods = require('./categoryMethods');
+var mysql = require('mysql');
+var CategoryDataService = require('./categoryDataService');
 var assert = require("assert");
-var should = require("should");
-
-admin = "";
-  var request = {
-    getConnection : function(func) {
-      // body...
-      func(null, {
-        query : function(query, params, cb) {
-          cb();
-        }
-      });
-    },
-    session : {}
-  };
-
-var response = {
-  render : function(templateName, params){
-
-  }
-}
-catRes = catMethods.showCategory(request, {
-  render : function(templateName, params) {
-    return(params);
-  }
+var connection =  mysql.createConnection({
+  host : 'localhost',
+  user : 'tarcode',
+  password: 'coder123'
 });
 
+connection.connect();
+connection.query('use nelisa');
+var catDataServ = new CategoryDataService(connection);
 
 describe('categoryMethods', function() {
-  describe('#show_category_screen', function() {
-    it('should be a function', function() {
-      catMethods.showCategory.should.be.a["function"];
-    });
-    it('should return something cool', function() {
-      var mockReq = null;
-      var mockRes = {
-        render: function(viewName) {
-          viewName.should.exist;
-        }
-      };
-      catMethods.showCategory(mockReq, mockRes);
+  it('should return a list with 8 objects', function(done) {
+    catDataServ.getAllCategories(function(err, results){
+      assert.equal(8, results.length);
+      done();
     });
   });
 });
