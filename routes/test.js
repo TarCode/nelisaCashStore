@@ -1,5 +1,6 @@
 var catMethods = require('./categoryMethods');
 var assert = require("assert");
+var should = require("should");
 
 admin = "";
   var request = {
@@ -26,8 +27,19 @@ catRes = catMethods.showCategory(request, {
 });
 
 
-  describe('categoryMethods', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal(-1, catRes);
+describe('categoryMethods', function() {
+  describe('#show_category_screen', function() {
+    it('should be a function', function() {
+      catMethods.showCategory.should.be.a["function"];
+    });
+    it('should return something cool', function() {
+      var mockReq = null;
+      var mockRes = {
+        render: function(viewName) {
+          viewName.should.exist;
+        }
+      };
+      catMethods.showCategory(mockReq, mockRes);
     });
   });
+});
