@@ -6,12 +6,12 @@ var mysql = require('mysql');
 var UserDataService = require('./userDataService');
 var connection = mysql.createConnection ({
     host : 'localhost',
-    user : 'tarcode',
-    password : 'coder123'
+    user : 'root',
+    password : 'spot'
 });
 
 connection.connect();
-connection.query('use nelisa');
+connection.query('use NelisaSpaza');
 var userDataService = new UserDataService(connection);
 
 admin = false;

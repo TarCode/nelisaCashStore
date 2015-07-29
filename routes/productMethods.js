@@ -2,12 +2,12 @@ var mysql = require('mysql');
 var productDataService = require('./productDataService');
 var connection =  mysql.createConnection({
   host : 'localhost',
-  user : 'tarcode',
-  password: 'coder123'
+  user : 'root',
+  password: 'spot'
 });
 
 connection.connect();
-connection.query('use nelisa');
+connection.query('use NelisaSpaza');
 var prodDataServ = new productDataService(connection);
 
 exports.showProducts = function (req, res, next) {

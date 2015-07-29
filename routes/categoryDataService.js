@@ -9,7 +9,7 @@ module.exports = function (connection) {
   };
 
   this.getAllCategories = function (cb) {
-      getData('SELECT * FROM category', cb );
+      getData('SELECT cat_id, cat_name FROM category', cb );
   };
 
   this.insertCategory = function (data, cb) {
@@ -21,7 +21,7 @@ module.exports = function (connection) {
   };
 
   this.getUpdateCategory = function (data, cb) {
-      insertData('SELECT * FROM category WHERE cat_id = ?', data, cb );
+      insertData('SELECT cat_id, cat_name FROM category WHERE cat_id = ?', data, cb );
   };
 
   this.deleteCategory = function (data, cb) {

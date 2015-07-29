@@ -2,12 +2,12 @@ var mysql = require('mysql');
 var PurchaseDataService = require('./purchaseDataService');
 var connection = mysql.createConnection({
     host : 'localhost',
-    user : 'tarcode',
-    password : 'coder123'
+    user : 'root',
+    password : 'spot'
 });
 
 connection.connect();
-connection.query('use nelisa');
+connection.query('use NelisaSpaza');
 var purchaseDataService = new PurchaseDataService(connection);
 
 exports.getSearchPurchase = function(req, res, next){

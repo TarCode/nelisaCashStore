@@ -2,12 +2,12 @@ var mysql = require('mysql');
 var SupplierDataService = require('./supplierDataService');
 var connection = mysql.createConnection ({
     host : 'localhost',
-    user : 'tarcode',
-    password : 'coder123'
+    user : 'root',
+    password : 'spot'
 });
 
 connection.connect();
-connection.query('use nelisa');
+connection.query('use NelisaSpaza');
 var supplierDataService = new SupplierDataService(connection);
 
 exports.getSearchSupplier = function(req, res, next){
