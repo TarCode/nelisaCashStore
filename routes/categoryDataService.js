@@ -16,12 +16,12 @@ module.exports = function (connection) {
       insertData('INSERT INTO category SET ?', data, cb );
   };
 
-  this.updateCategory = function (data, cb) {
-      insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
-  };
-
   this.getUpdateCategory = function (data, cb) {
       insertData('SELECT cat_id, cat_name FROM category WHERE cat_id = ?', data, cb );
+  };
+
+  this.updateCategory = function (data, cb) {
+      insertData('UPDATE category SET ? WHERE cat_id = ?', data, cb );
   };
 
   this.deleteCategory = function (data, cb) {
