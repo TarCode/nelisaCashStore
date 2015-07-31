@@ -30,54 +30,58 @@ app.get('/logout', userMethods.logout);
 //middleware user check
 app.use(userMethods.middleCheck);
 
-app.get('/users', userMethods.showUsers);
-app.post('/updateUserRole/:username', userMethods.updateUserRole);
-app.post('/users/deleteUser/:username', userMethods.deleteUser);
+app.get('/users',userMethods.adminCheck, userMethods.showUsers);
+app.post('/updateUserRole/:username',userMethods.adminCheck, userMethods.updateUserRole);
+app.post('/users/deleteUser/:username',userMethods.adminCheck, userMethods.deleteUser);
 
-app.get('/category', categoryMethods.showCategory);
-app.get('/category/add', categoryMethods.showAddCat);
-app.post('/category/add', categoryMethods.addCat);
-app.get('/category/getCat/:cat_id', categoryMethods.getUpdateCat);
-app.get('/category/delCat/:cat_id', categoryMethods.delCat);
-app.post('/category/updateCat/:cat_id', categoryMethods.updateCat);
-app.get('/category/search/:searchValue', categoryMethods.getSearchCategory);
-app.get('/category/popularity', categoryMethods.showCatPopularity);
-app.get('/category/profit', categoryMethods.showCatProfit);
+app.get('/category',userMethods.middleCheck, categoryMethods.showCategory);
+app.get('/category/search/:searchValue',userMethods.middleCheck, categoryMethods.getSearchCategory);
+app.get('/category/popularity',userMethods.middleCheck, categoryMethods.showCatPopularity);
+app.get('/category/profit',userMethods.middleCheck, categoryMethods.showCatProfit);
+app.get('/category/add',userMethods.adminCheck, categoryMethods.showAddCat);
+app.post('/category/add',userMethods.adminCheck, categoryMethods.addCat);
+app.get('/category/getCat/:cat_id',userMethods.adminCheck, categoryMethods.getUpdateCat);
+app.get('/category/delCat/:cat_id',userMethods.adminCheck, categoryMethods.delCat);
+app.post('/category/updateCat/:cat_id',userMethods.adminCheck, categoryMethods.updateCat);
 
-app.get('/products', productMethods.showProducts);
-app.get('/products/add', productMethods.showAddProd);
-app.post('/products/add', productMethods.addProd);
-app.get('/products/getProd/:prod_id', productMethods.getUpdateProd);
-app.post('/products/updateProd/:prod_id', productMethods.updateProd);
-app.get('/products/delProd/:prod_id', productMethods.delProd);
-app.get('/products/search/:searchValue', productMethods.getSearchProduct);
-app.get('/products/popularity', productMethods.showProdPopularity);
-app.get('/products/profit', productMethods.showProdProfit);
+app.get('/products',userMethods.middleCheck, productMethods.showProducts);
+app.get('/products/search/:searchValue',userMethods.middleCheck, productMethods.getSearchProduct);
+app.get('/products/popularity',userMethods.middleCheck, productMethods.showProdPopularity);
+app.get('/products/profit',userMethods.middleCheck, productMethods.showProdProfit);
+app.get('/products/add',userMethods.adminCheck, productMethods.showAddProd);
+app.post('/products/add',userMethods.adminCheck, productMethods.addProd);
+app.get('/products/getProd/:prod_id',userMethods.adminCheck, productMethods.getUpdateProd);
+app.post('/products/updateProd/:prod_id',userMethods.adminCheck, productMethods.updateProd);
+app.get('/products/delProd/:prod_id',userMethods.adminCheck, productMethods.delProd);
 
 
-app.get('/suppliers', supplierMethods.showSuppliers);
-app.get('/suppliers/add',supplierMethods.showAddSupplier);
-app.post('/suppliers/add', supplierMethods.addSupp);
-app.get('/suppliers/getSupp/:supplier_id', supplierMethods.getSupp);
-app.post('/suppliers/updateSupp/:supplier_id', supplierMethods.updateSupp);
-app.get('/suppliers/delSupp/:supplier_id', supplierMethods.delSupp);
-app.get('/suppliers/search/:searchValue', supplierMethods.getSearchSupplier);
 
-app.get('/sales', saleMethods.showSales);
-app.get('/sales/add', saleMethods.showAddSale);
-app.post('/sales/add', saleMethods.addSale);
-app.get('/sales/getSale/:sale_id', saleMethods.getUpdateSale);
-app.post('/sales/updateSale/:sale_id', saleMethods.updateSale);
-app.get('/sales/delSale/:sale_id', saleMethods.delSale);
-app.get('/sales/search/:searchValue', saleMethods.getSearchSale);
+app.get('/suppliers',userMethods.middleCheck, supplierMethods.showSuppliers);
+app.get('/suppliers/search/:searchValue',userMethods.middleCheck, supplierMethods.getSearchSupplier);
+app.get('/suppliers/add',userMethods.adminCheck, supplierMethods.showAddSupplier);
+app.post('/suppliers/add',userMethods.adminCheck, supplierMethods.addSupp);
+app.get('/suppliers/getSupp/:supplier_id',userMethods.adminCheck, supplierMethods.getSupp);
+app.post('/suppliers/updateSupp/:supplier_id',userMethods.adminCheck, supplierMethods.updateSupp);
+app.get('/suppliers/delSupp/:supplier_id',userMethods.adminCheck, supplierMethods.delSupp);
 
-app.get('/purchases', purchaseMethods.showPurchases);
-app.get('/purchases/add', purchaseMethods.showAddPurchase);
-app.post('/purchases/add', purchaseMethods.addPurchase);
-app.get('/stock/getPurchase/:purchase_id', purchaseMethods.getUpdatePurchase);
-app.post('/stock/updatePurchase/:purchase_id', purchaseMethods.updatePurchase);
-app.get('/stock/delPurchase/:purchase_id', purchaseMethods.delPurchase);
-app.get('/purchases/search/:searchValue', purchaseMethods.getSearchPurchase);
+
+app.get('/sales',userMethods.middleCheck, saleMethods.showSales);
+app.get('/sales/search/:searchValue',userMethods.middleCheck, saleMethods.getSearchSale);
+app.get('/sales/add',userMethods.adminCheck, saleMethods.showAddSale);
+app.post('/sales/add',userMethods.adminCheck, saleMethods.addSale);
+app.get('/sales/getSale/:sale_id',userMethods.adminCheck, saleMethods.getUpdateSale);
+app.post('/sales/updateSale/:sale_id',userMethods.adminCheck, saleMethods.updateSale);
+app.get('/sales/delSale/:sale_id',userMethods.adminCheck, saleMethods.delSale);
+
+
+app.get('/purchases',userMethods.middleCheck, purchaseMethods.showPurchases);
+app.get('/purchases/search/:searchValue',userMethods.middleCheck, purchaseMethods.getSearchPurchase);
+app.get('/purchases/add',userMethods.adminCheck, purchaseMethods.showAddPurchase);
+app.post('/purchases/add',userMethods.adminCheck, purchaseMethods.addPurchase);
+app.get('/stock/getPurchase/:purchase_id',userMethods.adminCheck, purchaseMethods.getUpdatePurchase);
+app.post('/stock/updatePurchase/:purchase_id',userMethods.adminCheck, purchaseMethods.updatePurchase);
+app.get('/stock/delPurchase/:purchase_id',userMethods.adminCheck, purchaseMethods.delPurchase);
+
 
 var port = process.env.PORT || 3000;
 

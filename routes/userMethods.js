@@ -84,6 +84,16 @@ exports.middleCheck = function(req, res, next){
 
 }
 
+exports.adminCheck = function(req, res, next){
+  if(req.session.user.role === "admin"){
+      next();
+  }
+  else{
+      res.redirect("/");
+  }
+
+}
+
 //add user function
 exports.addUser = function (req, res, next) {
         userDataService.getUsername(function(err, exists) {
