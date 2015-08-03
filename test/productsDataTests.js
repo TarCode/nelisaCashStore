@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var CategoryDataService = require('../routes/categoryDataService');
+var ProductDataService = require('../routes/productDataService');
 var assert = require("assert");
 
 var connection =  mysql.createConnection({
@@ -10,26 +10,26 @@ var connection =  mysql.createConnection({
 });
 
 connection.connect();
-var categoryDataService= new CategoryDataService(connection);
+var productDataService= new ProductDataService(connection);
 
-describe('categoryMethods: Display', function() {
-  it('getAllCategories: Should return a list of categories', function(done) {
-    categoryDataService.getAllCategories(function(err, results){
-      assert.equal(8, results.length);
+describe('productMethods: Display', function() {
+  it('getAllProducts: Should return a list of products', function(done) {
+    productDataService.getAllProducts(function(err, results){
+      assert.equal(18, results.length);
       done();
     });
   });
   it('Top element must be the most popular category', function(done) {
-    categoryDataService.popularCategory(function(err, orderedPopularCategories) {
-      var mostPopularCategory = orderedPopularCategories[0];
-      assert.equal(mostPopularCategory.cat_name, 'shortLife')
-      assert.equal(mostPopularCategory.total_sold, 397)
+    productDataService.popularProduct(function(err, orderedPopularProducts) {
+      var mostPopularProduct = orderedPopularProducts[0];
+      assert.equal(mostPopularProduct.prod_name, 'Mixed Sweets 5s')
+      assert.equal(mostPopularProduct.total_sold, 172)
       done();
     });
   });
 });
 
-describe('categoryMethods: Alter', function() {
+/*describe('categoryMethods: Alter', function() {
 
   var data = {
       cat_name : "fakeCat"
@@ -58,4 +58,4 @@ describe('categoryMethods: Alter', function() {
       });
     })
   });
-});
+});*/
