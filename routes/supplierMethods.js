@@ -1,11 +1,8 @@
-var mysql = require('mysql');
 var SupplierDataService = require('./supplierDataService');
-var connection = mysql.createConnection ({
-    host : 'localhost',
-    user : 'pawleesah',
-    password : 'coder123',
-    database : 'NelisaSpaza'
-});
+var Connection = require('./connectionData');
+
+var connection =  new Connection();
+
 
 connection.connect();
 var supplierDataService = new SupplierDataService(connection);

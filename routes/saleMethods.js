@@ -1,12 +1,6 @@
-var mysql = require('mysql');
 var SaleDataService = require('./saleDataService');
-var connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'pawleesah',
-    password : 'coder123',
-    database : 'NelisaSpaza'
-});
-
+var Connection = require('./connectionData');
+var connection =  new Connection();
 connection.connect();
 var saleDataService = new SaleDataService(connection);
 

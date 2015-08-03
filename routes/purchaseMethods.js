@@ -1,11 +1,7 @@
-var mysql = require('mysql');
 var PurchaseDataService = require('./purchaseDataService');
-var connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'pawleesah',
-    password : 'coder123',
-    database : 'NelisaSpaza'
-});
+var Connection = require('./connectionData');
+var connection =  new Connection();
+
 
 connection.connect();
 var purchaseDataService = new PurchaseDataService(connection);

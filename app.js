@@ -3,14 +3,36 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     purchaseMethods = require('./routes/purchaseMethods'),
     userMethods = require('./routes/userMethods'),
-    categoryMethods = require('./routes/categoryMethods'),
+    CategoryMethods = require('./routes/categoryMethods'),
+    CategoryDataService = require('./routes/categoryDataService')
     productMethods = require('./routes/productMethods'),
     supplierMethods = require('./routes/supplierMethods'),
     saleMethods = require('./routes/saleMethods'),
+    mysql = require('mysql'),
     session = require('express-session');
-
+var ConnectionProvider = require('./routes/connectionProvider');
+var myConnection = require('express-myconnection');
 
 var app = express();
+
+var dbOptions = {
+      host: 'localhost',
+      user: 'tarcode',
+      password: 'coder123',
+      port: 3306,
+      database: 'nelisa'
+};
+
+var serviceSetupCallback = function(connection){
+	return {
+		catDataServ : new CategoryDataService(connection)
+	}
+};
+
+var myConnectionProvider = new ConnectionProvider(dbOptions, serviceSetupCallback);
+app.use(myConnectionProvider.setupProvider);
+
+app.use(myConnection(mysql, dbOptions, 'pool'));
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -34,6 +56,7 @@ app.get('/users',userMethods.adminCheck, userMethods.showUsers);
 app.post('/updateUserRole/:username',userMethods.adminCheck, userMethods.updateUserRole);
 app.post('/users/deleteUser/:username',userMethods.adminCheck, userMethods.deleteUser);
 
+var categoryMethods = new CategoryMethods();
 app.get('/category',userMethods.middleCheck, categoryMethods.showCategory);
 app.get('/category/search/:searchValue',userMethods.middleCheck, categoryMethods.getSearchCategory);
 app.get('/category/popularity',userMethods.middleCheck, categoryMethods.showCatPopularity);

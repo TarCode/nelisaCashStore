@@ -1,13 +1,8 @@
-var mysql = require('mysql');
 var CategoryDataService = require('../routes/categoryDataService');
 var assert = require("assert");
+var Connection = require('../routes/testConnectionData');
 
-var connection =  mysql.createConnection({
-  host : 'localhost',
-  user : 'pawleesah',
-  password: 'coder123',
-  database : 'NelisaSpaza_test'
-});
+var connection =  new Connection();
 
 connection.connect();
 var categoryDataService= new CategoryDataService(connection);

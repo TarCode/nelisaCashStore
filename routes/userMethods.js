@@ -2,14 +2,11 @@ var bcrypt = require('bcrypt');
 var count = 0;
 var user = {};
 
-var mysql = require('mysql');
 var UserDataService = require('./userDataService');
-var connection = mysql.createConnection ({
-    host : 'localhost',
-    user : 'pawleesah',
-    password : 'coder123',
-    database : 'NelisaSpaza'
-});
+var Connection = require('./connectionData');
+
+var connection =  new Connection();
+
 
 connection.connect();
 var userDataService = new UserDataService(connection);

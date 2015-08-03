@@ -1,11 +1,6 @@
-var mysql = require('mysql');
 var productDataService = require('./productDataService');
-var connection =  mysql.createConnection({
-  host : 'localhost',
-  user : 'pawleesah',
-  password : 'coder123',
-  database : 'NelisaSpaza'
-});
+var Connection = require('./connectionData');
+var connection =  new Connection();
 
 connection.connect();
 var prodDataServ = new productDataService(connection);

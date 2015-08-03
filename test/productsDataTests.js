@@ -1,14 +1,8 @@
-var mysql = require('mysql');
 var ProductDataService = require('../routes/productDataService');
 var assert = require("assert");
+var Connection = require('../routes/testConnectionData');
 
-var connection =  mysql.createConnection({
-  host : 'localhost',
-  user : 'pawleesah',
-  password: 'coder123',
-  database : 'NelisaSpaza_test'
-});
-
+var connection =  new Connection();
 connection.connect();
 var productDataService= new ProductDataService(connection);
 
