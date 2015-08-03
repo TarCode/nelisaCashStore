@@ -7,7 +7,8 @@ var express = require('express'),
     CategoryDataService = require('./routes/categoryDataService')
     ProductMethods = require('./routes/productMethods'),
     ProductDataService = require('./routes/productDataService'),
-    supplierMethods = require('./routes/supplierMethods'),
+    SupplierMethods = require('./routes/supplierMethods'),
+    SupplierDataService = require('./routes/supplierDataService'),
     saleMethods = require('./routes/saleMethods'),
     mysql = require('mysql'),
     session = require('express-session');
@@ -18,16 +19,17 @@ var app = express();
 
 var dbOptions = {
       host: 'localhost',
-      user: 'pawleesah',
+      user: 'tarcode',
       password: 'coder123',
       port: 3306,
-      database: 'NelisaSpaza'
+      database: 'nelisa'
 };
 
 var serviceSetupCallback = function(connection){
 	return {
 		catDataServ : new CategoryDataService(connection),
-    prodDataServ : new ProductDataService(connection)
+    prodDataServ : new ProductDataService(connection),
+    suppDataServ : new SupplierDataService(connection)
 	}
 };
 
@@ -81,7 +83,7 @@ app.post('/products/updateProd/:prod_id',userMethods.adminCheck, productMethods.
 app.get('/products/delProd/:prod_id',userMethods.adminCheck, productMethods.delProd);
 
 
-
+var supplierMethods = new SupplierMethods();
 app.get('/suppliers',userMethods.middleCheck, supplierMethods.showSuppliers);
 app.get('/suppliers/search/:searchValue',userMethods.middleCheck, supplierMethods.getSearchSupplier);
 app.get('/suppliers/add',userMethods.adminCheck, supplierMethods.showAddSupplier);
