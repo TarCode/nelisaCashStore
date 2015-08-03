@@ -19,7 +19,7 @@ describe('productMethods: Display', function() {
       done();
     });
   });
-  it('Top element must be the most popular category', function(done) {
+  it('Top element must be the most popular product', function(done) {
     productDataService.popularProduct(function(err, orderedPopularProducts) {
       var mostPopularProduct = orderedPopularProducts[0];
       assert.equal(mostPopularProduct.prod_name, 'Mixed Sweets 5s')
