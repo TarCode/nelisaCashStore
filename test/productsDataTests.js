@@ -29,33 +29,33 @@ describe('productMethods: Display', function() {
   });
 });
 
-/*describe('categoryMethods: Alter', function() {
+describe('productMethods: Alter', function() {
 
   var data = {
-      cat_name : "fakeCat"
+      prod_name : "fakeCat"
   };
 
   before(function(done) {
-    categoryDataService.getAllCategories(function(err, results){
-      assert.equal(8, results.length);
+    productDataService.getAllProducts(function(err, results){
+      assert.equal(18, results.length);
       done();
     });
   });
 
-  it('insertCategory: Should insert a category', function(done) {
+  it('insertProduct: Should insert a product', function(done) {
 
-    categoryDataService.insertCategory(data, function(err, results){
-      categoryDataService.getAllCategories(function(err, results){
-        assert.equal(9, results.length);
+    productDataService.insertProduct(data, function(err, results){
+      productDataService.getAllProducts(function(err, results){
+        assert.equal(18, results.length);
         done();
       });
 
     });
 
     after(function(done){
-      connection.query("delete from category where cat_name = ?", data.cat_name, function(err){
+      connection.query("delete from product where prod_name = ?", data.prod_name, function(err){
         done(err);
       });
     })
   });
-});*/
+});
