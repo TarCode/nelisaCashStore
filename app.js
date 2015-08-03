@@ -5,7 +5,8 @@ var express = require('express'),
     userMethods = require('./routes/userMethods'),
     CategoryMethods = require('./routes/categoryMethods'),
     CategoryDataService = require('./routes/categoryDataService')
-    productMethods = require('./routes/productMethods'),
+    ProductMethods = require('./routes/productMethods'),
+    ProductDataService = require('./routes/productDataService'),
     supplierMethods = require('./routes/supplierMethods'),
     saleMethods = require('./routes/saleMethods'),
     mysql = require('mysql'),
@@ -17,15 +18,16 @@ var app = express();
 
 var dbOptions = {
       host: 'localhost',
-      user: 'tarcode',
+      user: 'pawleesah',
       password: 'coder123',
       port: 3306,
-      database: 'nelisa'
+      database: 'NelisaSpaza'
 };
 
 var serviceSetupCallback = function(connection){
 	return {
-		catDataServ : new CategoryDataService(connection)
+		catDataServ : new CategoryDataService(connection),
+    prodDataServ : new ProductDataService(connection)
 	}
 };
 
@@ -67,6 +69,7 @@ app.get('/category/getCat/:cat_id',userMethods.adminCheck, categoryMethods.getUp
 app.get('/category/delCat/:cat_id',userMethods.adminCheck, categoryMethods.delCat);
 app.post('/category/updateCat/:cat_id',userMethods.adminCheck, categoryMethods.updateCat);
 
+var productMethods = new ProductMethods();
 app.get('/products',userMethods.middleCheck, productMethods.showProducts);
 app.get('/products/search/:searchValue',userMethods.middleCheck, productMethods.getSearchProduct);
 app.get('/products/popularity',userMethods.middleCheck, productMethods.showProdPopularity);

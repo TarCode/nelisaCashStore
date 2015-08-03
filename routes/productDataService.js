@@ -13,7 +13,7 @@ module.exports = function (connection) {
   };
 
   this.showInsertProducts = function (cb) {
-      getData('SELECT * FROM category', cb );
+      getData('SELECT cat_id, cat_name FROM category', cb );
   };
 
   this.insertProduct = function (data, cb) {
@@ -25,7 +25,7 @@ module.exports = function (connection) {
   };
 
   this.getUpdateProduct = function (data, cb) {
-      insertData('SELECT * FROM product WHERE prod_id = ?', data, cb );
+      insertData('SELECT prod_id, prod_name, cat_id FROM product WHERE prod_id = ?', data, cb );
   };
 
   this.deleteProduct = function (data, cb) {
