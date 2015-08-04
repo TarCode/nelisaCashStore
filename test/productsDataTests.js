@@ -1,4 +1,4 @@
-var ProductDataService = require('../routes/productDataService');
+var ProductDataService = require('../dataServices/productDataService');
 var assert = require("assert");
 var Connection = require('../routes/testConnectionData');
 

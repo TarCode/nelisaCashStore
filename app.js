@@ -6,17 +6,17 @@ var express = require('express'),
     myConnection = require('express-myconnection'),
 
     ConnectionProvider = require('./routes/connectionProvider');
-    PurchaseDataService = require('./routes/purchaseDataService'),
+    PurchaseDataService = require('./dataServices/purchaseDataService'),
     PurchaseMethods = require('./routes/purchaseMethods'),
-    UserDataService = require('./routes/userDataService'),
+    UserDataService = require('./dataServices/userDataService'),
     UserMethods = require('./routes/userMethods'),
     CategoryMethods = require('./routes/categoryMethods'),
-    CategoryDataService = require('./routes/categoryDataService')
+    CategoryDataService = require('./dataServices/categoryDataService')
     ProductMethods = require('./routes/productMethods'),
-    ProductDataService = require('./routes/productDataService'),
+    ProductDataService = require('./dataServices/productDataService'),
     SupplierMethods = require('./routes/supplierMethods'),
-    SupplierDataService = require('./routes/supplierDataService'),
-    SaleDataService = require('./routes/saleDataService'),
+    SupplierDataService = require('./dataServices/supplierDataService'),
+    SaleDataService = require('./dataServices/saleDataService'),
     SaleMethods = require('./routes/saleMethods');
 
 var app = express();

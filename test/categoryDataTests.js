@@ -1,4 +1,4 @@
-var CategoryDataService = require('../routes/categoryDataService');
+var CategoryDataService = require('../dataServices/categoryDataService');
 var assert = require("assert");
 var Connection = require('../routes/testConnectionData');
 
@@ -46,7 +46,6 @@ describe('categoryMethods: Alter', function() {
       });
 
     });
-
     after(function(done){
       connection.query("delete from category where cat_name = ?", data.cat_name, function(err){
         done(err);
