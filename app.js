@@ -10,7 +10,8 @@ var express = require('express'),
     ProductDataService = require('./routes/productDataService'),
     SupplierMethods = require('./routes/supplierMethods'),
     SupplierDataService = require('./routes/supplierDataService'),
-    saleMethods = require('./routes/saleMethods'),
+    SaleDataService = require('./routes/saleDataService'),
+    SaleMethods = require('./routes/saleMethods'),
     mysql = require('mysql'),
     session = require('express-session');
 var ConnectionProvider = require('./routes/connectionProvider');
@@ -31,7 +32,8 @@ var serviceSetupCallback = function(connection){
 		catDataServ : new CategoryDataService(connection),
     prodDataServ : new ProductDataService(connection),
     suppDataServ : new SupplierDataService(connection),
-    purchaseDataService : new PurchaseDataService(connection)
+    purchaseDataService : new PurchaseDataService(connection),
+    saleDataService : new SaleDataService(connection)
 	}
 };
 
@@ -94,7 +96,7 @@ app.get('/suppliers/getSupp/:supplier_id',userMethods.adminCheck, supplierMethod
 app.post('/suppliers/updateSupp/:supplier_id',userMethods.adminCheck, supplierMethods.updateSupp);
 app.get('/suppliers/delSupp/:supplier_id',userMethods.adminCheck, supplierMethods.delSupp);
 
-
+var saleMethods = new SaleMethods();
 app.get('/sales',userMethods.middleCheck, saleMethods.showSales);
 app.get('/sales/search/:searchValue',userMethods.middleCheck, saleMethods.getSearchSale);
 app.get('/sales/add',userMethods.adminCheck, saleMethods.showAddSale);
