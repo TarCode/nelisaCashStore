@@ -1,7 +1,8 @@
 var express = require('express'),
     exphbs  = require('express-handlebars'),
     bodyParser = require('body-parser'),
-    purchaseMethods = require('./routes/purchaseMethods'),
+    PurchaseDataService = require('./routes/purchaseDataService'),
+    PurchaseMethods = require('./routes/purchaseMethods'),
     userMethods = require('./routes/userMethods'),
     CategoryMethods = require('./routes/categoryMethods'),
     CategoryDataService = require('./routes/categoryDataService')
@@ -29,7 +30,8 @@ var serviceSetupCallback = function(connection){
 	return {
 		catDataServ : new CategoryDataService(connection),
     prodDataServ : new ProductDataService(connection),
-    suppDataServ : new SupplierDataService(connection)
+    suppDataServ : new SupplierDataService(connection),
+    purchaseDataService : new PurchaseDataService(connection)
 	}
 };
 
@@ -101,7 +103,7 @@ app.get('/sales/getSale/:sale_id',userMethods.adminCheck, saleMethods.getUpdateS
 app.post('/sales/updateSale/:sale_id',userMethods.adminCheck, saleMethods.updateSale);
 app.get('/sales/delSale/:sale_id',userMethods.adminCheck, saleMethods.delSale);
 
-
+var purchaseMethods = new PurchaseMethods();
 app.get('/purchases',userMethods.middleCheck, purchaseMethods.showPurchases);
 app.get('/purchases/search/:searchValue',userMethods.middleCheck, purchaseMethods.getSearchPurchase);
 app.get('/purchases/add',userMethods.adminCheck, purchaseMethods.showAddPurchase);
