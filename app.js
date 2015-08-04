@@ -1,9 +1,15 @@
 var express = require('express'),
     exphbs  = require('express-handlebars'),
     bodyParser = require('body-parser'),
+    mysql = require('mysql'),
+    session = require('express-session'),
+    myConnection = require('express-myconnection'),
+
+    ConnectionProvider = require('./routes/connectionProvider');
     PurchaseDataService = require('./routes/purchaseDataService'),
     PurchaseMethods = require('./routes/purchaseMethods'),
-    userMethods = require('./routes/userMethods'),
+    UserDataService = require('./routes/userDataService'),
+    UserMethods = require('./routes/userMethods'),
     CategoryMethods = require('./routes/categoryMethods'),
     CategoryDataService = require('./routes/categoryDataService')
     ProductMethods = require('./routes/productMethods'),
@@ -11,11 +17,7 @@ var express = require('express'),
     SupplierMethods = require('./routes/supplierMethods'),
     SupplierDataService = require('./routes/supplierDataService'),
     SaleDataService = require('./routes/saleDataService'),
-    SaleMethods = require('./routes/saleMethods'),
-    mysql = require('mysql'),
-    session = require('express-session');
-var ConnectionProvider = require('./routes/connectionProvider');
-var myConnection = require('express-myconnection');
+    SaleMethods = require('./routes/saleMethods');
 
 var app = express();
 
@@ -33,7 +35,8 @@ var serviceSetupCallback = function(connection){
     prodDataServ : new ProductDataService(connection),
     suppDataServ : new SupplierDataService(connection),
     purchaseDataService : new PurchaseDataService(connection),
-    saleDataService : new SaleDataService(connection)
+    saleDataService : new SaleDataService(connection),
+    userDataService : new UserDataService(connection)
 	}
 };
 
@@ -50,6 +53,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({secret: "bookworms", cookie: {maxAge: 1000000}, resave:true, saveUninitialized: false}));
 
+var userMethods = new UserMethods();
 app.get('/', userMethods.login);
 app.get('/', userMethods.loggedIn);
 app.get('/signUp', userMethods.signUp);
