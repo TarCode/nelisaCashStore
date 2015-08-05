@@ -9,7 +9,7 @@ module.exports = function (connection) {
   };
 
   this.getAllPurchases = function (cb) {
-      getData('SELECT purchase_id, product.prod_id, supplier_id, date, quantity, cost, totalCost FROM stock, product WHERE stock.prod_id = product.prod_id order by purchase_id desc', cb );
+      getData('SELECT purchase_id, prod_name, supplier_id, DATE_FORMAT(date, "%d/%l/%Y") as date, quantity, cost, totalCost FROM stock, product WHERE stock.prod_id = product.prod_id order by purchase_id desc', cb );
   };//done
 
   this.insertPurchase = function (data, cb) {
@@ -25,7 +25,7 @@ module.exports = function (connection) {
   };//done
 
   this.searchPurchase = function (data, cb) {
-      insertData('SELECT purchase_id, prod_name, date, quantity, cost, totalCost FROM stock, product WHERE stock.prod_id = product.prod_id AND (prod_name LIKE ?)', data, cb );
+      insertData('SELECT purchase_id, prod_name, DATE_FORMAT(date, "%d/%l/%Y") as date, quantity, cost, totalCost FROM stock, product WHERE stock.prod_id = product.prod_id AND (prod_name LIKE ?)', data, cb );
   };//done
 
   this.showAddPurchaseSupplier = function(cb) {
@@ -45,7 +45,7 @@ module.exports = function (connection) {
   };//done
 
   this.getUpdatePurchaseStock = function (data, cb) {
-      insertData('SELECT purchase_id, prod_id, supplier_id, date, quantity, cost, totalCost FROM stock WHERE purchase_id = ?', data, cb );
+      insertData('SELECT purchase_id, prod_id, supplier_id, DATE_FORMAT(date, "%d/%l/%Y") as date, quantity, cost, totalCost FROM stock WHERE purchase_id = ?', data, cb );
   };//done
 
   this.getUpdatePurchaseProduct = function (data, cb) {

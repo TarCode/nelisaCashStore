@@ -9,7 +9,7 @@ module.exports = function (connection) {
   };
 
   this.getAllSales = function (cb) {
-      getData('SELECT sale_id, product.prod_id, day, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', cb );
+      getData('SELECT sale_id, prod_name, day, DATE_FORMAT(date, "%d/%l/%Y") as date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', cb );
   };//done
 
   this.showInsertSale = function (cb) {
@@ -21,7 +21,7 @@ module.exports = function (connection) {
   };//done
 
   this.getUpdateSale = function (data, cb) {
-      insertData('SELECT sale_id, prod_id, day, date, qtySold, salePrice from sales WHERE sale_id = ?', data, cb );
+      insertData('SELECT sale_id, prod_id, day, DATE_FORMAT(date, "%d/%l/%Y") as date, qtySold, salePrice from sales WHERE sale_id = ?', data, cb );
   };
 
   this.getUpdateSaleProducts = function (cb) {
@@ -37,7 +37,7 @@ module.exports = function (connection) {
   };
 
   this.searchSale = function (data, cb) {
-      insertData('SELECT sale_id, prod_name, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id AND (prod_name LIKE ?)', data, cb );
+      insertData('SELECT sale_id, prod_name, DATE_FORMAT(date, "%d/%l/%Y") as date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id AND (prod_name LIKE ?)', data, cb );
   };
 
 };
