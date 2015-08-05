@@ -23,10 +23,10 @@ var app = express();
 
 var dbOptions = {
       host: 'localhost',
-      user: 'pawleesah',
+      user: 'tarcode',
       password: 'coder123',
       port: 3306,
-      database: 'NelisaSpaza'
+      database: 'nelisa'
 };
 
 var serviceSetupCallback = function(connection){

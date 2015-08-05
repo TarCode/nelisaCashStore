@@ -3,8 +3,8 @@ var mysql = require('mysql');
 module.exports = function () {
   return mysql.createConnection({
           host     : 'localhost',
-          user     : 'pawleesah',
+          user     : 'tarcode',
           password : 'coder123',
-          database : 'NelisaSpaza_test'
+          database : 'nelisaTest'
       });
 };

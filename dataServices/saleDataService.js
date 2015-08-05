@@ -9,7 +9,7 @@ module.exports = function (connection) {
   };
 
   this.getAllSales = function (cb) {
-      getData('SELECT sale_id, prod_id, day, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', cb );
+      getData('SELECT sale_id, product.prod_id, day, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', cb );
   };//done
 
   this.showInsertSale = function (cb) {
