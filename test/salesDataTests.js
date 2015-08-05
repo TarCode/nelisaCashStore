@@ -15,3 +15,34 @@ describe('salesMethods: Display', function() {
     });
   });
 });
+
+describe('salesMethods: Alter', function() {
+
+  var data = {
+      sale_id : 449
+  };
+
+  before(function(done) {
+    saleDataService.getAllSales(function(err, results){
+      assert.equal(448, results.length);
+      done();
+    });
+  });
+
+  it('insertSale: Should insert a sale', function(done) {
+
+    saleDataService.insertSale(data, function(err, results){
+      saleDataService.getAllSales(function(err, results){
+        assert.equal(448, results.length);
+        done();
+      });
+
+    });
+
+    after(function(done){
+      connection.query("delete from sales where sale_id = ?", data.sale_id, function(err){
+        done(err);
+      });
+    })
+  });
+});
