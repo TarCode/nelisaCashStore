@@ -9,11 +9,11 @@ module.exports = function (connection) {
   };
 
   this.getAllSales = function (cb) {
-      getData('SELECT * from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', cb );
+      getData('SELECT sale_id, prod_id, day, date, qtySold, salePrice from sales, product WHERE sales.prod_id = product.prod_id order by sale_id desc', cb );
   };//done
 
   this.showInsertSale = function (cb) {
-      getData('SELECT * from product', cb );
+      getData('SELECT prod_id, prod_name, cat_id from product', cb );
   };//done
 
   this.insertSale = function (data, cb) {
@@ -21,11 +21,11 @@ module.exports = function (connection) {
   };//done
 
   this.getUpdateSale = function (data, cb) {
-      insertData('select * from sales where sale_id = ?', data, cb );
+      insertData('SELECT sale_id, prod_id, day, date, qtySold, salePrice from sales WHERE sale_id = ?', data, cb );
   };
 
   this.getUpdateSaleProducts = function (cb) {
-      getData('select * from product', cb);
+      getData('SELECT prod_id, prod_name, cat_id FROM product', cb);
   };
 
   this.updateSale = function (data, cb) {

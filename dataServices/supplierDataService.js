@@ -9,7 +9,7 @@ module.exports = function (connection) {
   };
 
   this.getAllSuppliers = function (cb) {
-      getData('SELECT * from supplier', cb );
+      getData('SELECT supplier_id, supplier_name FROM supplier', cb );
   };
 
   this.insertSupplier = function (data, cb) {
@@ -21,7 +21,7 @@ module.exports = function (connection) {
   };
 
   this.getUpdatedSupplier = function (data, cb) {
-      insertData('SELECT * FROM supplier WHERE supplier_id = ?', data, cb );
+      insertData('SELECT supplier_id, supplier_name FROM supplier WHERE supplier_id = ?', data, cb );
   };
 
   this.deleteSupplier = function (data, cb) {

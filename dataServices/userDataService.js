@@ -17,7 +17,7 @@ module.exports = function (connection) {
   };
 
   this.checkUser = function (data, cb) {
-      insertData('SELECT password, role, locked from users WHERE username = ?', data, cb );
+      insertData('SELECT password, role, locked FROM users WHERE username = ?', data, cb );
   };
 
   this.updateUser = function (data, cb) {
@@ -29,7 +29,7 @@ module.exports = function (connection) {
   };
 
   this.deleteUser = function (data, cb) {
-      insertData('DELETE FROM users where username = ?', data, cb );
+      insertData('DELETE FROM users WHERE username = ?', data, cb );
   };
 
 };

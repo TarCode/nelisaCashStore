@@ -16,7 +16,7 @@ module.exports = function (connection) {
       insertData('INSERT INTO category SET ?', data, cb );
   };
 
-  this.getUpdateCategory = function (data, cb) {
+  this.getUpdatedCategory = function (data, cb) {
       insertData('SELECT cat_id, cat_name FROM category WHERE cat_id = ?', data, cb );
   };
 
