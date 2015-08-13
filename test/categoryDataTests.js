@@ -7,12 +7,11 @@ var connection =  new Connection();
 
 connection.connect();
 
-Promise.promisifyAll(CategoryDataService.prototype);
 var categoryDataService= new CategoryDataService(connection);
 
 
-Promise.join(categoryDataService.getAllCategoriesAsync(),
-             categoryDataService.popularCategoryAsync(),
+Promise.join(categoryDataService.getAllCategories(),
+             categoryDataService.popularCategory(),
              function(results1, results2){
                console.log(results1);
                console.log(results2);

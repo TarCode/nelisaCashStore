@@ -1,21 +1,41 @@
-function CategoryDataService(connection) {
+var Promise = require("bluebird");
+
+function QueryExecutor(connection) {
     this.connection = connection;
 
-    this.getData = function(query, cb){
-        connection.query( query, cb);
-    };
+    this.executeQuery = function(query, data){
+        data = data || [];
+        return new Promise(function(accept, reject){
+            connection.query( query, data, function(err, results){
+              if (err){
+                return reject(err)
+              }
+              accept(results);
+            });
 
-    this.insertData = function(query, data, cb){
-        connection.query(query, data, cb);
+        })
     };
 }
 
+module.exports = function(connection){
 
 
-  CategoryDataService.prototype.getAllCategories = function (cb) {
-      this.getData('SELECT cat_id, cat_name FROM category',cb );
+  var queryExecutor = new QueryExecutor(connection);
+
+  this.getAllCategories = function () {
+     return queryExecutor.executeQuery('SELECT cat_id, cat_name FROM category');
   };
+
+
+  this.popularCategory = function () {
+      return queryExecutor.executeQuery('SELECT cat_name, sum(qtySold) as total_sold FROM product,category,sales  WHERE product.prod_id = sales.prod_id AND category.cat_id = product.cat_id GROUP BY cat_name ORDER BY total_sold DESC');
+  };
+}
 /*
+  this.profitsPerCategory = function (cb) {
+      getData('SELECT cat_name, supplier_name, sum(salePrice - cost) as profit FROM product,sales,stock,supplier, category where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id and stock.supplier_id = supplier.supplier_id and product.cat_id = category.cat_id group by cat_name order by profit desc', cb );
+  };
+
   this.insertCategory = function (data, cb) {
       insertData('INSERT INTO category SET ?', data, cb );
   };
@@ -35,15 +55,4 @@ function CategoryDataService(connection) {
   this.searchCategory = function (data, cb) {
       insertData('SELECT cat_id, cat_name from category WHERE cat_name LIKE ?', data, cb );
   };
-  */
-
-  CategoryDataService.prototype.popularCategory = function (cb) {
-      this.getData('SELECT cat_name, sum(qtySold) as total_sold FROM product,category,sales  WHERE product.prod_id = sales.prod_id AND category.cat_id = product.cat_id GROUP BY cat_name ORDER BY total_sold DESC', cb );
-  };
-/*
-  this.profitsPerCategory = function (cb) {
-      getData('SELECT cat_name, supplier_name, sum(salePrice - cost) as profit FROM product,sales,stock,supplier, category where product.prod_id = sales.prod_id and product.prod_id = stock.prod_id and stock.supplier_id = supplier.supplier_id and product.cat_id = category.cat_id group by cat_name order by profit desc', cb );
-  };
-  */
-
-module.exports = CategoryDataService;
+    */
