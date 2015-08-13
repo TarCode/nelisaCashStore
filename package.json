@@ -20,7 +20,8 @@
     "bcrypt": "~0.8.3",
     "qunit": "~0.7.6",
     "should": "~7.0.2",
-    "supertest": "~1.0.1"
+    "supertest": "~1.0.1",
+    "bluebird": "~2.9.34"
   },
   "devDependencies": {
     "qunit": "~0.7.5"

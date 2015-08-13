@@ -1,13 +1,27 @@
-var CategoryDataService = require('../dataServices/categoryDataService');
+var CategoryDataService = require('../dataServices/categoryDataServicePromise');
 var assert = require("assert");
 var Connection = require('../routes/testConnectionData');
+var Promise = require("bluebird");
 
 var connection =  new Connection();
 
 connection.connect();
+
+Promise.promisifyAll(CategoryDataService.prototype);
 var categoryDataService= new CategoryDataService(connection);
 
+
+Promise.join(categoryDataService.getAllCategoriesAsync(),
+             categoryDataService.popularCategoryAsync(),
+             function(results1, results2){
+               console.log(results1);
+               console.log(results2);
+             }).error(function(err){
+               console.log(err);
+             });
+             /*
 describe('categoryMethods: Display', function() {
+
   it('getAllCategories: Should return a list of categories', function(done) {
     categoryDataService.getAllCategories(function(err, results){
       assert.equal(8, results.length);
@@ -53,3 +67,4 @@ describe('categoryMethods: Alter', function() {
     })
   });
 });
+*/
