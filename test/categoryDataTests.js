@@ -9,15 +9,32 @@ connection.connect();
 
 var categoryDataService= new CategoryDataService(connection);
 
-
-Promise.join(categoryDataService.getAllCategories(),
+/*
+        Promise.join(categoryDataService.getAllCategories(),
              categoryDataService.popularCategory(),
              function(results1, results2){
                console.log(results1);
                console.log(results2);
+
              }).error(function(err){
                console.log(err);
              });
+*/
+
+describe('Categoty Data Service', function(){
+
+    it('should find all categories', function (done) {
+      categoryDataService
+        .getAllCategories()
+        .then(function(categories){
+            assert.equal(8, categories.length);
+            done();
+        }).done();
+    });
+
+})
+
+
              /*
 describe('categoryMethods: Display', function() {
 
