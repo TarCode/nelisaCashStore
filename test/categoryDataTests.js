@@ -26,10 +26,10 @@ describe('Categoty Data Service', function(){
     it('should find all categories', function (done) {
       categoryDataService
         .getAllCategories()
-        .then(function(categories){
-            assert.equal(8, categories.length);
+        .done(function(categories){
+            assert.equal(1, categories.length);
             done();
-        }).done();
+        });
     });
 
 })
