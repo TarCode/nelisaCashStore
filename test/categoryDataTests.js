@@ -21,7 +21,7 @@ var categoryDataService= new CategoryDataService(connection);
              });
 */
 
-describe('Categoty Data Service', function(){
+describe('Category Data Service', function(){
 
     it('should find all categories', function (done) {
       categoryDataService
