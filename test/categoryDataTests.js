@@ -32,7 +32,18 @@ describe('Category Data Service', function(){
         });
     });
 
-})
+    it('Top element must be the most popular category', function(done) {
+      categoryDataService
+        .popularCategory()
+        .done(function(categories){
+          var mostPopularCategory = categories[0];
+          assert.equal(mostPopularCategory.cat_name, 'shortLife');
+          assert.equal(mostPopularCategory.total_sold, 397);
+          done();
+        });
+
+    });
+});
 
 
              /*
