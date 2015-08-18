@@ -27,7 +27,7 @@ describe('Categoty Data Service', function(){
       categoryDataService
         .getAllCategories()
         .done(function(categories){
-            assert.equal(1, categories.length);
+            assert.equal(8, categories.length);
             done();
         });
     });
