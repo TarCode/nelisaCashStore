@@ -1,4 +1,4 @@
-var SupplierDataService = require('../dataServices/supplierDataService');
+var SupplierDataService = require('../dataServices/supplierDataServicePromise');
 var assert = require("assert");
 var Connection = require('../routes/testConnectionData');
 
@@ -7,16 +7,18 @@ var connection =  new Connection();
 connection.connect();
 var supplierDataService= new SupplierDataService(connection);
 
-describe('supplierMethods: Display', function() {
-  it('getAllSuppliers: Should return a list of suppliers', function(done) {
-    supplierDataService.getAllSuppliers(function(err, results){
-      assert.equal(5, results.length);
+describe('Supplier Data Service', function() {
+  it(' Should find all the suppliers', function(done) {
+    supplierDataService
+    .getAllSuppliers()
+    .done(function(suppliers) {
+      assert.equal(5, suppliers.length);
       done();
     });
   });
 });
 
-describe('supplierMethods: Alter', function() {
+/*describe('supplierMethods: Alter', function() {
 
   var data = {
       supplier_name : "fakeSupp"
@@ -45,4 +47,4 @@ describe('supplierMethods: Alter', function() {
       });
     })
   });
-});
+});*/

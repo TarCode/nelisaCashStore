@@ -10,7 +10,7 @@ describe('userMethods : Display', function() {
   it('getUsername: returns the username of the first user', function(done) {
     userDataService.getUsername(function(err, currentUsername) {
       username = currentUsername[0];
-      assert.equal(username.username, 'andre');
+      assert.equal(username.username, 'nelisa');
       done();
     });
   });
@@ -23,7 +23,7 @@ describe('userMethods : Alter', function() {
 
   before(function(done) {
     userDataService.getUsername(function(err, numberOfUsers) {
-      assert.equal(4, numberOfUsers.length );
+      assert.equal(2, numberOfUsers.length );
       done();
     });
   });
@@ -31,7 +31,7 @@ describe('userMethods : Alter', function() {
   it('insertUser: Should insert a user', function(done) {
     userDataService.insertUser(function(err, newUser) {
       userDataService.getUsername(function(err, users) {
-        assert.equal(4, users.length);
+        assert.equal(2, users.length);
         done();
       });
     });
