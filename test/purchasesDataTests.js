@@ -1,4 +1,4 @@
-var PurchaseDataService = require('../dataServices/purchaseDataService');
+var PurchaseDataService = require('../dataServices/purchaseDataServicePromise');
 var assert = require("assert");
 var Connection = require('../routes/testConnectionData');
 
@@ -7,16 +7,18 @@ var connection =  new Connection();
 connection.connect();
 var purchaseDataService = new PurchaseDataService(connection);
 
-describe('purchasesMethods: Display', function() {
-  it('getAllPurchases: Should return a list of purchases', function(done) {
-    purchaseDataService.getAllPurchases(function(err, results){
-      assert.equal(153, results.length);
+describe('Purchase Data Service', function() {
+  it('Should find all the purchases', function(done) {
+    purchaseDataService
+    .getAllPurchases()
+    .done(function(purchases){
+      assert.equal(153, purchases.length);
       done();
     });
   });
 });
 
-describe('purchasesMethods: Alter', function() {
+/*describe('purchasesMethods: Alter', function() {
 
   var data = {
       purchase_id : 154
@@ -45,4 +47,4 @@ describe('purchasesMethods: Alter', function() {
       });
     })
   });
-});
+}); */

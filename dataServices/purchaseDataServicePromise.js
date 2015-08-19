@@ -12,6 +12,7 @@ function QueryExecutor(connection) {
               }
               accept(results);
             });
+
         })
     };
 }
@@ -21,8 +22,8 @@ module.exports = function(connection){
 
   var queryExecutor = new QueryExecutor(connection);
 
-  this.getAllSuppliers = function () {
-     return queryExecutor.executeQuery('SELECT supplier_id, supplier_name FROM supplier');
+  this.getAllPurchases = function () {
+     return queryExecutor.executeQuery('SELECT purchase_id, prod_name, supplier_id, DATE_FORMAT(date, "%d/%l/%Y") as date, quantity, cost, totalCost FROM stock, product WHERE stock.prod_id = product.prod_id order by purchase_id desc');
   };
 
 }
